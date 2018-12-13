@@ -49,15 +49,18 @@ for (infile in infiles) {
                                     forceConversion = TRUE)
   names(template) <- c("y", "m", "d", "h", "p", "t_air")
   template <- template[which(!is.na(template$y)), ]
+  template$h[template$h == "0000"] <- "2400"
   template$p_orig <- paste0("Original=", round(template$p, 2), "in")
   template$t_air_orig <- paste0("Original=", round(template$t_air, 1), "F")
   
   ## Convert time to UTC
-  hours <- as.integer(substr(template$h, 1, 2))
-  hours <- hours + 10
-  hours[hours > 23] <- hours[hours > 23] - 24
-  template$d[hours <= 10] <- template$d[hours <= 10] + 1
-  substr(template$h, 1, 2) <- formatC(hours, width = 2)
+  dates <- paste(template$y, template$m, template$d, sep = "-")
+  times <- strptime(paste(dates, sub(" ", "0", template$h)), 
+                    format = "%Y-%m-%d %H%M") - 3600 * 10
+  template$y <- as.integer(format(times, "%Y"))
+  template$m <- as.integer(format(times, "%m"))
+  template$d <- as.integer(format(times, "%d"))
+  template$h <- format(times, "%H%M")
   
   ## Write to data frames
   for (i in 1:2) {

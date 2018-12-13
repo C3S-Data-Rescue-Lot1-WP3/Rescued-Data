@@ -3,7 +3,8 @@
 #' @param Data A data frame with five or six variables (depending on time
 #' resolution): variable code, year, month, day, (time in HHMM or HH:MM), value.
 #' @param outpath Character string giving the output path (note that the filename
-#' is generated from the source identifier, station code, and variable code).
+#' is generated from the source identifier, station code, start and end dates, 
+#' and variable code).
 #' @param cod Station code.
 #' @param nam Station name.
 #' @param lat Station latitude (degrees North in decimal).
@@ -18,6 +19,9 @@
 #' @param timef Integer giving the observation time period code. If NA 
 #' (the default), it will be guessed from the dimension of Data and
 #' the variable code.
+#' @param note Character string to be added to the end of the filename.
+#' It will be separated from the rest of the name by an underscore.
+#' Blanks will be also replaced by underscores.
 #' @param v Character string giving the SEF version.
 #' 
 #' @import utils
@@ -25,7 +29,7 @@
 
 write_sef <- function(Data, outpath, cod, nam, lat = NA, lon = NA, alt = NA, 
                       sou = NA, repo = NA, units = NA, metaHead = "", 
-                      meta = "", timef = NA, v = "0.0.1") {
+                      meta = "", timef = NA, note = "", v = "0.0.1") {
   
   ## Check which variables are given and produce one file per variable
   variables <- unique(Data[, 1])
@@ -33,11 +37,22 @@ write_sef <- function(Data, outpath, cod, nam, lat = NA, lon = NA, alt = NA,
   for (i in 1:n) {
     
     DataSubset <- subset(Data, Data[, 1] == variables[i], select = -1)
-    filename <- paste(sou, cod, variables[i], sep = "_")
+    
+    ## Build filename
+    datemin <- paste(formatC(unlist(Data[1, 2:4]), width=2, flag=0), 
+                     collapse = "")
+    datemax <- paste(formatC(unlist(Data[dim(Data)[1], 2:4]), width=2, flag=0), 
+                     collapse = "")
+    dates <- paste(datemin, datemax, sep = "-")
+    filename <- paste(sou, cod, dates, variables[i], sep = "_")
     if (substr(outpath, nchar(outpath), nchar(outpath)) != "/") {
       outpath <- paste0(outpath, "/")
     }
-    filename <- paste0(outpath, filename, ".tsv")
+    if (note != "") {
+      gsub(" ", "_", note)
+      note <- paste0("_", note)
+    }
+    filename <- paste0(outpath, filename, note, ".tsv")
   
     ## Build header
     header <- array(dim = c(11, 2), data = "")
