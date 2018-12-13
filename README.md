@@ -1,12 +1,11 @@
 # Rescued-Data
 Data digitized from the C3S capacity building regions
 
-Each directory is organized as follows:
+Each directory 'RegionName' has the following structure:
 
-RegionName
---- data
------- raw
------- formatted
---- meta
---- docs
---- src
+* data
+  * raw
+  * formatted
+* meta
+* docs
+* src
