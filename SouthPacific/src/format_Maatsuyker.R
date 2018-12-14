@@ -81,7 +81,7 @@ for (i in 1:2) {
                                 stringsAsFactors = FALSE)
   write_sef(Data = Data[[variables[i]]][, 1:6],
             outpath = outpath,
-            cod = "C3S_Maatsuyker",
+            cod = "Maatsuyker",
             nam = "Maatsuyker Lighthouse",
             lat = lat,
             lon = lon,
