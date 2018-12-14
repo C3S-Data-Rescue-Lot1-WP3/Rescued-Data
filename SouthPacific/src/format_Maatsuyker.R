@@ -83,13 +83,13 @@ for (i in 1:2) {
             outpath = outpath,
             cod = "C3S_Maatsuyker",
             nam = "Maatsuyker Lighthouse",
-            lat = -43.656952,
-            lon = 146.271518,
-            alt = 120,
+            lat = lat,
+            lon = lon,
+            alt = alt,
             sou = "C3S_SouthPacific",
             repo = "",
             units = units[i],
-            metaHead = ifelse(i==2, "PTC=?", ""),
+            metaHead = ifelse(i==2, "PTC=?,PGC=T", ""),
             meta = Data[[variables[i]]][, 7],
             timef = 0)
 }

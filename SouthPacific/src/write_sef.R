@@ -138,6 +138,7 @@ write_sef <- function(Data, outpath, cod, nam, lat = NA, lon = NA, alt = NA,
 convert_pressure <- function(p, f = 25.4, lat = NA, alt = NA) {
   
   rho <- 13595.1
+  lat <- lat * pi / 180
   
   g <- ifelse(!is.na(lat) & !is.na(alt),
               9.80620 * (1 - 0.0026442 * cos(2*lat) - 0.0000058 * (cos(2*lat))**2) 
