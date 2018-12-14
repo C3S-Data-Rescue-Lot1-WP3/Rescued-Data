@@ -119,7 +119,7 @@ write_sef <- function(Data, outpath, cod, nam, lat = NA, lon = NA, alt = NA,
 #' Convert pressure data to hPa
 #' 
 #' Converts pressure observations made with a mercury barometer to SI units.
-#' If geographical coordiantes are given, a gravity correction is applied.
+#' If geographical coordinates are given, a gravity correction is applied.
 #'
 #' @param p A vector of barometer observations in any unit of length.
 #' @param f Conversion factor to mm (e.g., 25.4 for English inches).
@@ -128,6 +128,9 @@ write_sef <- function(Data, outpath, cod, nam, lat = NA, lon = NA, alt = NA,
 #' 
 #' @note
 #' Ideally the barometer observations should be already reduced to 0 degrees Celsius.
+#' 
+#' @return
+#' A vector of pressure values in hPa.
 #' 
 #' @references
 #' WMO, 2008: Guide to meteorological instruments and methods of observation,
