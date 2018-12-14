@@ -50,8 +50,8 @@ for (infile in infiles) {
   names(template) <- c("y", "m", "d", "h", "p", "t_air")
   template <- template[which(!is.na(template$y)), ]
   template$h[template$h == "0000"] <- "2400"
-  template$p_orig <- paste0("Original=", round(template$p, 2), "in")
-  template$t_air_orig <- paste0("Original=", round(template$t_air, 1), "F")
+  template$p_orig <- paste0("Orig=", round(template$p, 2), "in")
+  template$t_air_orig <- paste0("Orig=", round(template$t_air, 1), "F")
   
   ## Convert time to UTC
   dates <- paste(template$y, template$m, template$d, sep = "-")
