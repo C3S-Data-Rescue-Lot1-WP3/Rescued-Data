@@ -11,4 +11,4 @@
 * Pressure (inches Hg), correction unknown
 * Temperature (°F)
 
-The original digitization templates are organized in one file per year with identical format. [This script](https://github.com/C3S-Data-Rescue-Lot1-WP3/Rescued-Data/SouthPacific/src/format_Maatsuyker.R) was used to convert them to SEF format.
+The original digitization templates are organized in one file per year with identical format. [This script](https://github.com/C3S-Data-Rescue-Lot1-WP3/Rescued-Data/blob/master/SouthPacific/src/format_Maatsuyker.R) was used to convert them to SEF format.
