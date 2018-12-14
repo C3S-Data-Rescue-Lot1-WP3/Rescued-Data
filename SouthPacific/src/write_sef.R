@@ -150,4 +150,6 @@ convert_pressure <- function(p, f = 25.4, lat = NA, alt = NA) {
   
   p <- p * f * rho * g * 1e-05
   
+  return(p)
+  
 }
