@@ -120,11 +120,13 @@ write_sef <- function(Data, outpath, cod, nam, lat = NA, lon = NA, alt = NA,
 #' 
 #' Converts pressure observations made with a mercury barometer to SI units.
 #' If geographical coordinates are given, a gravity correction is applied.
+#' If attached temperature is given, a temperature correction is applied.
 #'
 #' @param p A vector of barometer observations in any unit of length.
 #' @param f Conversion factor to mm (e.g., 25.4 for English inches).
 #' @param lat Station latitude (degrees North in decimal).
 #' @param alt Station altitude (metres).
+#' @param atb A vector of the attached temperature observations in Celsius.
 #' 
 #' @note
 #' Ideally the barometer observations should be already reduced to 0 degrees Celsius.
@@ -138,15 +140,21 @@ write_sef <- function(Data, outpath, cod, nam, lat = NA, lon = NA, alt = NA,
 #' 
 #' @export
 
-convert_pressure <- function(p, f = 25.4, lat = NA, alt = NA) {
+convert_pressure <- function(p, f = 1, lat = NA, alt = NA, atb = NULL) {
   
   rho <- 13595.1
+  gamma <- 0.000182
   lat <- lat * pi / 180
   
   g <- ifelse(!is.na(lat) & !is.na(alt),
               9.80620 * (1 - 0.0026442 * cos(2*lat) - 0.0000058 * (cos(2*lat))**2) 
                 - 0.000003086 * alt,
               9.80665)
+  
+  if (!is.null(atb)) {
+    if (length(atb) != length(p)) stop("atb must have the same length of p")
+    p <- (1 - gamma * atb) * p
+  }
   
   p <- p * f * rho * g * 1e-05
   

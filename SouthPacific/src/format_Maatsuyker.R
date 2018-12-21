@@ -19,11 +19,11 @@ alt <- 120
 inpath <- "../data/raw/Maatsuyker/"
 outpath <- "../data/formatted/"
 
-variables <- c("t_air", "p")
-units <- c("K", "Pa")
-conversions <- list(t_air = function(x) round(273.15 + (x - 32) * 5 / 9, 1),
+variables <- c("ta", "p")
+units <- c("C", "Pa")
+conversions <- list(ta = function(x) round((x - 32) * 5 / 9, 1),
                     p = function(x) 
-                      round(100 * convert_pressure(x, lat = lat, alt = alt), 0))
+                      round(100 * convert_pressure(x, f = 25.4, lat = lat, alt = alt), 0))
 
 
 ## Initialize data frames
@@ -47,11 +47,11 @@ for (infile in infiles) {
                                                  "character",
                                                  rep("numeric", 2)),
                                     forceConversion = TRUE)
-  names(template) <- c("y", "m", "d", "h", "p", "t_air")
+  names(template) <- c("y", "m", "d", "h", "p", "ta")
   template <- template[which(!is.na(template$y)), ]
   template$h[template$h == "0000"] <- "2400"
   template$p_orig <- paste0("Orig=", round(template$p, 2), "in")
-  template$t_air_orig <- paste0("Orig=", round(template$t_air, 1), "F")
+  template$ta_orig <- paste0("Orig=", round(template$ta, 1), "F")
   
   ## Convert time to UTC
   dates <- paste(template$y, template$m, template$d, sep = "-")
