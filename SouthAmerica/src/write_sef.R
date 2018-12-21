@@ -1,4 +1,4 @@
-#' Write data in Station Exchange Format
+#' Write data in Station Exchange Format version 0.0.1
 #'
 #' @param Data A data frame with five or six variables (depending on time
 #' resolution): variable code, year, month, day, (time in HHMM or HH:MM), value.
@@ -22,14 +22,13 @@
 #' @param note Character string to be added to the end of the filename.
 #' It will be separated from the rest of the name by an underscore.
 #' Blanks will be also replaced by underscores.
-#' @param v Character string giving the SEF version.
 #' 
 #' @import utils
 #' @export
 
 write_sef <- function(Data, outpath, cod, nam, lat = NA, lon = NA, alt = NA, 
                       sou = NA, repo = NA, units = NA, metaHead = "", 
-                      meta = "", timef = NA, note = "", v = "0.0.1") {
+                      meta = "", timef = NA, note = "") {
   
   ## Check which variables are given and produce one file per variable
   variables <- unique(Data[, 1])
@@ -56,7 +55,7 @@ write_sef <- function(Data, outpath, cod, nam, lat = NA, lon = NA, alt = NA,
   
     ## Build header
     header <- array(dim = c(11, 2), data = "")
-    header[1, ] <- c("SEF", v)
+    header[1, ] <- c("SEF", "0.0.1")
     header[2, ] <- c("ID", cod)
     header[3, ] <- c("Name", nam)
     header[4, ] <- c("Lat", lat)
