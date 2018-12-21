@@ -1,0 +1,21 @@
+SEF	0.0.1
+ID	DWR_Santa_Cruz
+Name	Santa Cruz
+Lat	
+Lon	
+Alt	
+Source	C3S_SouthAmerica
+Repo	
+Var	rh
+Units	%
+Meta	
+Year	Month	Day	HHMM	TimeF	Value	Meta
+1902	12	22	1117	0	30	
+1902	12	23	1117	0	39	
+1902	12	25	1117	0	45	
+1902	12	26	1117	0	86	
+1902	12	27	1117	0	71	
+1902	12	28	1117	0	72	
+1902	12	29	1117	0	52	
+1902	12	30	1117	0	59	
+1902	12	31	1117	0	59	

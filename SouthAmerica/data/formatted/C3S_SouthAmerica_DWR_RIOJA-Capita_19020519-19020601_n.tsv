@@ -1,0 +1,15 @@
+SEF	0.0.1
+ID	DWR_RIOJA-Capita
+Name	RIOJA-Capital
+Lat	
+Lon	
+Alt	
+Source	C3S_SouthAmerica
+Repo	
+Var	n
+Units	%
+Meta	
+Year	Month	Day	HHMM	TimeF	Value	Meta
+1902	5	19	1817	0	0	Orig=0
+1902	5	31	1817	0	0	Orig=0
+1902	6	1	1817	0	0	Orig=0
