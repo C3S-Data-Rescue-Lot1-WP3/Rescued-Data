@@ -16,8 +16,8 @@
 #' @param metaHead Character string giving any metadata for the header.
 #' @param meta Character vector with length equal to the number of rows
 #' of Data, giving any metadata for the single observations.
-#' @param timef Integer giving the observation time period code. If NA 
-#' (the default), it will be guessed from the dimension of Data and
+#' @param timef Integer or integer vector giving the observation time period code. 
+#' If NA (the default), it will be guessed from the dimension of Data and
 #' the variable code.
 #' @param note Character string to be added to the end of the filename.
 #' It will be separated from the rest of the name by an underscore.
@@ -68,7 +68,7 @@ write_sef <- function(Data, outpath, cod, nam, lat = NA, lon = NA, alt = NA,
     header[11, ] <- c("Meta", metaHead)
     
     ## Guess time period of observation if not given
-    if (is.na(timef)) {
+    if (is.na(timef[1])) {
       if (variables[i] == "rr") timef <- 12
       else if (dim(DataSubset)[2] == 4) timef <- 1
       else if (dim(DataSubset)[2] == 5) timef <- 0
