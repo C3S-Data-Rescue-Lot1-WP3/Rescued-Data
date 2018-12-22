@@ -11,6 +11,7 @@
 require(XLConnect)
 require(plyr)
 source("write_sef.R")
+options(scipen = 999) # avoid exponential notation
 
 
 infile <- "../data/raw/RosarioDeSantaFe/Rosario_De_Santa_Fe_Argentina_May1886-Dec1900.xls"

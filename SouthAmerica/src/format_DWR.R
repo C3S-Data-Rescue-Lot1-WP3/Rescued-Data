@@ -10,6 +10,7 @@
 
 require(XLConnect)
 source("write_sef.R")
+options(scipen = 999) # avoid exponential notation
 
 
 inpath <- "../data/raw/DWR/"
@@ -32,12 +33,12 @@ conversions <- list(ta = function(x) round(x, 1),
 
 # Define function to get rid of latin characters
 convert_to_ascii <- function(x) {
-  x <- gsub("ñ", "n", x)
-  x <- gsub("á", "a", x)
-  x <- gsub("é", "e", x)
-  x <- gsub("í", "i", x)
-  x <- gsub("ó", "o", x)
-  x <- gsub("ú", "u", x)
+  x <- gsub("Ã±", "n", x)
+  x <- gsub("Ã¡", "a", x)
+  x <- gsub("Ã©", "e", x)
+  x <- gsub("Ã­", "i", x)
+  x <- gsub("Ã³", "o", x)
+  x <- gsub("Ãº", "u", x)
 }
 
 

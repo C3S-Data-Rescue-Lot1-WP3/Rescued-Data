@@ -10,6 +10,7 @@
 
 require(XLConnect)
 source("write_sef.R")
+options(scipen = 999) # avoid exponential notation
 
 
 lat <- -43.656952
