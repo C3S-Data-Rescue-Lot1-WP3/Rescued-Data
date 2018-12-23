@@ -1,4 +1,4 @@
-**Location:** Rosario de Santa Fe, Argentina
+﻿**Location:** Rosario de Santa Fe, Argentina
 
 **Latitude:** -32.94083
 
@@ -29,5 +29,5 @@
 
 **Time:** Assumed to be 4h17m behind UTC, although this standard time was [officially adopted in Argentina only in 1894](https://web.archive.org/web/20030803233204/http://www.spicasc.net/horvera.html).
 
-**Source:** The data have been digitised from British colonial weather registers [held at the Met Office Archives](https://library.metoffice.gov.uk/Portal/Default/en-GB/RecordView/Index/249777), available [here](http://data.ceda.ac.uk/badc/corral/images/metobs/south_america/Argentina/Rosario_De_Santa_Fe_Argentine/).
+**Source:** The data have been digitised from British colonial weather registers [held at the Met Office Archives](https://library.metoffice.gov.uk/Portal/Default/en-GB/RecordView/Index/249777), scans are available [here](http://data.ceda.ac.uk/badc/corral/images/metobs/south_america/Argentina/Rosario_De_Santa_Fe_Argentine/).
 [This script](https://github.com/C3S-Data-Rescue-Lot1-WP3/Rescued-Data/blob/master/SouthAmerica/src/format_Rosario.R) was used to convert them to SEF format.
