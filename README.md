@@ -1,6 +1,7 @@
 # Rescued-Data
 Data digitised from the capacity building regions of C3S 311a_Lot1 (aka [C3S Data Rescue Service](https://climate.copernicus.eu/data-rescue-service)).
 
+### Structure
 Each directory 'RegionName' has the following structure:
 
 * data
@@ -9,14 +10,16 @@ Each directory 'RegionName' has the following structure:
 * docs: Documentation / Metadata
 * src: Code used to format the data
 
+### Data format
 Standard filenames are used for formatted data:
 
 ```
 <Source_Code>_<Station_Code>_<StartDate>_<EndDate>_<Variable>.tsv
 ```
 
-We use the [Station Exchange Format](http://brohan.org/SEF/SEF.html) version 0.0.1, which requires one file for each variable.
+Data are formatted into the [Station Exchange Format](http://brohan.org/SEF/SEF.html) version 0.0.1, which implies one file for each variable.
 
+### Variables
 The following variables are provided:
 
 * __ta__: air temperature (°C)
@@ -34,4 +37,8 @@ The following variables are provided:
 * __dd__: wind direction (°)
 * __n__: cloud cover (%)
 
-Note that the data have not been quality controlled.
+### Remarks
+Note that the data have not been quality controlled. Geographical coordinates for many stations are missing.
+
+### Contact
+For any inquiry and to report bugs please write to [yuri.brugnara@giub.unibe.ch](mailto:yuri.brugnara@giub.unibe.ch).
