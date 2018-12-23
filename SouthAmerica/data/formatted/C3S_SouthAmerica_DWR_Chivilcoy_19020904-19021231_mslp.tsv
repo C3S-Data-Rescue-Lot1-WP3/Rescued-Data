@@ -8,7 +8,7 @@ Source	C3S_SouthAmerica
 Repo	
 Var	mslp
 Units	Pa
-Meta	
+Meta	PGC=F
 Year	Month	Day	HHMM	TimeF	Value	Meta
 1902	9	4	1117	0	102485	Orig=768.7mm
 1902	9	8	1117	0	101232	Orig=759.3mm

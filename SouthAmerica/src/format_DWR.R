@@ -128,7 +128,7 @@ for (ist in 1:length(stations)) {
                 sou = "C3S_SouthAmerica",
                 repo = "",
                 units = units[i],
-                metaHead = "",
+                metaHead = ifelse(i == 2, "PGC=F", ""),
                 meta = Data[[variables[i]]][, 7],
                 timef = ifelse(variables[i] %in% c("Tx", "Tn"), 13, 0))
     }
