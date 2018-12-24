@@ -208,6 +208,10 @@ Year	Month	Day	HHMM	TimeF	Value	Meta
 1886	7	7	2217	12	0	Orig=0in
 1886	7	8	1217	12	0	Orig=0in
 1886	7	8	2217	12	0	Orig=0in
+1886	7	9		12	0	Orig=0in
+1886	7	9		12	0	Orig=0in
+1886	7	10		12	0	Orig=0in
+1886	7	10		12	0	Orig=0in
 1886	7	11	1217	12	0	Orig=0in
 1886	7	11	2217	12	0	Orig=0in
 1886	7	12	1217	12	0	Orig=0in
@@ -250,10 +254,6 @@ Year	Month	Day	HHMM	TimeF	Value	Meta
 1886	7	30	2217	12	0	Orig=0in
 1886	7	31	1217	12	0	Orig=0in
 1886	7	31	2217	12	0	Orig=0in
-1886	7	NA	1217	12	0	Orig=0in
-1886	7	NA	1217	12	0	Orig=0in
-1886	7	NA	2217	12	0	Orig=0in
-1886	7	NA	2217	12	0	Orig=0in
 1886	8	1	1217	12	0	Orig=0in
 1886	8	1	2217	12	0	Orig=0in
 1886	8	2	1217	12	0	Orig=0in
@@ -264,6 +264,8 @@ Year	Month	Day	HHMM	TimeF	Value	Meta
 1886	8	4	2217	12	0	Orig=0in
 1886	8	5	1217	12	0	Orig=0in
 1886	8	5	2217	12	0	Orig=0in
+1886	8	6		12	0	Orig=0in
+1886	8	6		12	0	Orig=0in
 1886	8	7	1217	12	0	Orig=0in
 1886	8	7	2217	12	0	Orig=0in
 1886	8	8	1217	12	0	Orig=0in
@@ -312,8 +314,6 @@ Year	Month	Day	HHMM	TimeF	Value	Meta
 1886	8	30	2217	12	0	Orig=0in
 1886	8	31	1217	12	0	Orig=0in
 1886	8	31	2217	12	0	Orig=0in
-1886	8	NA	1217	12	0	Orig=0in
-1886	8	NA	2217	12	0	Orig=0in
 1886	9	1	1217	12	0	Orig=0in
 1886	9	10	1217	12	0	Orig=0in
 1886	9	10	2217	12	546.1	Orig=21.5in
@@ -392,8 +392,8 @@ Year	Month	Day	HHMM	TimeF	Value	Meta
 1886	10	29	2217	12	2.8	Orig=0.11in
 1886	10	30	1217	12	0	Orig=0in
 1886	10	30	2217	12	0	Orig=0in
-1886	10	NA	1217	12	0	Orig=0in
-1886	10	NA	2217	12	0	Orig=0in
+1886	10	31		12	0	Orig=0in
+1886	10	31		12	0	Orig=0in
 1886	11	1	1117	12	0	Orig=0in
 1886	11	1	1817	12	0	Orig=0in
 1886	11	2	0117	12	0	Orig=0in

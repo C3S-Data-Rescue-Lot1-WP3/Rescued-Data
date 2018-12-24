@@ -81,7 +81,6 @@ read_template <- function(startRow, endRow,
     }
   }
   template <- rbind.fill(tmp)
-  template <- template[order(template$y, template$m, template$d, template$h), ]
   
   return(template)
   
@@ -158,6 +157,14 @@ directions <- c("N", "NNE", "NE", "ENE", "E", "ESE", "SE", "SSE", "S",
 template_all$dd <- 22.5 * (match(toupper(template_all$dd), directions) - 1)
 
 
+## Set missing time to those days marked by asterisks
+template_all$h[which(is.na(template_all$d))] <- ""
+template_all$d[which(is.na(template_all$d))] <- 
+  template_all$d[which(is.na(template_all$d)) - 1] + 1
+template_all$d[which(is.na(template_all$d))] <- 
+  template_all$d[which(is.na(template_all$d)) - 1] + 1
+
+
 ## Write to data frames
 for (i in 1:length(variables)) {
   if (variables[i] == "p") {
@@ -170,15 +177,18 @@ for (i in 1:length(variables)) {
   Data[[variables[i]]] <- rbind(Data[[variables[i]]], 
                                 template_all[, c(names(template_all)[1:3], "h", 
                                                  variables[i], 
-                                                 paste0(variables[i], "_orig"))],
-                                stringsAsFactors = FALSE)
+                                                 paste0(variables[i], "_orig"))])
 }
 
 
 ## Write output
 for (i in 1:length(variables)) {
-  ## First remove missing values and add column with variable code (required by write_sef)
+  ## First remove missing values, order by time and add column with variable code
   Data[[variables[i]]] <- Data[[variables[i]]][which(!is.na(Data[[variables[i]]][, 5])), ]
+  Data[[variables[i]]] <- Data[[variables[i]]][order(Data[[variables[i]]]$y,
+                                                     Data[[variables[i]]]$m,
+                                                     Data[[variables[i]]]$d,
+                                                     Data[[variables[i]]]$h), ]
   Data[[variables[i]]] <- cbind(variables[i], Data[[variables[i]]],
                                 stringsAsFactors = FALSE)
   write_sef(Data = Data[[variables[i]]][, 1:6],
