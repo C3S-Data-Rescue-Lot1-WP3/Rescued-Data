@@ -266,8 +266,7 @@ for (i in 1:length(variables)) {
   Data[[variables[i]]] <- Data[[variables[i]]][j, ]
   Tflags[[variables[i]]] <- Tflags[[variables[i]]][j]
   if (dim(Data[[variables[i]]])[1] > 0) {
-    Data[[variables[i]]] <- cbind(variables[i], Data[[variables[i]]],
-                                  stringsAsFactors = FALSE)
+    Data[[variables[i]]] <- cbind(variables[i], Data[[variables[i]]])
     write_sef(Data = Data[[variables[i]]][, 1:6],
               outpath = outpath,
               cod = "Kimberley",

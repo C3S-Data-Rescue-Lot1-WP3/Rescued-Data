@@ -1,9 +1,9 @@
 SEF	0.0.1
-ID	Cape_Good_Hope
-Name	Cape of Good Hope
-Lat	
-Lon	
-Alt	
+ID	Cape_Town
+Name	Cape Town
+Lat	-33.926
+Lon	18.423
+Alt	25
 Source	C3S_SouthAfrica
 Repo	
 Var	ta

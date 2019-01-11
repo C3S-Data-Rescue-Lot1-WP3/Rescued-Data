@@ -322,7 +322,7 @@ for (year in 1834:1879) {
     template$dd_orig <- paste0("Orig=", template$dd)
     template$w_orig <- paste0("Orig=", round(template$w, 2), "mph")
     
-    ## Template 9 (1879) - only wind (not clear what is given for the other variables)  
+    ## Template 9 (1879) - two sheets - only "ground" thermometers read
   } else if (year == 1879) {
     template <- readWorksheetFromFile(paste0(inpath, infile), 
                                       startRow = 12, header = FALSE,
@@ -341,6 +341,25 @@ for (year in 1834:1879) {
     template$h <- sub(":", "", template$h)
     template$dd_orig <- paste0("Orig=", template$dd)
     template$w_orig <- paste0("Orig=", round(template$w, 2), "mph")
+    template2 <- readWorksheetFromFile(paste0(inpath, infile), 
+                                       startRow = 9, header = FALSE,
+                                       sheet = 2, endCol = 11,
+                                       colTypes = c("character",
+                                                    rep("numeric",10)),
+                                       drop = 4:7,
+                                       forceConversion = TRUE,
+                                       readStrategy = "fast")
+    names(template2) <- c("m", "d", "p", "ta", "tb", "Tx", "Tn")
+    template2$m <- as.integer(fill(get_month(template2$m)))
+    template2$d <- fill(template2$d)
+    template2 <- template2[which(!is.na(template2$m)), ]
+    template2$p_orig <- paste0("Orig=", round(template2$p, 3), "in,PTC=?")
+    template2$ta_orig <- paste0("Orig=", round(template2$ta, 1), "F")
+    template2$tb_orig <- paste0("Orig=", round(template2$tb, 1), "F")
+    template2$Tx_orig <- paste0("Orig=", round(template2$Tx, 1), "F")
+    template2$Tn_orig <- paste0("Orig=", round(template2$Tn, 1), "F")
+    template2$h <- "130"
+    template <- merge(template, template2, by.x = c("m", "d", "h"), all.x = TRUE)
   }
   
   
@@ -422,6 +441,7 @@ for (i in 1:length(variables)) {
     if (variables[i] %in% c("Tx", "Tn")) time_flag <- 13
     else if (variables[i] == "w") time_flag <- c(rep(0, sum(Data[[variables[i]]]$y < 1877)),
                                                  rep(1, sum(Data[[variables[i]]]$y >= 1877)))
+    else if (variables[i] != "dd" & year %in% 1879:1880) time_flag <- ""
     else time_flag <- 0
     write_sef(Data = Data[[variables[i]]][, 1:6],
               outpath = outpath,

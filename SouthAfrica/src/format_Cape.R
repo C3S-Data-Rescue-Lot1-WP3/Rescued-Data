@@ -1,4 +1,4 @@
-# Converts the Cape of Good Hope digitized data from the University of  
+# Converts the Cape Town (1819-1824) digitized data from the University of  
 # Witwatersrand into the Station Exchange Format.
 #
 # Requires file write_sef.R and libraries XLConnect, plyr
@@ -14,11 +14,11 @@ source("write_sef.R")
 options(scipen = 999) # avoid exponential notation
 
 
-lat <- ""
-lon <- ""
-alt <- ""
+lat <- -33.926
+lon <- 18.423
+alt <- 25
 
-inpath <- "../data/raw/CapeOfGoodHope/"
+inpath <- "../data/raw/CapeTown/"
 outpath <- "../data/formatted/"
 
 # Define variables and units
@@ -28,7 +28,8 @@ units <- c("C", "Pa", "C", "C", "degree")
 # Define conversions to apply to the raw data
 conversions <- list(ta = function(x) round((x - 32) * 5 / 9, 1),
                     p = function(x) 
-                      round(100 * convert_pressure(x, f = 25.4), 0),
+                      round(100 * convert_pressure(x, f = 25.4,
+                                                   lat = lat, alt = alt), 0),
                     Tx = function(x) round((x - 32) * 5 / 9, 1),
                     Tn = function(x) round((x - 32) * 5 / 9, 1),
                     dd = function(x) round(x, 0))
@@ -165,19 +166,18 @@ for (i in 1:length(variables)) {
                                                      Data[[variables[i]]]$d,
                                                      Data[[variables[i]]]$h), ]
   if (dim(Data[[variables[i]]])[1] > 0) {
-    Data[[variables[i]]] <- cbind(variables[i], Data[[variables[i]]],
-                                  stringsAsFactors = FALSE)
+    Data[[variables[i]]] <- cbind(variables[i], Data[[variables[i]]])
     write_sef(Data = Data[[variables[i]]][, 1:6],
               outpath = outpath,
-              cod = "Cape_Good_Hope",
-              nam = "Cape of Good Hope",
+              cod = "Cape_Town",
+              nam = "Cape Town",
               lat = lat,
               lon = lon,
               alt = alt,
               sou = "C3S_SouthAfrica",
               repo = "",
               units = units[i],
-              metaHead = ifelse(i==2, "PTC=?,PGC=F", ""),
+              metaHead = ifelse(i==2, "PTC=F,PGC=T", ""),
               meta = Data[[variables[i]]][, 7],
               timef = ifelse(variables[i] %in% c("Tx", "Tn"), "", 0))
   }

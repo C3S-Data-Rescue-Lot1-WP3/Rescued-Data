@@ -15,7 +15,7 @@ options(scipen = 999) # avoid exponential notation
 
 lat <- -34.0257
 lon <- 20.4381
-alt <- ""
+alt <- 128
 
 inpath <- "../data/raw/Swellendam/"
 outpath <- "../data/formatted/"
@@ -115,8 +115,7 @@ for (year in 1821:1826) {
       template[, variables[i]] <- conversions[[variables[i]]](template[, variables[i]])
       Data[[variables[i]]] <- rbind(Data[[variables[i]]], 
                                     template[, c("y", "m", "d", "h", variables[i], 
-                                                 paste0(variables[i], "_orig"))],
-                                    stringsAsFactors = FALSE)
+                                                 paste0(variables[i], "_orig"))])
     }
   }
   Data$dd <- Data$dd[order(Data$dd$y, Data$dd$m, Data$dd$d, Data$dd$h), ]
@@ -127,8 +126,7 @@ for (year in 1821:1826) {
 for (i in 1:length(variables)) {
   ## First remove missing values and add variable code
   Data[[variables[i]]] <- Data[[variables[i]]][which(!is.na(Data[[variables[i]]][, 5])), ]
-  Data[[variables[i]]] <- cbind(variables[i], Data[[variables[i]]],
-                                stringsAsFactors = FALSE)
+  Data[[variables[i]]] <- cbind(variables[i], Data[[variables[i]]])
   write_sef(Data = Data[[variables[i]]][, 1:6],
             outpath = outpath,
             cod = "Swellendam",

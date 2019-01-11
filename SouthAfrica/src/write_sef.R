@@ -31,7 +31,7 @@ write_sef <- function(Data, outpath, cod, nam, lat = NA, lon = NA, alt = NA,
                       meta = "", timef = NA, note = "") {
   
   ## Check which variables are given and produce one file per variable
-  variables <- unique(Data[, 1])
+  variables <- unique(as.character(Data[, 1]))
   n <- length(variables)
   for (i in 1:n) {
     

@@ -15,7 +15,7 @@ options(scipen = 999) # avoid exponential notation
 
 lat <- -33.9321
 lon <- 18.8602
-alt <- ""
+alt <- 136
 
 inpath <- "../data/raw/Stellenbosch/"
 outpath <- "../data/formatted/"
@@ -27,7 +27,8 @@ units <- c("C", "Pa", "degree")
 # Define conversions to apply to the raw data
 conversions <- list(ta = function(x) round((x - 32) * 5 / 9, 1),
                     p = function(x) 
-                      round(100 * convert_pressure(x, f = 25.4), 0),
+                      round(100 * convert_pressure(x, f = 25.4,
+                                                   lat = lat, alt = alt), 0),
                     dd = function(x) round(x, 0))
 
 # Define function to convert the month name into a number
@@ -137,8 +138,7 @@ for (year in 1821:1828) {
     template[, variables[i]] <- conversions[[variables[i]]](template[, variables[i]])
     Data[[variables[i]]] <- rbind(Data[[variables[i]]], 
                                   template[, c("y", "m", "d", "h", variables[i], 
-                                               paste0(variables[i], "_orig"))],
-                                  stringsAsFactors = FALSE)
+                                               paste0(variables[i], "_orig"))])
   }
 }
 
@@ -150,8 +150,7 @@ for (i in 1:length(variables)) {
   Data[[variables[i]]] <- Data[[variables[i]]][order(Data[[variables[i]]]$y,
                                                      Data[[variables[i]]]$m,
                                                      Data[[variables[i]]]$d), ]
-  Data[[variables[i]]] <- cbind(variables[i], Data[[variables[i]]],
-                                stringsAsFactors = FALSE)
+  Data[[variables[i]]] <- cbind(variables[i], Data[[variables[i]]])
   write_sef(Data = Data[[variables[i]]][, 1:6],
             outpath = outpath,
             cod = "Stellenbosch",
@@ -162,7 +161,7 @@ for (i in 1:length(variables)) {
             sou = "C3S_SouthAfrica",
             repo = "",
             units = units[i],
-            metaHead = ifelse(i==2, "PTC=F,PGC=F", ""),
+            metaHead = ifelse(i==2, "PTC=F,PGC=T", ""),
             meta = Data[[variables[i]]][, 7],
             timef = 0)
 }

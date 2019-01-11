@@ -16,8 +16,8 @@ source("write_sef.R")
 options(scipen = 999) # avoid exponential notation
 
 
-lat <- -33.933
-lon <- 18.477
+lat <- -33.9061
+lon <- 18.4232
 alt <- 0
 
 inpath <- "../data/raw/CapeTownPortOffice/"
@@ -165,8 +165,7 @@ for (i in 1:length(variables)) {
   ## First remove missing values and add column with variable code
   Data[[variables[i]]] <- Data[[variables[i]]][which(!is.na(Data[[variables[i]]][, 5])), ]
   if (dim(Data[[variables[i]]])[1] > 0) {
-    Data[[variables[i]]] <- cbind(variables[i], Data[[variables[i]]],
-                                  stringsAsFactors = FALSE)
+    Data[[variables[i]]] <- cbind(variables[i], Data[[variables[i]]])
     write_sef(Data = Data[[variables[i]]][, 1:6],
               outpath = outpath,
               cod = "Cape_Town_Port",
@@ -177,7 +176,7 @@ for (i in 1:length(variables)) {
               sou = "C3S_SouthAfrica",
               repo = "",
               units = units[i],
-              metaHead = ifelse(i==2, "PTC=?,PGC=T", ""),
+              metaHead = ifelse(i==2, "PTC=F,PGC=T", ""),
               meta = Data[[variables[i]]][, 7],
               timef = 0)
   }
