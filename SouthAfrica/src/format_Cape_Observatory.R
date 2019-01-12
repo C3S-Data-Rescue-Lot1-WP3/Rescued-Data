@@ -1,8 +1,6 @@
 # Converts the Cape Town Royal Observatory data digitized by
 # the University of Witwatersrand into the Station Exchange Format.
 #
-# Years: 1834 to 1879 (1880-1899 not converted yet)
-#
 # Requires file write_sef.R and libraries XLConnect, plyr, suncalc
 #
 # Created by Yuri Brugnara, University of Bern - 21 Dec 2018
@@ -87,7 +85,7 @@ for (v in variables) {
 
 
 ## Read data files
-for (year in 1834:1879) {
+for (year in 1834:1899) {
   infile <- paste(year, "xlsx", sep = ".")
   
   ## Template 1 (1834-1842)
@@ -360,21 +358,95 @@ for (year in 1834:1879) {
     template2$Tn_orig <- paste0("Orig=", round(template2$Tn, 1), "F")
     template2$h <- "130"
     template <- merge(template, template2, by.x = c("m", "d", "h"), all.x = TRUE)
+ 
+  ## Template 10 (1880) - only "ground" thermometers read     
+  } else if (year == 1880) {
+    template <- readWorksheetFromFile(paste0(inpath, infile), 
+                                       startRow = 9, header = FALSE,
+                                       sheet = 1, endCol = 7,
+                                       colTypes = c("character",
+                                                    rep("numeric",6)),
+                                       forceConversion = TRUE,
+                                       readStrategy = "fast")
+    names(template) <- c("m", "d", "p", "ta", "tb", "Tx", "Tn")
+    template$m <- as.integer(fill(get_month(template$m)))
+    template$d <- fill(template$d)
+    template$h <- ""
+    template <- template[which(!is.na(template$m)), ]
+    template$p_orig <- paste0("Orig=", round(template$p, 3), "in,PTC=?")
+    template$ta_orig <- paste0("Orig=", round(template$ta, 1), "F")
+    template$tb_orig <- paste0("Orig=", round(template$tb, 1), "F")
+    template$Tx_orig <- paste0("Orig=", round(template$Tx, 1), "F")
+    template$Tn_orig <- paste0("Orig=", round(template$Tn, 1), "F")
+    
+    ## Template 11 (1881-1899) - only "Stevenson Crib" temperature read 
+  } else if (year %in% 1881:1899) {
+    if (year <= 1884 | year == 1890) firstRow <- 11
+    if (year == 1885 | year >= 1893) firstRow <- 9
+    if (year %in% c(1886, 1888, 1891, 1892)) firstRow <- 12
+    if (year %in% c(1887, 1889)) firstRow <- 13
+    template <- readWorksheetFromFile(paste0(inpath, infile), 
+                                      startRow = firstRow, header = FALSE,
+                                      sheet = 1, endCol = 17,
+                                      colTypes = c("character",
+                                                   "numeric",
+                                                   rep("character",2),
+                                                   rep("numeric", 13)),
+                                      drop = 8:14,
+                                      forceConversion = TRUE,
+                                      readStrategy = "fast")
+    names(template) <- c("m", "d", "h", "dd", "w", "p", "atb", "ta", "tb", "Tx")
+    if (year >= 1886) names(template)[5] <- "wind_force"
+    template$m <- as.integer(fill(get_month(template$m)))
+    template$d <- fill(template$d)
+    template <- template[which(!is.na(template$m)), ]
+    template$h <- sub("h", "", template$h)
+    template$h <- sub(":", "", template$h)
+    if (year >= 1893) {
+      substr(template$h[grep("pm", template$h, ignore.case = TRUE)], 1, 2) <- 
+        as.character(as.integer(substr(template$h[grep("pm", template$h, ignore.case = TRUE)], 
+                                       1, 2)) + 12)
+      template$h <- substr(template$h, 1, 4)
+    }
+    template$Tn <- NA
+    for (im in 1:12) {
+      for (id in unique(template$d[which(template$m == im)])) {
+        if (year != 1881 & im != 1) {
+          ih <- which(template$m == im & template$d == id)[1] + 
+            which.min(template$Tx[which(template$m == im & template$d == id)]) - 1
+          template$Tn[ih] <- template$Tx[ih]
+          template$Tx[ih] <- NA
+        }
+      }
+    }
+    template$p_orig <- paste0("Orig=", round(template$p, 3), "in,atb=", template$atb, "F")
+    template$Tx_orig <- paste0("Orig=", round(template$Tx, 1), "F")
+    template$Tn_orig <- paste0("Orig=", round(template$Tn, 1), "F")
+    template$ta_orig <- paste0("Orig=", round(template$ta, 1), "F")
+    template$tb_orig <- paste0("Orig=", round(template$tb, 1), "F")
+    template$dd_orig <- paste0("Orig=", template$dd)
+    if (year >= 1886) template$wind_force_orig <- paste0("Orig=", template$wind_force)
+    else template$w_orig <- paste0("Orig=", round(template$w, 2), "mph")
+    
   }
   
   
   ## Transform wind direction to degrees
   ## Entries like 'NW to N' are converted as 'NW', entries like 'NWhN' as NA
-  directions <- c("N", "NNE", "NE", "ENE", "E", "ESE", "SE", "SSE", "S",
-                  "SSW", "SW", "WSW", "W", "WNW", "NW", "NNW")
-  template$dd <- 22.5 * (match(toupper(sapply(strsplit(template$dd, " "), 
-                                              function(x) x[1])), directions) - 1)
+  if ("dd" %in% names(template)) {
+    directions <- c("N", "NNE", "NE", "ENE", "E", "ESE", "SE", "SSE", "S",
+                    "SSW", "SW", "WSW", "W", "WNW", "NW", "NNW")
+    template$dd <- 22.5 * (match(toupper(sapply(strsplit(template$dd, " "), 
+                                                function(x) x[1])), directions) - 1)
+  }
   
   ## Take the average of wind force for entries like '6 to 8'
   if ("wind_force" %in% names(template)) {
     wf <- array(dim = c(dim(template)[1], 2))
-    wf[, 1] <- as.integer(sapply(strsplit(template$wind_force, " "), function(x) x[1]))
-    wf[, 2] <- as.integer(sapply(strsplit(template$wind_force, " "), function(x) x[3]))
+    wf[, 1] <- as.integer(sapply(strsplit(as.character(template$wind_force), " "), 
+                                 function(x) x[1]))
+    wf[, 2] <- as.integer(sapply(strsplit(as.character(template$wind_force), " "), 
+                                 function(x) x[3]))
     if (sum(!is.na(wf[, 2])) > 0) {
       template$wind_force[which(!is.na(rowMeans(wf)))] <- 
         rowMeans(wf)[which(!is.na(rowMeans(wf)))]
@@ -385,21 +457,23 @@ for (year in 1834:1879) {
   
   ## Convert time to UTC (assuming local solar time is used)
   template$y <- year
-  template$h[which(nchar(template$h) == 3)] <- 
-    paste0(0, template$h[which(nchar(template$h) == 3)])
-  dates <- paste(template$y, template$m, template$d, sep = "-")
-  ko <- grep("t=", template$ta_orig)
-  if (length(ko) > 0) {
-    j <- (1:length(dates))[-ko]
-  } else {
-    j <- 1:length(dates)
+  if (year != 1880) {
+    template$h[which(nchar(template$h) == 3)] <- 
+      paste0(0, template$h[which(nchar(template$h) == 3)])
+    dates <- paste(template$y, template$m, template$d, sep = "-")
+    ko <- grep("t=", template$ta_orig)
+    if (length(ko) > 0) {
+      j <- (1:length(dates))[-ko]
+    } else {
+      j <- 1:length(dates)
+    }
+    times <- strptime(paste(dates[j], template$h[j]), 
+                      format = "%Y-%m-%d %H%M") - 3600 * 24 * lon / 360
+    template$y[j] <- as.integer(format(times, "%Y"))
+    template$m[j] <- as.integer(format(times, "%m"))
+    template$d[j] <- as.integer(format(times, "%d"))
+    template$h[j] <- format(times, "%H%M")
   }
-  times <- strptime(paste(dates[j], template$h[j]), 
-                    format = "%Y-%m-%d %H%M") - 3600 * 24 * lon / 360
-  template$y[j] <- as.integer(format(times, "%Y"))
-  template$m[j] <- as.integer(format(times, "%m"))
-  template$d[j] <- as.integer(format(times, "%d"))
-  template$h[j] <- format(times, "%H%M")
   
   
   ## Write to data frames
@@ -407,7 +481,7 @@ for (year in 1834:1879) {
   for (i in 1:length(variables)) {
     if (variables[i] %in% names(template)) {
       if (variables[i] == "p") {
-        if (year <= 1858) {
+        if (year <= 1858 | year >= 1881) {
           template[, variables[i]] <- 
             conversions[[variables[i]]](template[, variables[i]], template$atb)
         } else {
@@ -421,6 +495,9 @@ for (year in 1834:1879) {
       Data[[variables[i]]] <- rbind.fill(Data[[variables[i]]], 
                                          template[, c("y", "m", "d", "h", variables[i], 
                                                       paste0(variables[i], "_orig"))])
+      if (!variables[i] %in% c("dd", "w") & year == 1879) {
+        Data[[variables[i]]]$h[which(Data[[variables[i]]]$y == year)] <- ""
+      }
     }
   }
   
