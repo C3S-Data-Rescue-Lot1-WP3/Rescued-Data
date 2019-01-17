@@ -189,8 +189,7 @@ for (i in 1:length(variables)) {
                                                      Data[[variables[i]]]$m,
                                                      Data[[variables[i]]]$d,
                                                      Data[[variables[i]]]$h), ]
-  Data[[variables[i]]] <- cbind(variables[i], Data[[variables[i]]],
-                                stringsAsFactors = FALSE)
+  Data[[variables[i]]] <- cbind(variables[i], Data[[variables[i]]])
   write_sef(Data = Data[[variables[i]]][, 1:6],
             outpath = outpath,
             cod = "Rosario_Santa_Fe",

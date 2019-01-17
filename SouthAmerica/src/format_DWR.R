@@ -105,8 +105,7 @@ for (ist in 1:length(stations)) {
     template[, variables[i]] <- conversions[[variables[i]]](template[, variables[i]])
     Data[[variables[i]]] <- rbind(Data[[variables[i]]], 
                                   template[, c(names(template)[1:3], "h", variables[i], 
-                                               paste0(variables[i], "_orig"))],
-                                  stringsAsFactors = FALSE)
+                                               paste0(variables[i], "_orig"))])
   }
   
   
@@ -115,8 +114,7 @@ for (ist in 1:length(stations)) {
     ## First remove missing values and add column with variable code (required by write_sef)
     Data[[variables[i]]] <- Data[[variables[i]]][which(!is.na(Data[[variables[i]]][, 5])), ]
     if (dim(Data[[variables[i]]])[1] > 0) {
-      Data[[variables[i]]] <- cbind(variables[i], Data[[variables[i]]],
-                                    stringsAsFactors = FALSE)
+      Data[[variables[i]]] <- cbind(variables[i], Data[[variables[i]]])
       write_sef(Data = Data[[variables[i]]][, 1:6],
                 outpath = outpath,
                 cod = convert_to_ascii(paste0("DWR_", 
