@@ -104,12 +104,12 @@ for (year in 1834:1899) {
     template$m <- as.integer(fill(get_month(template$m)))
     template$d <- fill(template$d)
     template <- template[which(!is.na(template$m)), ]
-    template$p_orig <- paste0("Orig=", round(template$p, 3), "in,atb=", 
-                              round(template$atb, 0), "F")
-    template$ta_orig <- paste0("Orig=", round(template$ta, 0), "F")
-    template$tb_orig <- paste0("Orig=", round(template$tb, 0), "F")
-    template$Tx_orig <- paste0("Orig=", round(template$Tx, 0), "F")
-    template$Tn_orig <- paste0("Orig=", round(template$Tn, 0), "F")
+    template$p_orig <- paste0("Orig=", template$p, "in,atb=", 
+                              template$atb, "F")
+    template$ta_orig <- paste0("Orig=", template$ta, "F")
+    template$tb_orig <- paste0("Orig=", template$tb, "F")
+    template$Tx_orig <- paste0("Orig=", template$Tx, "F")
+    template$Tn_orig <- paste0("Orig=", template$Tn, "F")
     template$dd_orig <- paste0("Orig=", template$dd)
     template$wind_force_orig <- paste0("Orig=", template$wind_force)
     j <- which(template$h %in% types)
@@ -148,12 +148,11 @@ for (year in 1834:1899) {
     template <- template[which(!is.na(template$m)), ]
     template$h <- sub("h", "", template$h)
     template$h <- sub(":", "", template$h)
-    template$p_orig <- paste0("Orig=", round(template$p, 3), "in,atb=", 
-                              round(template$atb, 0), "F")
-    template$ta_orig <- paste0("Orig=", round(template$ta, 0), "F")
-    template$tb_orig <- paste0("Orig=", round(template$tb, 0), "F")
-    template[[paste0(dailyt, "_orig")]] <- paste0("Orig=", 
-                                                  round(template[[dailyt]], 0), "F")
+    template$p_orig <- paste0("Orig=", template$p, "in,atb=", 
+                              template$atb, "F")
+    template$ta_orig <- paste0("Orig=", template$ta, "F")
+    template$tb_orig <- paste0("Orig=", template$tb, "F")
+    template[[paste0(dailyt, "_orig")]] <- paste0("Orig=", template[[dailyt]], "F")
     template$dd_orig <- paste0("Orig=", template$dd)
     template$wind_force_orig <- paste0("Orig=", template$wind_force)
     
@@ -181,12 +180,12 @@ for (year in 1834:1899) {
     template <- template[which(!is.na(template$m)), ]
     template$h <- sub("h", "", template$h)
     template$h <- sub(":", "", template$h)
-    template$p_orig <- paste0("Orig=", round(template$p, 3), "in,atb=", 
-                              round(template$atb, 0), "F")
-    template$ta_orig <- paste0("Orig=", round(template$ta, 0), "F")
-    template$tb_orig <- paste0("Orig=", round(template$tb, 0), "F")
-    template$Tx_orig <- paste0("Orig=", round(template$Tx, 0), "F")
-    template$Tn_orig <- paste0("Orig=", round(template$Tn, 0), "F")
+    template$p_orig <- paste0("Orig=", template$p, "in,atb=", 
+                              template$atb, "F")
+    template$ta_orig <- paste0("Orig=", template$ta, "F")
+    template$tb_orig <- paste0("Orig=", template$tb, "F")
+    template$Tx_orig <- paste0("Orig=", template$Tx, "F")
+    template$Tn_orig <- paste0("Orig=", template$Tn, "F")
     template$dd_orig <- paste0("Orig=", template$dd)
     template$wind_force_orig <- paste0("Orig=", template$wind_force)
     
@@ -208,9 +207,9 @@ for (year in 1834:1899) {
     template <- template[which(!is.na(template$m)), ]
     template$h <- sub("h", "", template$h)
     template$h <- sub(":", "", template$h)
-    template$p_orig <- paste0("Orig=", round(template$p, 3), "in")
-    template$ta_orig <- paste0("Orig=", round(template$ta, 0), "F")
-    template$tb_orig <- paste0("Orig=", round(template$tb, 0), "F")
+    template$p_orig <- paste0("Orig=", template$p, "in")
+    template$ta_orig <- paste0("Orig=", template$ta, "F")
+    template$tb_orig <- paste0("Orig=", template$tb, "F")
     template$dd_orig <- paste0("Orig=", template$dd)
     template$wind_force_orig <- paste0("Orig=", template$wind_force)
     
@@ -234,12 +233,12 @@ for (year in 1834:1899) {
     template$h <- sub(":", "", template$h)
     template$w <- c(rep(NA, 225), as.numeric(template$wind_force[226:dim(template)[1]]))
     template$wind_force[226:dim(template)[1]] <- NA
-    template$p_orig <- paste0("Orig=", round(template$p, 3), "in")
-    template$ta_orig <- paste0("Orig=", round(template$ta, 0), "F")
-    template$tb_orig <- paste0("Orig=", round(template$tb, 0), "F")
+    template$p_orig <- paste0("Orig=", template$p, "in")
+    template$ta_orig <- paste0("Orig=", template$ta, "F")
+    template$tb_orig <- paste0("Orig=", template$tb, "F")
     template$dd_orig <- paste0("Orig=", template$dd)
     template$wind_force_orig <- paste0("Orig=", template$wind_force)
-    template$w_orig <- paste0("Orig=", round(template$w, 2), "mph")
+    template$w_orig <- paste0("Orig=", template$w, "mph")
     
     ## Template 6 (1861-1873)  
   } else if (year %in% 1861:1873) {
@@ -262,11 +261,11 @@ for (year in 1834:1899) {
     template <- template[which(!is.na(template$m)), ]
     template$h <- sub("h", "", template$h)
     template$h <- sub(":", "", template$h)
-    template$p_orig <- paste0("Orig=", round(template$p, 3), "in")
-    template$ta_orig <- paste0("Orig=", round(template$ta, 0), "F")
-    template$tb_orig <- paste0("Orig=", round(template$tb, 0), "F")
+    template$p_orig <- paste0("Orig=", template$p, "in")
+    template$ta_orig <- paste0("Orig=", template$ta, "F")
+    template$tb_orig <- paste0("Orig=", template$tb, "F")
     template$dd_orig <- paste0("Orig=", template$dd)
-    template$w_orig <- paste0("Orig=", round(template$w, 2), "mph")
+    template$w_orig <- paste0("Orig=", template$w, "mph")
     
     ## Template 7 (1874-1876)  
   } else if (year %in% 1874:1876) {
@@ -286,11 +285,11 @@ for (year in 1834:1899) {
     template <- template[which(!is.na(template$m)), ]
     template$h <- sub("h", "", template$h)
     template$h <- sub(":", "", template$h)
-    template$p_orig <- paste0("Orig=", round(template$p, 3), "in")
-    template$Tx_orig <- paste0("Orig=", round(template$Tx, 0), "F")
-    template$Tn_orig <- paste0("Orig=", round(template$Tn, 0), "F")
-    template$ta_orig <- paste0("Orig=", round(template$ta, 0), "F")
-    template$tb_orig <- paste0("Orig=", round(template$tb, 0), "F")
+    template$p_orig <- paste0("Orig=", template$p, "in")
+    template$Tx_orig <- paste0("Orig=", template$Tx, "F")
+    template$Tn_orig <- paste0("Orig=", template$Tn, "F")
+    template$ta_orig <- paste0("Orig=", template$ta, "F")
+    template$tb_orig <- paste0("Orig=", template$tb, "F")
     template$dd_orig <- paste0("Orig=", template$dd)
     template$wind_force_orig <- paste0("Orig=", template$wind_force)
     
@@ -312,13 +311,13 @@ for (year in 1834:1899) {
     template <- template[which(!is.na(template$m)), ]
     template$h <- sub("h", "", template$h)
     template$h <- sub(":", "", template$h)
-    template$p_orig <- paste0("Orig=", round(template$p, 3), "in")
-    template$Tx_orig <- paste0("Orig=", round(template$Tx, 0), "F")
-    template$Tn_orig <- paste0("Orig=", round(template$Tn, 0), "F")
-    template$ta_orig <- paste0("Orig=", round(template$ta, 0), "F")
-    template$tb_orig <- paste0("Orig=", round(template$tb, 0), "F")
+    template$p_orig <- paste0("Orig=", template$p, "in")
+    template$Tx_orig <- paste0("Orig=", template$Tx, "F")
+    template$Tn_orig <- paste0("Orig=", template$Tn, "F")
+    template$ta_orig <- paste0("Orig=", template$ta, "F")
+    template$tb_orig <- paste0("Orig=", template$tb, "F")
     template$dd_orig <- paste0("Orig=", template$dd)
-    template$w_orig <- paste0("Orig=", round(template$w, 2), "mph")
+    template$w_orig <- paste0("Orig=", template$w, "mph")
     
     ## Template 9 (1879) - two sheets - only "ground" thermometers read
   } else if (year == 1879) {
@@ -351,11 +350,11 @@ for (year in 1834:1899) {
     template2$m <- as.integer(fill(get_month(template2$m)))
     template2$d <- fill(template2$d)
     template2 <- template2[which(!is.na(template2$m)), ]
-    template2$p_orig <- paste0("Orig=", round(template2$p, 3), "in,PTC=?")
-    template2$ta_orig <- paste0("Orig=", round(template2$ta, 1), "F")
-    template2$tb_orig <- paste0("Orig=", round(template2$tb, 1), "F")
-    template2$Tx_orig <- paste0("Orig=", round(template2$Tx, 1), "F")
-    template2$Tn_orig <- paste0("Orig=", round(template2$Tn, 1), "F")
+    template2$p_orig <- paste0("Orig=", template2$p, "in,PTC=?")
+    template2$ta_orig <- paste0("Orig=", template2$ta, "F")
+    template2$tb_orig <- paste0("Orig=", template2$tb, "F")
+    template2$Tx_orig <- paste0("Orig=", template2$Tx, "F")
+    template2$Tn_orig <- paste0("Orig=", template2$Tn, "F")
     template2$h <- "130"
     template <- merge(template, template2, by.x = c("m", "d", "h"), all.x = TRUE)
  
@@ -373,11 +372,11 @@ for (year in 1834:1899) {
     template$d <- fill(template$d)
     template$h <- ""
     template <- template[which(!is.na(template$m)), ]
-    template$p_orig <- paste0("Orig=", round(template$p, 3), "in,PTC=?")
-    template$ta_orig <- paste0("Orig=", round(template$ta, 1), "F")
-    template$tb_orig <- paste0("Orig=", round(template$tb, 1), "F")
-    template$Tx_orig <- paste0("Orig=", round(template$Tx, 1), "F")
-    template$Tn_orig <- paste0("Orig=", round(template$Tn, 1), "F")
+    template$p_orig <- paste0("Orig=", template$p, "in,PTC=?")
+    template$ta_orig <- paste0("Orig=", template$ta, "F")
+    template$tb_orig <- paste0("Orig=", template$tb, "F")
+    template$Tx_orig <- paste0("Orig=", template$Tx, "F")
+    template$Tn_orig <- paste0("Orig=", template$Tn, "F")
     
     ## Template 11 (1881-1899) - only "Stevenson Crib" temperature read 
   } else if (year %in% 1881:1899) {
@@ -419,14 +418,14 @@ for (year in 1834:1899) {
         }
       }
     }
-    template$p_orig <- paste0("Orig=", round(template$p, 3), "in,atb=", template$atb, "F")
-    template$Tx_orig <- paste0("Orig=", round(template$Tx, 1), "F")
-    template$Tn_orig <- paste0("Orig=", round(template$Tn, 1), "F")
-    template$ta_orig <- paste0("Orig=", round(template$ta, 1), "F")
-    template$tb_orig <- paste0("Orig=", round(template$tb, 1), "F")
+    template$p_orig <- paste0("Orig=", template$p, "in,atb=", template$atb, "F")
+    template$Tx_orig <- paste0("Orig=", template$Tx, "F")
+    template$Tn_orig <- paste0("Orig=", template$Tn, "F")
+    template$ta_orig <- paste0("Orig=", template$ta, "F")
+    template$tb_orig <- paste0("Orig=", template$tb, "F")
     template$dd_orig <- paste0("Orig=", template$dd)
     if (year >= 1886) template$wind_force_orig <- paste0("Orig=", template$wind_force)
-    else template$w_orig <- paste0("Orig=", round(template$w, 2), "mph")
+    else template$w_orig <- paste0("Orig=", template$w, "mph")
     
   }
   
