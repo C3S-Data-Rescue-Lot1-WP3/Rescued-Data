@@ -1,16 +1,17 @@
 # Converts the digitized data for Rosario de Santa Fe 1886-1900 into the
 # Station Exchange Format.
 #
-# Requires file write_sef.R and libraries XLConnect, plyr
+# Requires libraries XLConnect, plyr, SEF
+# (https://github.com/C3S-Data-Rescue-Lot1-WP3/SEF)
 #
-# Created by Yuri Brugnara, University of Bern - 20 Dec 2018
+# Created by Yuri Brugnara, University of Bern - 30 Apr 2019
 
 ###############################################################################
 
 
 require(XLConnect)
 require(plyr)
-source("write_sef.R")
+require(SEF)
 options(scipen = 999) # avoid exponential notation
 
 
@@ -19,12 +20,13 @@ outpath <- "../data/formatted/"
 
 lon <- -60.333
 lat <- -32.945
-alt <- 36
+alt <- 35.7
 
 variables <- c("ta", "p", "Tx", "Tn", "tb", "dd", 
                "n", "rr", "wind_force", "ss", "Ts")
 units <- c("C", "Pa", "C", "C", "C", "degree", "%", "mm", "", "hours", "C")
-time_flags <- c(0, 0, 13, 13, 0, 0, 0, 12, 0, 12, 0)
+stat_flags <- c("point", "point", "maximum", "minimum", "point", "point", 
+                "point", "sum", "point", "sum", "point")
 conversions <- list(ta = function(x) round(x, 1),
                     p = function(x, y) 
                       round(100 * convert_pressure(x, f = 1, lat = lat, 
@@ -74,7 +76,7 @@ read_template <- function(startRow, endRow,
     ## Add one day to the evening observations
     if (i == 3) {
       dates <- paste(tmp[[i]]$y, tmp[[i]]$m, tmp[[i]]$d, sep = "-")
-      times <- strptime(dates, format = "%Y-%m-%d") + 3600 * 24 # 
+      times <- strptime(dates, format = "%Y-%m-%d") + 3600 * 24 
       tmp[[i]]$y <- as.integer(format(times, "%Y"))
       tmp[[i]]$m <- as.integer(format(times, "%m"))
       tmp[[i]]$d <- as.integer(format(times, "%d"))
@@ -143,7 +145,7 @@ template4$rr_orig <- ""
 ## Merge templates
 template_all <- rbind.fill(template1, template2, template3, template4)
 template_all <- template_all[which(!is.na(template_all$y)), ]
-template_all$p_orig <- paste0("Orig=", round(template_all$p, 1), "mm,atb=", 
+template_all$p_orig <- paste0("Orig=", round(template_all$p, 1), "mm|atb=", 
                               round(template_all$atb, 1), "C")
 template_all$dd_orig <- paste0("Orig=", template_all$dd)
 template_all$n_orig <- paste0("Orig=", round(template_all$n, 0))
@@ -181,16 +183,22 @@ for (i in 1:length(variables)) {
 }
 
 
-## Write output
+## Output
 for (i in 1:length(variables)) {
-  ## First remove missing values, order by time and add column with variable code
+  
+  ## Remove missing values and order by time
   Data[[variables[i]]] <- Data[[variables[i]]][which(!is.na(Data[[variables[i]]][, 5])), ]
   Data[[variables[i]]] <- Data[[variables[i]]][order(Data[[variables[i]]]$y,
                                                      Data[[variables[i]]]$m,
                                                      Data[[variables[i]]]$d,
                                                      Data[[variables[i]]]$h), ]
-  Data[[variables[i]]] <- cbind(variables[i], Data[[variables[i]]])
-  write_sef(Data = Data[[variables[i]]][, 1:6],
+  
+  ## Split time into hour and minute
+  Data[[variables[i]]]$HH <- substr(Data[[variables[i]]]$h, 1, 2)
+  Data[[variables[i]]]$MM <- substr(Data[[variables[i]]]$h, 3, 4)
+  
+  ## Write file
+  write_sef(Data = Data[[variables[i]]][, c(1:3,7,8,5)],
             outpath = outpath,
             cod = "Rosario_Santa_Fe",
             nam = "Rosario de Santa Fe",
@@ -198,9 +206,10 @@ for (i in 1:length(variables)) {
             lon = lon,
             alt = alt,
             sou = "C3S_SouthAmerica",
-            repo = "",
+            link = "https://data-rescue.copernicus-climate.eu/lso/1086330",
+            stat = stat_flags[i],
             units = units[i],
-            metaHead = ifelse(variables[i] == "p", "PTC=T,PGC=T", ""),
-            meta = Data[[variables[i]]][, 7],
-            timef = time_flags[i])
+            metaHead = ifelse(variables[i] == "p", "PTC=T|PGC=T", ""),
+            meta = Data[[variables[i]]][, 6],
+            period = ifelse(stat_flags[i]=="point", "0", "p1day"))
 }

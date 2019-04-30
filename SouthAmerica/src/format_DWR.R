@@ -1,15 +1,16 @@
 # Converts the Daily Weather Reports digitized data for 1902 into the
 # Station Exchange Format.
 #
-# Requires file write_sef.R and library XLConnect
+# Requires libraries XLConnect and dataresqc
+# (https://github.com/c3s-data-rescue-service/dataresqc)
 #
-# Created by Yuri Brugnara, University of Bern - 20 Dec 2018
+# Created by Yuri Brugnara, University of Bern - 30 Apr 2019
 
 ###############################################################################
 
 
 require(XLConnect)
-source("write_sef.R")
+require(dataresqc)
 options(scipen = 999) # avoid exponential notation
 
 
@@ -57,7 +58,8 @@ for (ist in 1:length(stations)) {
     Data[[v]] <- data.frame(year = integer(),
                             month = integer(),
                             day = integer(),
-                            time = character(),
+                            hour = integer(),
+                            minute = integer(),
                             value = numeric(),
                             orig = character())
   }
@@ -88,10 +90,11 @@ for (ist in 1:length(stations)) {
   template[, paste(c("ta", "Tx", "Tn", "rh", "wind_force"), "orig", sep = "_")] <- ""
   
   
-  ## Time is 1817 UTC until August and 1117 UTC from September
-  template$h <- NA
-  template$h[which(template$m <= 8)] <- "1817"
-  template$h[which(template$m > 8)] <- "1117"
+  ## Time is 2 PM LST until August and 7 AM LST from September
+  template$HH <- NA
+  template$HH[which(template$m <= 8)] <- 14
+  template$HH[which(template$m > 8)] <- 7
+  template$MM <- 0
   
   
   ## Transform wind direction to degrees
@@ -104,19 +107,30 @@ for (ist in 1:length(stations)) {
   for (i in 1:length(variables)) {
     template[, variables[i]] <- conversions[[variables[i]]](template[, variables[i]])
     Data[[variables[i]]] <- rbind(Data[[variables[i]]], 
-                                  template[, c(names(template)[1:3], "h", variables[i], 
+                                  template[, c(names(template)[1:3], "HH", "MM", 
+                                               variables[i], 
                                                paste0(variables[i], "_orig"))])
   }
   
   
-  ## Write output
+  ## Output
   for (i in 1:length(variables)) {
-    ## First remove missing values and add column with variable code (required by write_sef)
+    
+    ## Remove missing values
     Data[[variables[i]]] <- Data[[variables[i]]][which(!is.na(Data[[variables[i]]][, 5])), ]
+    
+    ## Define time statistic
+    if (variables[i] == "Tx") {
+      tstat <- "maximum"
+    } else if (variables[i] == "Tn") {
+      tstat <- "minimum"
+    } else tstat <- "point"
+    
+    ## Write file
     if (dim(Data[[variables[i]]])[1] > 0) {
-      Data[[variables[i]]] <- cbind(variables[i], Data[[variables[i]]])
       write_sef(Data = Data[[variables[i]]][, 1:6],
                 outpath = outpath,
+                variable = variables[i],
                 cod = convert_to_ascii(paste0("DWR_", 
                                               substr(gsub(" ", "_", stations[ist]), 1, 12))),
                 nam = stations[ist],
@@ -124,11 +138,13 @@ for (ist in 1:length(stations)) {
                 lon = "",
                 alt = "",
                 sou = "C3S_SouthAmerica",
-                repo = "",
+                link = "",
+                stat = tstat,
                 units = units[i],
-                metaHead = ifelse(i == 2, "PGC=F", ""),
+                metaHead = ifelse(variables[i] == "mslp", "PGC=F", ""),
                 meta = Data[[variables[i]]][, 7],
-                timef = ifelse(variables[i] %in% c("Tx", "Tn"), 13, 0))
+                period = ifelse(variables[i] %in% c("Tx","Tn"), "day", 0),
+                time_offset = -4.28)
     }
   }
   
