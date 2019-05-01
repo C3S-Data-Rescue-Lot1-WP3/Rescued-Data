@@ -1,0 +1,13 @@
+SEF	0.2.0
+ID	DWR_Tumbaya
+Name	Tumbaya
+Lat	-23.8577
+Lon	-65.4676
+Alt	NA
+Source	C3S_SouthAmerica
+Link	https://data-rescue.copernicus-climate.eu/lso/1086171
+Vbl	mslp
+Stat	point
+Units	Pa
+Meta	Data policy=GNU GPL v3.0
+Year	Month	Day	Hour	Minute	Period	Value	Meta

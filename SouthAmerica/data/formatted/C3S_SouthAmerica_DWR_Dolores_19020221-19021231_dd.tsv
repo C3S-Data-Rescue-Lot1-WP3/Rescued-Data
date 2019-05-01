@@ -1,0 +1,74 @@
+SEF	0.2.0
+ID	DWR_Dolores
+Name	Dolores
+Lat	-36.3152
+Lon	-57.6753
+Alt	NA
+Source	C3S_SouthAmerica
+Link	https://data-rescue.copernicus-climate.eu/lso/1085290
+Vbl	dd
+Stat	point
+Units	degree
+Meta	Data policy=GNU GPL v3.0
+Year	Month	Day	Hour	Minute	Period	Value	Meta
+1902	9	4	11	17	0	135	Orig=SE|orig.time=7am
+1902	9	5	11	17	0	45	Orig=NE|orig.time=7am
+1902	9	6	11	17	0	45	Orig=NE|orig.time=7am
+1902	9	8	11	17	0	180	Orig=S|orig.time=7am
+1902	9	10	11	17	0	90	Orig=E|orig.time=7am
+1902	9	11	11	17	0	135	Orig=SE|orig.time=7am
+1902	9	12	11	17	0	135	Orig=SE|orig.time=7am
+1902	9	13	11	17	0	45	Orig=NE|orig.time=7am
+1902	9	14	11	17	0	45	Orig=NE|orig.time=7am
+1902	9	15	11	17	0	225	Orig=SW|orig.time=7am
+1902	9	16	11	17	0	90	Orig=E|orig.time=7am
+1902	9	17	11	17	0	315	Orig=NW|orig.time=7am
+1902	9	18	11	17	0	45	Orig=NE|orig.time=7am
+1902	9	19	11	17	0	180	Orig=S|orig.time=7am
+1902	9	22	11	17	0	180	Orig=S|orig.time=7am
+1902	9	23	11	17	0	270	Orig=W|orig.time=7am
+1902	9	24	11	17	0	180	Orig=S|orig.time=7am
+1902	9	25	11	17	0	270	Orig=W|orig.time=7am
+1902	9	26	11	17	0	270	Orig=W|orig.time=7am
+1902	9	27	11	17	0	225	Orig=SW|orig.time=7am
+1902	9	28	11	17	0	135	Orig=SE|orig.time=7am
+1902	9	30	11	17	0	180	Orig=S|orig.time=7am
+1902	10	1	11	17	0	225	Orig=SW|orig.time=7am
+1902	10	2	11	17	0	225	Orig=SW|orig.time=7am
+1902	10	3	11	17	0	270	Orig=W|orig.time=7am
+1902	10	7	11	17	0	135	Orig=SE|orig.time=7am
+1902	10	8	11	17	0	225	Orig=SW|orig.time=7am
+1902	10	9	11	17	0	0	Orig=N|orig.time=7am
+1902	10	11	11	17	0	180	Orig=S|orig.time=7am
+1902	10	12	11	17	0	225	Orig=SW|orig.time=7am
+1902	10	13	11	17	0	225	Orig=SW|orig.time=7am
+1902	10	14	11	17	0	315	Orig=NW|orig.time=7am
+1902	10	15	11	17	0	0	Orig=N|orig.time=7am
+1902	10	16	11	17	0	0	Orig=N|orig.time=7am
+1902	12	1	11	17	0	45	Orig=NE|orig.time=7am
+1902	12	2	11	17	0	315	Orig=NW|orig.time=7am
+1902	12	3	11	17	0	90	Orig=E|orig.time=7am
+1902	12	4	11	17	0	135	Orig=SE|orig.time=7am
+1902	12	5	11	17	0	180	Orig=S|orig.time=7am
+1902	12	6	11	17	0	315	Orig=NW|orig.time=7am
+1902	12	7	11	17	0	135	Orig=SE|orig.time=7am
+1902	12	8	11	17	0	225	Orig=SW|orig.time=7am
+1902	12	9	11	17	0	180	Orig=S|orig.time=7am
+1902	12	11	11	17	0	225	Orig=SW|orig.time=7am
+1902	12	12	11	17	0	0	Orig=N|orig.time=7am
+1902	12	13	11	17	0	225	Orig=SW|orig.time=7am
+1902	12	15	11	17	0	45	Orig=NE|orig.time=7am
+1902	12	16	11	17	0	270	Orig=W|orig.time=7am
+1902	12	17	11	17	0	0	Orig=N|orig.time=7am
+1902	12	18	11	17	0	135	Orig=SE|orig.time=7am
+1902	12	20	11	17	0	90	Orig=E|orig.time=7am
+1902	12	21	11	17	0	45	Orig=NE|orig.time=7am
+1902	12	22	11	17	0	45	Orig=NE|orig.time=7am
+1902	12	23	11	17	0	225	Orig=SW|orig.time=7am
+1902	12	24	11	17	0	45	Orig=NE|orig.time=7am
+1902	12	25	11	17	0	180	Orig=S|orig.time=7am
+1902	12	26	11	17	0	315	Orig=NW|orig.time=7am
+1902	12	27	11	17	0	45	Orig=NE|orig.time=7am
+1902	12	28	11	17	0	135	Orig=SE|orig.time=7am
+1902	12	29	11	17	0	135	Orig=SE|orig.time=7am
+1902	12	31	11	17	0	135	Orig=SE|orig.time=7am

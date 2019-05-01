@@ -1,0 +1,103 @@
+SEF	0.2.0
+ID	DWR_Pilcaneyen
+Name	NEUQUEN - Pilcaneyen
+Lat	-38.9525
+Lon	-68.064167
+Alt	NA
+Source	C3S_SouthAmerica
+Link	https://data-rescue.copernicus-climate.eu/lso/1085613
+Vbl	rh
+Stat	point
+Units	%
+Meta	Data policy=GNU GPL v3.0
+Year	Month	Day	Hour	Minute	Period	Value	Meta
+1902	6	15	18	17	0	83	orig.time=2pm
+1902	6	16	18	17	0	85	orig.time=2pm
+1902	6	18	18	17	0	84	orig.time=2pm
+1902	6	19	18	17	0	85	orig.time=2pm
+1902	6	20	18	17	0	83	orig.time=2pm
+1902	6	21	18	17	0	100	orig.time=2pm
+1902	6	22	18	17	0	100	orig.time=2pm
+1902	6	23	18	17	0	100	orig.time=2pm
+1902	6	24	18	17	0	100	orig.time=2pm
+1902	6	25	18	17	0	84	orig.time=2pm
+1902	6	26	18	17	0	85	orig.time=2pm
+1902	6	28	18	17	0	70	orig.time=2pm
+1902	7	1	18	17	0	52	orig.time=2pm
+1902	7	2	18	17	0	56	orig.time=2pm
+1902	7	4	18	17	0	48	orig.time=2pm
+1902	7	5	18	17	0	81	orig.time=2pm
+1902	7	6	18	17	0	36	orig.time=2pm
+1902	7	7	18	17	0	84	orig.time=2pm
+1902	7	8	18	17	0	56	orig.time=2pm
+1902	7	9	18	17	0	83	orig.time=2pm
+1902	7	10	18	17	0	83	orig.time=2pm
+1902	7	11	18	17	0	100	orig.time=2pm
+1902	7	12	18	17	0	83	orig.time=2pm
+1902	7	13	18	17	0	79	orig.time=2pm
+1902	7	14	18	17	0	81	orig.time=2pm
+1902	7	15	18	17	0	82	orig.time=2pm
+1902	7	16	18	17	0	100	orig.time=2pm
+1902	7	17	18	17	0	80	orig.time=2pm
+1902	7	18	18	17	0	82	orig.time=2pm
+1902	7	19	18	17	0	83	orig.time=2pm
+1902	7	21	18	17	0	71	orig.time=2pm
+1902	7	23	18	17	0	83	orig.time=2pm
+1902	7	25	18	17	0	82	orig.time=2pm
+1902	7	27	18	17	0	79	orig.time=2pm
+1902	7	28	18	17	0	78	orig.time=2pm
+1902	7	29	18	17	0	100	orig.time=2pm
+1902	7	30	18	17	0	67	orig.time=2pm
+1902	8	1	18	17	0	82	orig.time=2pm
+1902	8	2	18	17	0	83	orig.time=2pm
+1902	8	3	18	17	0	100	orig.time=2pm
+1902	8	4	18	17	0	100	orig.time=2pm
+1902	8	5	18	17	0	70	orig.time=2pm
+1902	8	6	18	17	0	100	orig.time=2pm
+1902	8	8	18	17	0	84	orig.time=2pm
+1902	8	9	18	17	0	100	orig.time=2pm
+1902	8	12	18	17	0	81	orig.time=2pm
+1902	8	13	18	17	0	64	orig.time=2pm
+1902	8	14	18	17	0	100	orig.time=2pm
+1902	8	15	18	17	0	100	orig.time=2pm
+1902	8	16	18	17	0	81	orig.time=2pm
+1902	8	17	18	17	0	66	orig.time=2pm
+1902	8	18	18	17	0	69	orig.time=2pm
+1902	8	19	18	17	0	81	orig.time=2pm
+1902	8	20	18	17	0	64	orig.time=2pm
+1902	8	21	18	17	0	81	orig.time=2pm
+1902	8	22	18	17	0	82	orig.time=2pm
+1902	8	23	18	17	0	66	orig.time=2pm
+1902	8	24	18	17	0	82	orig.time=2pm
+1902	8	27	18	17	0	57	orig.time=2pm
+1902	8	28	18	17	0	100	orig.time=2pm
+1902	8	29	18	17	0	86	orig.time=2pm
+1902	8	30	18	17	0	59	orig.time=2pm
+1902	9	2	11	17	0	69	orig.time=7am
+1902	9	3	11	17	0	100	orig.time=7am
+1902	9	4	11	17	0	85	orig.time=7am
+1902	9	5	11	17	0	100	orig.time=7am
+1902	9	6	11	17	0	81	orig.time=7am
+1902	9	7	11	17	0	100	orig.time=7am
+1902	9	8	11	17	0	66	orig.time=7am
+1902	9	10	11	17	0	100	orig.time=7am
+1902	9	11	11	17	0	100	orig.time=7am
+1902	9	12	11	17	0	100	orig.time=7am
+1902	9	13	11	17	0	83	orig.time=7am
+1902	9	14	11	17	0	83	orig.time=7am
+1902	9	15	11	17	0	100	orig.time=7am
+1902	9	16	11	17	0	44	orig.time=7am
+1902	9	17	11	17	0	83	orig.time=7am
+1902	9	18	11	17	0	81	orig.time=7am
+1902	9	19	11	17	0	82	orig.time=7am
+1902	9	20	11	17	0	81	orig.time=7am
+1902	9	21	11	17	0	100	orig.time=7am
+1902	9	22	11	17	0	81	orig.time=7am
+1902	9	23	11	17	0	64	orig.time=7am
+1902	9	24	11	17	0	100	orig.time=7am
+1902	9	25	11	17	0	100	orig.time=7am
+1902	9	26	11	17	0	70	orig.time=7am
+1902	9	27	11	17	0	81	orig.time=7am
+1902	9	28	11	17	0	79	orig.time=7am
+1902	9	29	11	17	0	50	orig.time=7am
+1902	9	30	11	17	0	79	orig.time=7am

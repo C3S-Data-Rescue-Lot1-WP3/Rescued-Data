@@ -1,0 +1,37 @@
+SEF	0.2.0
+ID	DWR_Dolores
+Name	Dolores
+Lat	-36.3152
+Lon	-57.6753
+Alt	NA
+Source	C3S_SouthAmerica
+Link	https://data-rescue.copernicus-climate.eu/lso/1085283
+Vbl	mslp
+Stat	point
+Units	Pa
+Meta	Data policy=GNU GPL v3.0
+Year	Month	Day	Hour	Minute	Period	Value	Meta
+1902	12	1	11	17	0	101658	Orig=762.5mm|orig.time=7am
+1902	12	2	11	17	0	101245	Orig=759.4mm|orig.time=7am
+1902	12	3	11	17	0	101645	Orig=762.4mm|orig.time=7am
+1902	12	4	11	17	0	101498	Orig=761.3mm|orig.time=7am
+1902	12	5	11	17	0	101445	Orig=760.9mm|orig.time=7am
+1902	12	6	11	17	0	100938	Orig=757.1mm|orig.time=7am
+1902	12	7	11	17	0	101098	Orig=758.3mm|orig.time=7am
+1902	12	8	11	17	0	100952	Orig=757.2mm|orig.time=7am
+1902	12	9	11	17	0	102138	Orig=766.1mm|orig.time=7am
+1902	12	11	11	17	0	101112	Orig=758.4mm|orig.time=7am
+1902	12	12	11	17	0	100405	Orig=753.1mm|orig.time=7am
+1902	12	13	11	17	0	101245	Orig=759.4mm|orig.time=7am
+1902	12	17	11	17	0	101232	Orig=759.3mm|orig.time=7am
+1902	12	18	11	17	0	101338	Orig=760.1mm|orig.time=7am
+1902	12	19	11	17	0	101205	Orig=759.1mm|orig.time=7am
+1902	12	20	11	17	0	101578	Orig=761.9mm|orig.time=7am
+1902	12	22	11	17	0	100418	Orig=753.2mm|orig.time=7am
+1902	12	23	11	17	0	100658	Orig=755mm|orig.time=7am
+1902	12	24	11	17	0	100098	Orig=750.8mm|orig.time=7am
+1902	12	25	11	17	0	101298	Orig=759.8mm|orig.time=7am
+1902	12	26	11	17	0	100885	Orig=756.7mm|orig.time=7am
+1902	12	27	11	17	0	100818	Orig=756.2mm|orig.time=7am
+1902	12	28	11	17	0	101352	Orig=760.2mm|orig.time=7am
+1902	12	29	11	17	0	101832	Orig=763.8mm|orig.time=7am

@@ -1,0 +1,13 @@
+SEF	0.2.0
+ID	DWR_Dique_Sn_Rq
+Name	Dique San Roque
+Lat	-31.378056
+Lon	-64.469444
+Alt	NA
+Source	C3S_SouthAmerica
+Link	https://data-rescue.copernicus-climate.eu/lso/1085271
+Vbl	mslp
+Stat	point
+Units	Pa
+Meta	Data policy=GNU GPL v3.0
+Year	Month	Day	Hour	Minute	Period	Value	Meta

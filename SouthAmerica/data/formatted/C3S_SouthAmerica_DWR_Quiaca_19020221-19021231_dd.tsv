@@ -1,0 +1,74 @@
+SEF	0.2.0
+ID	DWR_Quiaca
+Name	Quiaca
+Lat	-22.1044
+Lon	-65.5968
+Alt	NA
+Source	C3S_SouthAmerica
+Link	https://data-rescue.copernicus-climate.eu/lso/1085758
+Vbl	dd
+Stat	point
+Units	degree
+Meta	Data policy=GNU GPL v3.0
+Year	Month	Day	Hour	Minute	Period	Value	Meta
+1902	7	13	18	17	0	0	Orig=N|orig.time=2pm
+1902	7	14	18	17	0	0	Orig=N|orig.time=2pm
+1902	7	15	18	17	0	0	Orig=N|orig.time=2pm
+1902	7	16	18	17	0	0	Orig=N|orig.time=2pm
+1902	7	17	18	17	0	180	Orig=S|orig.time=2pm
+1902	7	18	18	17	0	0	Orig=N|orig.time=2pm
+1902	7	19	18	17	0	180	Orig=S|orig.time=2pm
+1902	7	20	18	17	0	0	Orig=N|orig.time=2pm
+1902	7	23	18	17	0	180	Orig=S|orig.time=2pm
+1902	7	25	18	17	0	0	Orig=N|orig.time=2pm
+1902	7	26	18	17	0	0	Orig=N|orig.time=2pm
+1902	7	27	18	17	0	0	Orig=N|orig.time=2pm
+1902	7	28	18	17	0	0	Orig=N|orig.time=2pm
+1902	7	29	18	17	0	45	Orig=NE|orig.time=2pm
+1902	7	30	18	17	0	90	Orig=E|orig.time=2pm
+1902	7	31	18	17	0	0	Orig=N|orig.time=2pm
+1902	8	2	18	17	0	0	Orig=N|orig.time=2pm
+1902	8	3	18	17	0	0	Orig=N|orig.time=2pm
+1902	8	4	18	17	0	90	Orig=E|orig.time=2pm
+1902	8	6	18	17	0	180	Orig=S|orig.time=2pm
+1902	8	7	18	17	0	0	Orig=N|orig.time=2pm
+1902	8	8	18	17	0	180	Orig=S|orig.time=2pm
+1902	8	10	18	17	0	270	Orig=W|orig.time=2pm
+1902	8	11	18	17	0	0	Orig=N|orig.time=2pm
+1902	8	12	18	17	0	0	Orig=N|orig.time=2pm
+1902	8	14	18	17	0	0	Orig=N|orig.time=2pm
+1902	8	15	18	17	0	0	Orig=N|orig.time=2pm
+1902	8	16	18	17	0	45	Orig=NE|orig.time=2pm
+1902	8	21	18	17	0	0	Orig=N|orig.time=2pm
+1902	8	22	18	17	0	0	Orig=N|orig.time=2pm
+1902	8	23	18	17	0	0	Orig=N|orig.time=2pm
+1902	8	24	18	17	0	270	Orig=W|orig.time=2pm
+1902	8	25	18	17	0	315	Orig=NW|orig.time=2pm
+1902	8	26	18	17	0	315	Orig=NW|orig.time=2pm
+1902	8	27	18	17	0	0	Orig=N|orig.time=2pm
+1902	8	28	18	17	0	0	Orig=N|orig.time=2pm
+1902	8	29	18	17	0	0	Orig=N|orig.time=2pm
+1902	9	5	11	17	0	90	Orig=E|orig.time=7am
+1902	9	19	11	17	0	0	Orig=N|orig.time=7am
+1902	9	23	11	17	0	270	Orig=W|orig.time=7am
+1902	9	25	11	17	0	90	Orig=E|orig.time=7am
+1902	9	26	11	17	0	270	Orig=W|orig.time=7am
+1902	10	1	11	17	0	90	Orig=E|orig.time=7am
+1902	10	29	11	17	0	0	Orig=N|orig.time=7am
+1902	11	12	11	17	0	0	Orig=N|orig.time=7am
+1902	11	19	11	17	0	0	Orig=N|orig.time=7am
+1902	11	26	11	17	0	45	Orig=NE|orig.time=7am
+1902	11	28	11	17	0	0	Orig=N|orig.time=7am
+1902	12	3	11	17	0	0	Orig=N|orig.time=7am
+1902	12	6	11	17	0	45	Orig=NE|orig.time=7am
+1902	12	7	11	17	0	180	Orig=S|orig.time=7am
+1902	12	8	11	17	0	0	Orig=N|orig.time=7am
+1902	12	9	11	17	0	90	Orig=E|orig.time=7am
+1902	12	13	11	17	0	0	Orig=N|orig.time=7am
+1902	12	17	11	17	0	0	Orig=N|orig.time=7am
+1902	12	20	11	17	0	0	Orig=N|orig.time=7am
+1902	12	21	11	17	0	0	Orig=N|orig.time=7am
+1902	12	25	11	17	0	0	Orig=N|orig.time=7am
+1902	12	27	11	17	0	270	Orig=W|orig.time=7am
+1902	12	28	11	17	0	270	Orig=W|orig.time=7am
+1902	12	31	11	17	0	270	Orig=W|orig.time=7am

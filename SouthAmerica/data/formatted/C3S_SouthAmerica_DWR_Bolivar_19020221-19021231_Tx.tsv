@@ -1,0 +1,36 @@
+SEF	0.2.0
+ID	DWR_Bolivar
+Name	Bolivar
+Lat	-36.2383
+Lon	-61.2336
+Alt	NA
+Source	C3S_SouthAmerica
+Link	https://data-rescue.copernicus-climate.eu/lso/1084927
+Vbl	Tx
+Stat	maximum
+Units	C
+Meta	Data policy=GNU GPL v3.0
+Year	Month	Day	Hour	Minute	Period	Value	Meta
+1902	12	8	11	17	day	30	orig.time=7am
+1902	12	9	11	17	day	24	orig.time=7am
+1902	12	10	11	17	day	26	orig.time=7am
+1902	12	11	11	17	day	28	orig.time=7am
+1902	12	12	11	17	day	32	orig.time=7am
+1902	12	13	11	17	day	24	orig.time=7am
+1902	12	14	11	17	day	24	orig.time=7am
+1902	12	15	11	17	day	27	orig.time=7am
+1902	12	16	11	17	day	28	orig.time=7am
+1902	12	17	11	17	day	32	orig.time=7am
+1902	12	18	11	17	day	35	orig.time=7am
+1902	12	19	11	17	day	32	orig.time=7am
+1902	12	20	11	17	day	32	orig.time=7am
+1902	12	21	11	17	day	31	orig.time=7am
+1902	12	22	11	17	day	22	orig.time=7am
+1902	12	23	11	17	day	31	orig.time=7am
+1902	12	25	11	17	day	25	orig.time=7am
+1902	12	26	11	17	day	29	orig.time=7am
+1902	12	27	11	17	day	31	orig.time=7am
+1902	12	28	11	17	day	30	orig.time=7am
+1902	12	29	11	17	day	29	orig.time=7am
+1902	12	30	11	17	day	27	orig.time=7am
+1902	12	31	11	17	day	22	orig.time=7am

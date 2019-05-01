@@ -1,0 +1,16 @@
+SEF	0.2.0
+ID	DWR_Rioja-Cap.
+Name	RIOJA-Capital
+Lat	-29.4125
+Lon	-66.854167
+Alt	NA
+Source	C3S_SouthAmerica
+Link	https://data-rescue.copernicus-climate.eu/lso/1085809
+Vbl	n
+Stat	point
+Units	%
+Meta	Data policy=GNU GPL v3.0
+Year	Month	Day	Hour	Minute	Period	Value	Meta
+1902	5	19	18	17	0	0	Orig=0|orig.time=2pm
+1902	5	31	18	17	0	0	Orig=0|orig.time=2pm
+1902	6	1	18	17	0	0	Orig=0|orig.time=2pm

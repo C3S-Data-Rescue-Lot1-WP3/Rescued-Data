@@ -1,0 +1,15 @@
+SEF	0.2.0
+ID	DWR_San_Carlos
+Name	Vera
+Lat	-25.9
+Lon	-65.933333
+Alt	NA
+Source	C3S_SouthAmerica
+Link	https://data-rescue.copernicus-climate.eu/lso/1086207
+Vbl	mslp
+Stat	point
+Units	Pa
+Meta	Data policy=GNU GPL v3.0
+Year	Month	Day	Hour	Minute	Period	Value	Meta
+1902	9	5	11	17	0	100458	Orig=753.5mm|orig.time=7am
+1902	9	6	11	17	0	100138	Orig=751.1mm|orig.time=7am

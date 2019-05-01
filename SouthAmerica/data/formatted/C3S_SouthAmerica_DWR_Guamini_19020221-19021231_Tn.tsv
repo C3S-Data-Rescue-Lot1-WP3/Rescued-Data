@@ -1,0 +1,35 @@
+SEF	0.2.0
+ID	DWR_Guamini
+Name	Guaminí
+Lat	-37.0126
+Lon	-62.4185
+Alt	NA
+Source	C3S_SouthAmerica
+Link	https://data-rescue.copernicus-climate.eu/lso/1085420
+Vbl	Tn
+Stat	minimum
+Units	C
+Meta	Data policy=GNU GPL v3.0
+Year	Month	Day	Hour	Minute	Period	Value	Meta
+1902	12	6	11	17	day	19	orig.time=7am
+1902	12	7	11	17	day	10	orig.time=7am
+1902	12	8	11	17	day	19	orig.time=7am
+1902	12	9	11	17	day	6	orig.time=7am
+1902	12	10	11	17	day	14	orig.time=7am
+1902	12	11	11	17	day	12	orig.time=7am
+1902	12	12	11	17	day	17	orig.time=7am
+1902	12	13	11	17	day	6	orig.time=7am
+1902	12	14	11	17	day	5	orig.time=7am
+1902	12	15	11	17	day	14	orig.time=7am
+1902	12	16	11	17	day	12	orig.time=7am
+1902	12	17	11	17	day	13	orig.time=7am
+1902	12	18	11	17	day	11	orig.time=7am
+1902	12	20	11	17	day	17	orig.time=7am
+1902	12	22	11	17	day	18	orig.time=7am
+1902	12	25	11	17	day	11	orig.time=7am
+1902	12	26	11	17	day	16	orig.time=7am
+1902	12	27	11	17	day	9	orig.time=7am
+1902	12	28	11	17	day	12	orig.time=7am
+1902	12	29	11	17	day	10	orig.time=7am
+1902	12	30	11	17	day	5	orig.time=7am
+1902	12	31	11	17	day	11	orig.time=7am

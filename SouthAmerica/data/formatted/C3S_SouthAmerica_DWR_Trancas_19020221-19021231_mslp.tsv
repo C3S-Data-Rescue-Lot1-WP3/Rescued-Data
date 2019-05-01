@@ -1,0 +1,13 @@
+SEF	0.2.0
+ID	DWR_Trancas
+Name	Trancas
+Lat	-26.217222
+Lon	-65.283056
+Alt	NA
+Source	C3S_SouthAmerica
+Link	https://data-rescue.copernicus-climate.eu/lso/1086111
+Vbl	mslp
+Stat	point
+Units	Pa
+Meta	Data policy=GNU GPL v3.0
+Year	Month	Day	Hour	Minute	Period	Value	Meta

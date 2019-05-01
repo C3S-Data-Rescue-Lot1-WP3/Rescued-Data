@@ -1,0 +1,35 @@
+SEF	0.2.0
+ID	DWR_Guamini
+Name	Guaminí
+Lat	-37.0126
+Lon	-62.4185
+Alt	NA
+Source	C3S_SouthAmerica
+Link	https://data-rescue.copernicus-climate.eu/lso/1085415
+Vbl	mslp
+Stat	point
+Units	Pa
+Meta	Data policy=GNU GPL v3.0
+Year	Month	Day	Hour	Minute	Period	Value	Meta
+1902	12	6	11	17	0	100752	Orig=755.7mm|orig.time=7am
+1902	12	7	11	17	0	100872	Orig=756.6mm|orig.time=7am
+1902	12	8	11	17	0	101392	Orig=760.5mm|orig.time=7am
+1902	12	9	11	17	0	101792	Orig=763.5mm|orig.time=7am
+1902	12	10	11	17	0	101312	Orig=759.9mm|orig.time=7am
+1902	12	11	11	17	0	100898	Orig=756.8mm|orig.time=7am
+1902	12	12	11	17	0	100672	Orig=755.1mm|orig.time=7am
+1902	12	13	11	17	0	101712	Orig=762.9mm|orig.time=7am
+1902	12	14	11	17	0	102218	Orig=766.7mm|orig.time=7am
+1902	12	15	11	17	0	101632	Orig=762.3mm|orig.time=7am
+1902	12	16	11	17	0	101338	Orig=760.1mm|orig.time=7am
+1902	12	17	11	17	0	101165	Orig=758.8mm|orig.time=7am
+1902	12	18	11	17	0	101192	Orig=759mm|orig.time=7am
+1902	12	20	11	17	0	101525	Orig=761.5mm|orig.time=7am
+1902	12	22	11	17	0	100512	Orig=753.9mm|orig.time=7am
+1902	12	25	11	17	0	101512	Orig=761.4mm|orig.time=7am
+1902	12	26	11	17	0	100938	Orig=757.1mm|orig.time=7am
+1902	12	27	11	17	0	101232	Orig=759.3mm|orig.time=7am
+1902	12	28	11	17	0	101338	Orig=760.1mm|orig.time=7am
+1902	12	29	11	17	0	102165	Orig=766.3mm|orig.time=7am
+1902	12	30	11	17	0	102885	Orig=771.7mm|orig.time=7am
+1902	12	31	11	17	0	102472	Orig=768.6mm|orig.time=7am

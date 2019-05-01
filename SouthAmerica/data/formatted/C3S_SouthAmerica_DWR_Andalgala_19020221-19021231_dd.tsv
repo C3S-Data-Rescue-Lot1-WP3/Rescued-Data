@@ -1,0 +1,41 @@
+SEF	0.2.0
+ID	DWR_Andalgala
+Name	Andalgalá
+Lat	-27.6
+Lon	-66.316667
+Alt	NA
+Source	C3S_SouthAmerica
+Link	https://data-rescue.copernicus-climate.eu/lso/1084846
+Vbl	dd
+Stat	point
+Units	degree
+Meta	Data policy=GNU GPL v3.0
+Year	Month	Day	Hour	Minute	Period	Value	Meta
+1902	3	3	18	17	0	45	Orig=NE|orig.time=2pm
+1902	3	7	18	17	0	45	Orig=NE|orig.time=2pm
+1902	3	8	18	17	0	45	Orig=NE|orig.time=2pm
+1902	3	10	18	17	0	45	Orig=NE|orig.time=2pm
+1902	3	15	18	17	0	90	Orig=E|orig.time=2pm
+1902	3	24	18	17	0	90	Orig=E|orig.time=2pm
+1902	7	8	18	17	0	135	Orig=SE|orig.time=2pm
+1902	7	10	18	17	0	315	Orig=NW|orig.time=2pm
+1902	7	14	18	17	0	180	Orig=S|orig.time=2pm
+1902	7	26	18	17	0	270	Orig=W|orig.time=2pm
+1902	7	27	18	17	0	270	Orig=W|orig.time=2pm
+1902	8	15	18	17	0	90	Orig=E|orig.time=2pm
+1902	8	22	18	17	0	315	Orig=NW|orig.time=2pm
+1902	8	25	18	17	0	180	Orig=S|orig.time=2pm
+1902	10	11	11	17	0	225	Orig=SW|orig.time=7am
+1902	10	16	11	17	0	45	Orig=NE|orig.time=7am
+1902	10	18	11	17	0	45	Orig=NE|orig.time=7am
+1902	10	20	11	17	0	45	Orig=NE|orig.time=7am
+1902	10	21	11	17	0	45	Orig=NE|orig.time=7am
+1902	10	22	11	17	0	45	Orig=NE|orig.time=7am
+1902	10	23	11	17	0	45	Orig=NE|orig.time=7am
+1902	10	25	11	17	0	45	Orig=NE|orig.time=7am
+1902	11	6	11	17	0	45	Orig=NE|orig.time=7am
+1902	12	1	11	17	0	45	Orig=NE|orig.time=7am
+1902	12	3	11	17	0	45	Orig=NE|orig.time=7am
+1902	12	10	11	17	0	45	Orig=NE|orig.time=7am
+1902	12	11	11	17	0	45	Orig=NE|orig.time=7am
+1902	12	25	11	17	0	45	Orig=NE|orig.time=7am

@@ -1,0 +1,34 @@
+SEF	0.2.0
+ID	DWR_Santa_Maria
+Name	Santa Maria
+Lat	-26.683333
+Lon	-66.033333
+Alt	NA
+Source	C3S_SouthAmerica
+Link	https://data-rescue.copernicus-climate.eu/lso/1086046
+Vbl	dd
+Stat	point
+Units	degree
+Meta	Data policy=GNU GPL v3.0
+Year	Month	Day	Hour	Minute	Period	Value	Meta
+1902	2	22	18	17	0	0	Orig=N|orig.time=2pm
+1902	6	19	18	17	0	180	Orig=S|orig.time=2pm
+1902	6	27	18	17	0	180	Orig=S|orig.time=2pm
+1902	7	2	18	17	0	180	Orig=S|orig.time=2pm
+1902	7	10	18	17	0	0	Orig=N|orig.time=2pm
+1902	7	16	18	17	0	0	Orig=N|orig.time=2pm
+1902	7	23	18	17	0	0	Orig=N|orig.time=2pm
+1902	7	26	18	17	0	90	Orig=E|orig.time=2pm
+1902	7	28	18	17	0	180	Orig=S|orig.time=2pm
+1902	8	2	18	17	0	180	Orig=S|orig.time=2pm
+1902	8	4	18	17	0	0	Orig=N|orig.time=2pm
+1902	8	22	18	17	0	225	Orig=SW|orig.time=2pm
+1902	9	6	11	17	0	0	Orig=N|orig.time=7am
+1902	9	28	11	17	0	180	Orig=S|orig.time=7am
+1902	10	1	11	17	0	0	Orig=N|orig.time=7am
+1902	10	11	11	17	0	180	Orig=S|orig.time=7am
+1902	10	31	11	17	0	0	Orig=N|orig.time=7am
+1902	11	6	11	17	0	180	Orig=S|orig.time=7am
+1902	11	8	11	17	0	270	Orig=W|orig.time=7am
+1902	11	9	11	17	0	0	Orig=N|orig.time=7am
+1902	12	14	11	17	0	180	Orig=S|orig.time=7am

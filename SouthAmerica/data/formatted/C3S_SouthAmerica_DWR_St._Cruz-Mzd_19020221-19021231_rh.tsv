@@ -1,0 +1,22 @@
+SEF	0.2.0
+ID	DWR_St._Cruz-Mzd
+Name	Santa Cruz
+Lat	-47.028611
+Lon	-66.711944
+Alt	NA
+Source	C3S_SouthAmerica
+Link	https://data-rescue.copernicus-climate.eu/lso/1086021
+Vbl	rh
+Stat	point
+Units	%
+Meta	Data policy=GNU GPL v3.0
+Year	Month	Day	Hour	Minute	Period	Value	Meta
+1902	12	22	11	17	0	30	orig.time=7am
+1902	12	23	11	17	0	39	orig.time=7am
+1902	12	25	11	17	0	45	orig.time=7am
+1902	12	26	11	17	0	86	orig.time=7am
+1902	12	27	11	17	0	71	orig.time=7am
+1902	12	28	11	17	0	72	orig.time=7am
+1902	12	29	11	17	0	52	orig.time=7am
+1902	12	30	11	17	0	59	orig.time=7am
+1902	12	31	11	17	0	59	orig.time=7am

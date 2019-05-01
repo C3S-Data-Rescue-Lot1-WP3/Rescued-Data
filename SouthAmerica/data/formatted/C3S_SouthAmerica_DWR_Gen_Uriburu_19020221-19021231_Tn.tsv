@@ -1,0 +1,53 @@
+SEF	0.2.0
+ID	DWR_Gen_Uriburu
+Name	General Uriburu
+Lat	-34
+Lon	-59.166667
+Alt	NA
+Source	C3S_SouthAmerica
+Link	https://data-rescue.copernicus-climate.eu/lso/1085372
+Vbl	Tn
+Stat	minimum
+Units	C
+Meta	Data policy=GNU GPL v3.0
+Year	Month	Day	Hour	Minute	Period	Value	Meta
+1902	11	15	11	17	day	9	orig.time=7am
+1902	11	16	11	17	day	6	orig.time=7am
+1902	11	17	11	17	day	13	orig.time=7am
+1902	11	18	11	17	day	11	orig.time=7am
+1902	11	19	11	17	day	9	orig.time=7am
+1902	11	20	11	17	day	14	orig.time=7am
+1902	11	21	11	17	day	15	orig.time=7am
+1902	11	22	11	17	day	17	orig.time=7am
+1902	11	23	11	17	day	14	orig.time=7am
+1902	11	24	11	17	day	10	orig.time=7am
+1902	11	25	11	17	day	12	orig.time=7am
+1902	11	26	11	17	day	7	orig.time=7am
+1902	11	27	11	17	day	5	orig.time=7am
+1902	11	28	11	17	day	8	orig.time=7am
+1902	11	29	11	17	day	9	orig.time=7am
+1902	11	30	11	17	day	12	orig.time=7am
+1902	12	1	11	17	day	11	orig.time=7am
+1902	12	3	11	17	day	14	orig.time=7am
+1902	12	4	11	17	day	18	orig.time=7am
+1902	12	5	11	17	day	11	orig.time=7am
+1902	12	6	11	17	day	10	orig.time=7am
+1902	12	7	11	17	day	11	orig.time=7am
+1902	12	8	11	17	day	15	orig.time=7am
+1902	12	9	11	17	day	7	orig.time=7am
+1902	12	10	11	17	day	11	orig.time=7am
+1902	12	11	11	17	day	12	orig.time=7am
+1902	12	12	11	17	day	15	orig.time=7am
+1902	12	13	11	17	day	9	orig.time=7am
+1902	12	15	11	17	day	13	orig.time=7am
+1902	12	16	11	17	day	12	orig.time=7am
+1902	12	17	11	17	day	14	orig.time=7am
+1902	12	18	11	17	day	15	orig.time=7am
+1902	12	19	11	17	day	18	orig.time=7am
+1902	12	20	11	17	day	13	orig.time=7am
+1902	12	22	11	17	day	20	orig.time=7am
+1902	12	25	11	17	day	9	orig.time=7am
+1902	12	27	11	17	day	9	orig.time=7am
+1902	12	28	11	17	day	12	orig.time=7am
+1902	12	29	11	17	day	14	orig.time=7am
+1902	12	30	11	17	day	8	orig.time=7am

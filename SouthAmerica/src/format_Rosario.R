@@ -1,8 +1,8 @@
 # Converts the digitized data for Rosario de Santa Fe 1886-1900 into the
-# Station Exchange Format.
+# Station Exchange Format v0.2.
 #
-# Requires libraries XLConnect, plyr, SEF
-# (https://github.com/C3S-Data-Rescue-Lot1-WP3/SEF)
+# Requires libraries XLConnect, plyr, dataresqc
+# (https://github.com/c3s-data-rescue-service/dataresqc)
 #
 # Created by Yuri Brugnara, University of Bern - 30 Apr 2019
 
@@ -11,7 +11,7 @@
 
 require(XLConnect)
 require(plyr)
-require(SEF)
+require(dataresqc)
 options(scipen = 999) # avoid exponential notation
 
 
@@ -23,39 +23,41 @@ lat <- -32.945
 alt <- 35.7
 
 variables <- c("ta", "p", "Tx", "Tn", "tb", "dd", 
-               "n", "rr", "wind_force", "ss", "Ts")
+               "n", "rr", "w", "ss", "Ts")
 units <- c("C", "Pa", "C", "C", "C", "degree", "%", "mm", "", "hours", "C")
 stat_flags <- c("point", "point", "maximum", "minimum", "point", "point", 
                 "point", "sum", "point", "sum", "point")
-conversions <- list(ta = function(x) round(x, 1),
+varids <- c(6, 4, 0, 1, 7, 2, 3, 5, 8, 9, 10) # needed to build the link to the C3S registry
+
+conversions <- list(ta = function(x) round(as.numeric(x), 1),
                     p = function(x, y) 
-                      round(100 * convert_pressure(x, f = 1, lat = lat, 
-                                                   alt = alt, atb = y), 0),
-                    Tx = function(x) round(x, 1),
-                    Tn = function(x) round(x, 1),
-                    tb = function(x) round(x, 1),
-                    dd = function(x) round(x, 0),
-                    n = function(x) round(10 * x, 0),
-                    rr = function(x) round(x, 1),
-                    wind_force = function(x) round(x, 0),
-                    ss = function(x) round(x, 2),
-                    Ts = function(x) round(x, 1))
+                      round(100 * convert_pressure(as.numeric(x), f = 1, lat = lat, 
+                                                   alt = alt, atb = as.numeric(y)), 0),
+                    Tx = function(x) round(as.numeric(x), 1),
+                    Tn = function(x) round(as.numeric(x), 1),
+                    tb = function(x) round(as.numeric(x), 1),
+                    dd = function(x) round(as.numeric(x), 0),
+                    n = function(x) round(10 * as.numeric(x), 0),
+                    rr = function(x) round(as.numeric(x), 1),
+                    w = function(x) round(as.numeric(x), 0),
+                    ss = function(x) round(as.numeric(x), 2),
+                    Ts = function(x) round(as.numeric(x), 1))
 
 
 read_template <- function(startRow, endRow,
-                          times, # character vector of times
-                          endTimes, # endCol of each time (vector)
-                          vars, # list of vectors with variable codes (one for each time)
+                          times, # character vector of observation times
+                          endTimes, # endCol of each observation time (vector)
+                          vars, # list of vectors with variable codes (one for each observation time)
                           file = infile) {
   
   all_vars <- unlist(vars)
-  data_types <- rep("numeric", length(all_vars) + 3)
-  data_types[which(all_vars %in% c("dd", NA)) + 3] <- "character"
   template <- readWorksheetFromFile(file, sheet = 2,
                                     startRow = startRow,
                                     endRow = endRow,
+                                    endCol = rev(endTimes)[1],
                                     header = FALSE,
-                                    colTypes = data_types,
+                                    colTypes = c(rep("numeric", 3), 
+                                                 rep("character", length(all_vars))),
                                     forceConversion = TRUE,
                                     autofitCol = FALSE,
                                     readStrategy = "fast")
@@ -73,14 +75,6 @@ read_template <- function(startRow, endRow,
     names(tmp[[i]]) <- vars[[i]][keep]
     tmp[[i]] <- cbind(tmp[[1]][, 1:3], tmp[[i]])
     tmp[[i]]$h <- times[i]
-    ## Add one day to the evening observations
-    if (i == 3) {
-      dates <- paste(tmp[[i]]$y, tmp[[i]]$m, tmp[[i]]$d, sep = "-")
-      times <- strptime(dates, format = "%Y-%m-%d") + 3600 * 24 
-      tmp[[i]]$y <- as.integer(format(times, "%Y"))
-      tmp[[i]]$m <- as.integer(format(times, "%m"))
-      tmp[[i]]$d <- as.integer(format(times, "%d"))
-    }
   }
   template <- rbind.fill(tmp)
   
@@ -89,7 +83,7 @@ read_template <- function(startRow, endRow,
 }
 
 
-## Initialize data frames
+## Initialize list of data frames (one per variable)
 Data <- list()
 for (v in variables) {
   Data[[v]] <- data.frame(year = integer(),
@@ -102,54 +96,54 @@ for (v in variables) {
 
 
 ## Read data (1st part - 2 observations per day - precipitation in inches)
-template1 <- read_template(6, 233, c("1217", "2217"), c(17, 31),
+template1 <- read_template(6, 233, c("0800", "1800"), c(17, 31),
                            list(c("atb", "p", "ta", "tb", "n", NA, NA, "dd", 
-                                  "wind_force", "rr", "Tx", "Tn", NA, NA),
+                                  "w", "rr", "Tx", "Tn", NA, NA),
                                 c("atb", "p", "ta", "tb", "n", NA, NA, "dd", 
-                                  "wind_force", "rr", "Tx", "Tn", NA, NA)))
-template1$rr_orig <- paste0("Orig=", round(template1$rr, 2), "in")
-template1$rr <- 25.4 * template1$rr
+                                  "w", "rr", "Tx", "Tn", NA, NA)))
+template1$rr_orig <- paste0("Orig=", template1$rr, "in")
+template1$rr <- 25.4 * as.numeric(template1$rr)
 
 ## Read data (2nd part - 3 observations per day - precipitation in inches)
-template2 <- read_template(242, 667, c("1117", "1817", "0117"), c(19, 35, 51),
+template2 <- read_template(242, 667, c("0700", "1400", "2100"), c(19, 35, 51),
                            list(c("atb", "p", "ta", "tb", "n", NA, NA, "dd", 
-                                  "wind_force", "rr", "Tx", "Tn", NA, NA, NA, NA),
+                                  "w", "rr", "Tx", "Tn", NA, NA, NA, NA),
                                 c("atb", "p", "ta", "tb", "n", NA, NA, "dd", 
-                                  "wind_force", "rr", "Tx", "Tn", NA, NA, NA, NA),
+                                  "w", "rr", "Tx", "Tn", NA, NA, NA, NA),
                                 c("atb", "p", "ta", "tb", "n", NA, NA, "dd", 
-                                  "wind_force", "rr", "Tx", "Tn", NA, NA, NA, NA)))
-template2$rr_orig <- paste0("Orig=", round(template2$rr, 2), "in")
-template2$rr <- 25.4 * template2$rr
+                                  "w", "rr", "Tx", "Tn", NA, NA, NA, NA)))
+template2$rr_orig <- paste0("Orig=", template2$rr, "in")
+template2$rr <- 25.4 * as.numeric(template2$rr)
 
 ## Read data (3rd part - 3 observations per day - precipitation in mm)
-template3 <- read_template(1038, 1583, c("1117", "1817", "0117"), c(17, 29, 42),
+template3 <- read_template(1038, 1583, c("0700", "1400", "2100"), c(17, 29, 42),
                            list(c("atb", "p", "ta", "tb", "n", NA, NA, "dd", 
-                                  "wind_force", "rr", "Tx", "Tn", NA, NA),
+                                  "w", "rr", "Tx", "Tn", NA, NA),
                                 c("atb", "p", "ta", "tb", "n", NA, NA, "dd", 
-                                  "wind_force", "rr", NA, NA),
+                                  "w", "rr", NA, NA),
                                 c("atb", "p", "ta", "tb", "n", NA, NA, "dd", 
-                                  "wind_force", "rr", NA, NA, "ss")))
-template3$rr_orig <- ""
+                                  "w", "rr", NA, NA, "ss")))
+template3$rr_orig <- paste0("Orig=", template3$rr, "mm")
 
 ## Read data (4th part - 2 observations per day - precipitation in mm)
-template4 <- read_template(1591, 3985, c("1217", "2217"), c(24, 45),
+template4 <- read_template(1591, 3985, c("0800", "1800"), c(24, 45),
                            list(c("atb", "p", "ta", "tb", NA, "n", NA, NA, "dd", 
-                                  "wind_force", "rr", "Tx", "Tn", "Ts", NA, NA,
+                                  "w", "rr", "Tx", "Tn", "Ts", NA, NA,
                                   NA, NA, NA, NA, NA),
                                 c("atb", "p", "ta", "tb", NA, "n", NA, NA, "dd", 
-                                  "wind_force", "rr", "Tx", "Tn", NA, NA, NA, NA,
+                                  "w", "rr", "Tx", "Tn", NA, NA, NA, NA,
                                   "ss", NA, NA, NA)))
-template4$rr_orig <- ""
+template4$rr_orig <- paste0("Orig=", template4$rr, "mm")
 
 
 ## Merge templates
 template_all <- rbind.fill(template1, template2, template3, template4)
 template_all <- template_all[which(!is.na(template_all$y)), ]
-template_all$p_orig <- paste0("Orig=", round(template_all$p, 1), "mm|atb=", 
-                              round(template_all$atb, 1), "C")
+template_all$p_orig <- paste0("Orig=", template_all$p, "mm|atb=", 
+                              template_all$atb, "C")
 template_all$dd_orig <- paste0("Orig=", template_all$dd)
-template_all$n_orig <- paste0("Orig=", round(template_all$n, 0))
-template_all[, paste(c("ta", "tb", "Tx", "Tn", "wind_force", "ss", "Ts"), 
+template_all$n_orig <- paste0("Orig=", template_all$n)
+template_all[, paste(c("ta", "tb", "Tx", "Tn", "w", "ss", "Ts"), 
                      "orig", sep = "_")] <- ""
 
 
@@ -160,7 +154,7 @@ template_all$dd <- 22.5 * (match(toupper(template_all$dd), directions) - 1)
 
 
 ## Set missing time to those days marked by asterisks
-template_all$h[which(is.na(template_all$d))] <- ""
+template_all$h[which(is.na(template_all$d))] <- NA
 template_all$d[which(is.na(template_all$d))] <- 
   template_all$d[which(is.na(template_all$d)) - 1] + 1
 template_all$d[which(is.na(template_all$d))] <- 
@@ -186,30 +180,37 @@ for (i in 1:length(variables)) {
 ## Output
 for (i in 1:length(variables)) {
   
-  ## Remove missing values and order by time
-  Data[[variables[i]]] <- Data[[variables[i]]][which(!is.na(Data[[variables[i]]][, 5])), ]
+  ## Order by time
   Data[[variables[i]]] <- Data[[variables[i]]][order(Data[[variables[i]]]$y,
                                                      Data[[variables[i]]]$m,
                                                      Data[[variables[i]]]$d,
                                                      Data[[variables[i]]]$h), ]
   
   ## Split time into hour and minute
-  Data[[variables[i]]]$HH <- substr(Data[[variables[i]]]$h, 1, 2)
-  Data[[variables[i]]]$MM <- substr(Data[[variables[i]]]$h, 3, 4)
+  Data[[variables[i]]]$HH <- as.integer(substr(Data[[variables[i]]]$h, 1, 2))
+  Data[[variables[i]]]$MM <- as.integer(substr(Data[[variables[i]]]$h, 3, 4))
+  
+  ## Add original time in meta column
+  separator <- ifelse(Data[[variables[i]]][1,6] == "", "", "|")
+  Data[[variables[i]]][, 6] <- 
+    paste0(Data[[variables[i]]][, 6], separator, "orig.time=", Data[[variables[i]]][, 4])
   
   ## Write file
   write_sef(Data = Data[[variables[i]]][, c(1:3,7,8,5)],
             outpath = outpath,
+            variable = variables[i],
             cod = "Rosario_Santa_Fe",
             nam = "Rosario de Santa Fe",
             lat = lat,
             lon = lon,
             alt = alt,
             sou = "C3S_SouthAmerica",
-            link = "https://data-rescue.copernicus-climate.eu/lso/1086330",
+            link = paste0("https://data-rescue.copernicus-climate.eu/lso/", 1086326 + varids[i]),
             stat = stat_flags[i],
             units = units[i],
-            metaHead = ifelse(variables[i] == "p", "PTC=T|PGC=T", ""),
+            metaHead = paste0("Data policy=GNU GPL v3.0", 
+                             ifelse(variables[i] == "p", "|PTC=Y|PGC=Y", "")),
             meta = Data[[variables[i]]][, 6],
-            period = ifelse(stat_flags[i]=="point", "0", "p1day"))
+            period = ifelse(stat_flags[i]=="point", "0", "p1day"),
+            time_offset = -4.29)
 }

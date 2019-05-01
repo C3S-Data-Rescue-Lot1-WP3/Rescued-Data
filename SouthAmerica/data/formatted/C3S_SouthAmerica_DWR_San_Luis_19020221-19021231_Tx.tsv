@@ -1,0 +1,13 @@
+SEF	0.2.0
+ID	DWR_San_Luis
+Name	SAN LUIS
+Lat	-33.3
+Lon	-66.333333
+Alt	NA
+Source	C3S_SouthAmerica
+Link	https://data-rescue.copernicus-climate.eu/lso/1085971
+Vbl	Tx
+Stat	maximum
+Units	C
+Meta	Data policy=GNU GPL v3.0
+Year	Month	Day	Hour	Minute	Period	Value	Meta

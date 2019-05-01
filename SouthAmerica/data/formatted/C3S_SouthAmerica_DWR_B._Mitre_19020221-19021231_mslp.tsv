@@ -1,0 +1,52 @@
+SEF	0.2.0
+ID	DWR_B._Mitre
+Name	B. Mitre
+Lat	-27.3833
+Lon	-55.8833
+Alt	NA
+Source	C3S_SouthAmerica
+Link	https://data-rescue.copernicus-climate.eu/lso/1084911
+Vbl	mslp
+Stat	point
+Units	Pa
+Meta	Data policy=GNU GPL v3.0
+Year	Month	Day	Hour	Minute	Period	Value	Meta
+1902	10	20	11	17	0	101205	Orig=759.1mm|orig.time=7am
+1902	10	21	11	17	0	101245	Orig=759.4mm|orig.time=7am
+1902	10	22	11	17	0	100698	Orig=755.3mm|orig.time=7am
+1902	10	23	11	17	0	100832	Orig=756.3mm|orig.time=7am
+1902	10	24	11	17	0	100685	Orig=755.2mm|orig.time=7am
+1902	10	25	11	17	0	101218	Orig=759.2mm|orig.time=7am
+1902	10	26	11	17	0	100872	Orig=756.6mm|orig.time=7am
+1902	10	27	11	17	0	101992	Orig=765mm|orig.time=7am
+1902	10	28	11	17	0	101725	Orig=763mm|orig.time=7am
+1902	10	29	11	17	0	101325	Orig=760mm|orig.time=7am
+1902	10	30	11	17	0	101725	Orig=763mm|orig.time=7am
+1902	10	31	11	17	0	102072	Orig=765.6mm|orig.time=7am
+1902	11	1	11	17	0	101138	Orig=758.6mm|orig.time=7am
+1902	11	2	11	17	0	101818	Orig=763.7mm|orig.time=7am
+1902	11	3	11	17	0	101565	Orig=761.8mm|orig.time=7am
+1902	11	4	11	17	0	101285	Orig=759.7mm|orig.time=7am
+1902	11	5	11	17	0	101098	Orig=758.3mm|orig.time=7am
+1902	11	6	11	17	0	99992	Orig=750mm|orig.time=7am
+1902	11	7	11	17	0	100498	Orig=753.8mm|orig.time=7am
+1902	11	8	11	17	0	99952	Orig=749.7mm|orig.time=7am
+1902	11	9	11	17	0	100938	Orig=757.1mm|orig.time=7am
+1902	11	10	11	17	0	101778	Orig=763.4mm|orig.time=7am
+1902	11	11	11	17	0	101765	Orig=763.3mm|orig.time=7am
+1902	11	12	11	17	0	101352	Orig=760.2mm|orig.time=7am
+1902	11	13	11	17	0	101338	Orig=760.1mm|orig.time=7am
+1902	11	14	11	17	0	101085	Orig=758.2mm|orig.time=7am
+1902	11	15	11	17	0	101245	Orig=759.4mm|orig.time=7am
+1902	11	16	11	17	0	101898	Orig=764.3mm|orig.time=7am
+1902	11	17	11	17	0	102032	Orig=765.3mm|orig.time=7am
+1902	11	18	11	17	0	101365	Orig=760.3mm|orig.time=7am
+1902	11	19	11	17	0	101738	Orig=763.1mm|orig.time=7am
+1902	11	20	11	17	0	101632	Orig=762.3mm|orig.time=7am
+1902	11	21	11	17	0	101272	Orig=759.6mm|orig.time=7am
+1902	11	22	11	17	0	100938	Orig=757.1mm|orig.time=7am
+1902	11	23	11	17	0	100898	Orig=756.8mm|orig.time=7am
+1902	11	24	11	17	0	101352	Orig=760.2mm|orig.time=7am
+1902	11	25	11	17	0	100805	Orig=756.1mm|orig.time=7am
+1902	11	26	11	17	0	101805	Orig=763.6mm|orig.time=7am
+1902	11	27	11	17	0	102832	Orig=771.3mm|orig.time=7am

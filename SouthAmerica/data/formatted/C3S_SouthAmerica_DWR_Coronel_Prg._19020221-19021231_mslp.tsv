@@ -1,0 +1,19 @@
+SEF	0.2.0
+ID	DWR_Coronel_Prg.
+Name	Coronel Pringles
+Lat	-37.9853
+Lon	-61.3498
+Alt	NA
+Source	C3S_SouthAmerica
+Link	https://data-rescue.copernicus-climate.eu/lso/1085223
+Vbl	mslp
+Stat	point
+Units	Pa
+Meta	Data policy=GNU GPL v3.0
+Year	Month	Day	Hour	Minute	Period	Value	Meta
+1902	9	2	11	17	0	102085	Orig=765.7mm|orig.time=7am
+1902	12	26	11	17	0	100805	Orig=756.1mm|orig.time=7am
+1902	12	27	11	17	0	101032	Orig=757.8mm|orig.time=7am
+1902	12	29	11	17	0	102272	Orig=767.1mm|orig.time=7am
+1902	12	30	11	17	0	102912	Orig=771.9mm|orig.time=7am
+1902	12	31	11	17	0	102645	Orig=769.9mm|orig.time=7am

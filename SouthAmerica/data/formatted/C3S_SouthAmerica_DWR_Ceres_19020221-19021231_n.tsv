@@ -1,0 +1,111 @@
+SEF	0.2.0
+ID	DWR_Ceres
+Name	Ceres
+Lat	-29.8817
+Lon	-61.9461
+Alt	NA
+Source	C3S_SouthAmerica
+Link	https://data-rescue.copernicus-climate.eu/lso/1085101
+Vbl	n
+Stat	point
+Units	%
+Meta	Data policy=GNU GPL v3.0
+Year	Month	Day	Hour	Minute	Period	Value	Meta
+1902	9	2	11	17	0	33	Orig=1|orig.time=7am
+1902	9	4	11	17	0	33	Orig=1|orig.time=7am
+1902	9	5	11	17	0	100	Orig=3|orig.time=7am
+1902	9	6	11	17	0	67	Orig=2|orig.time=7am
+1902	9	7	11	17	0	67	Orig=2|orig.time=7am
+1902	9	10	11	17	0	100	Orig=3|orig.time=7am
+1902	9	11	11	17	0	100	Orig=3|orig.time=7am
+1902	9	12	11	17	0	33	Orig=1|orig.time=7am
+1902	9	13	11	17	0	100	Orig=3|orig.time=7am
+1902	9	14	11	17	0	100	Orig=3|orig.time=7am
+1902	9	15	11	17	0	33	Orig=1|orig.time=7am
+1902	9	16	11	17	0	67	Orig=2|orig.time=7am
+1902	9	17	11	17	0	100	Orig=3|orig.time=7am
+1902	9	18	11	17	0	33	Orig=1|orig.time=7am
+1902	9	20	11	17	0	100	Orig=3|orig.time=7am
+1902	9	21	11	17	0	100	Orig=3|orig.time=7am
+1902	9	22	11	17	0	0	Orig=0|orig.time=7am
+1902	9	23	11	17	0	0	Orig=0|orig.time=7am
+1902	9	24	11	17	0	67	Orig=2|orig.time=7am
+1902	9	25	11	17	0	0	Orig=0|orig.time=7am
+1902	9	26	11	17	0	0	Orig=0|orig.time=7am
+1902	9	27	11	17	0	33	Orig=1|orig.time=7am
+1902	9	28	11	17	0	67	Orig=2|orig.time=7am
+1902	9	29	11	17	0	67	Orig=2|orig.time=7am
+1902	9	30	11	17	0	100	Orig=3|orig.time=7am
+1902	10	1	11	17	0	33	Orig=1|orig.time=7am
+1902	10	2	11	17	0	67	Orig=2|orig.time=7am
+1902	10	3	11	17	0	67	Orig=2|orig.time=7am
+1902	10	7	11	17	0	100	Orig=3|orig.time=7am
+1902	10	8	11	17	0	33	Orig=1|orig.time=7am
+1902	10	9	11	17	0	67	Orig=2|orig.time=7am
+1902	10	10	11	17	0	100	Orig=3|orig.time=7am
+1902	10	11	11	17	0	0	Orig=0|orig.time=7am
+1902	10	12	11	17	0	33	Orig=1|orig.time=7am
+1902	10	13	11	17	0	0	Orig=0|orig.time=7am
+1902	10	14	11	17	0	0	Orig=0|orig.time=7am
+1902	10	15	11	17	0	33	Orig=1|orig.time=7am
+1902	10	16	11	17	0	67	Orig=2|orig.time=7am
+1902	10	17	11	17	0	0	Orig=0|orig.time=7am
+1902	10	18	11	17	0	67	Orig=2|orig.time=7am
+1902	10	19	11	17	0	67	Orig=2|orig.time=7am
+1902	10	20	11	17	0	67	Orig=2|orig.time=7am
+1902	10	22	11	17	0	33	Orig=1|orig.time=7am
+1902	10	23	11	17	0	100	Orig=3|orig.time=7am
+1902	10	24	11	17	0	67	Orig=2|orig.time=7am
+1902	10	25	11	17	0	100	Orig=3|orig.time=7am
+1902	10	26	11	17	0	100	Orig=3|orig.time=7am
+1902	10	27	11	17	0	100	Orig=3|orig.time=7am
+1902	10	29	11	17	0	67	Orig=2|orig.time=7am
+1902	10	30	11	17	0	67	Orig=2|orig.time=7am
+1902	10	31	11	17	0	67	Orig=2|orig.time=7am
+1902	11	1	11	17	0	67	Orig=2|orig.time=7am
+1902	11	2	11	17	0	100	Orig=3|orig.time=7am
+1902	11	3	11	17	0	100	Orig=3|orig.time=7am
+1902	11	4	11	17	0	100	Orig=3|orig.time=7am
+1902	11	5	11	17	0	67	Orig=2|orig.time=7am
+1902	11	6	11	17	0	67	Orig=2|orig.time=7am
+1902	11	7	11	17	0	67	Orig=2|orig.time=7am
+1902	11	8	11	17	0	100	Orig=3|orig.time=7am
+1902	11	10	11	17	0	0	Orig=0|orig.time=7am
+1902	11	12	11	17	0	0	Orig=0|orig.time=7am
+1902	11	13	11	17	0	33	Orig=1|orig.time=7am
+1902	11	14	11	17	0	67	Orig=2|orig.time=7am
+1902	11	15	11	17	0	100	Orig=3|orig.time=7am
+1902	11	16	11	17	0	33	Orig=1|orig.time=7am
+1902	11	17	11	17	0	33	Orig=1|orig.time=7am
+1902	11	18	11	17	0	33	Orig=1|orig.time=7am
+1902	11	19	11	17	0	100	Orig=3|orig.time=7am
+1902	11	20	11	17	0	67	Orig=2|orig.time=7am
+1902	11	21	11	17	0	0	Orig=0|orig.time=7am
+1902	11	23	11	17	0	100	Orig=3|orig.time=7am
+1902	11	24	11	17	0	67	Orig=2|orig.time=7am
+1902	11	25	11	17	0	33	Orig=1|orig.time=7am
+1902	11	26	11	17	0	100	Orig=3|orig.time=7am
+1902	12	7	11	17	0	67	Orig=2|orig.time=7am
+1902	12	9	11	17	0	67	Orig=2|orig.time=7am
+1902	12	10	11	17	0	67	Orig=2|orig.time=7am
+1902	12	11	11	17	0	0	Orig=0|orig.time=7am
+1902	12	12	11	17	0	0	Orig=0|orig.time=7am
+1902	12	13	11	17	0	100	Orig=3|orig.time=7am
+1902	12	14	11	17	0	67	Orig=2|orig.time=7am
+1902	12	15	11	17	0	100	Orig=3|orig.time=7am
+1902	12	16	11	17	0	33	Orig=1|orig.time=7am
+1902	12	17	11	17	0	100	Orig=3|orig.time=7am
+1902	12	18	11	17	0	100	Orig=3|orig.time=7am
+1902	12	19	11	17	0	100	Orig=3|orig.time=7am
+1902	12	20	11	17	0	67	Orig=2|orig.time=7am
+1902	12	21	11	17	0	100	Orig=3|orig.time=7am
+1902	12	22	11	17	0	33	Orig=1|orig.time=7am
+1902	12	23	11	17	0	67	Orig=2|orig.time=7am
+1902	12	24	11	17	0	33	Orig=1|orig.time=7am
+1902	12	25	11	17	0	100	Orig=3|orig.time=7am
+1902	12	26	11	17	0	33	Orig=1|orig.time=7am
+1902	12	27	11	17	0	33	Orig=1|orig.time=7am
+1902	12	28	11	17	0	33	Orig=1|orig.time=7am
+1902	12	29	11	17	0	33	Orig=1|orig.time=7am
+1902	12	30	11	17	0	67	Orig=2|orig.time=7am
+1902	12	31	11	17	0	33	Orig=1|orig.time=7am

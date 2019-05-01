@@ -1,0 +1,13 @@
+SEF	0.2.0
+ID	DWR_Pico_Salama.
+Name	Pico Salamanca
+Lat	-45.5733
+Lon	-67.3372
+Alt	NA
+Source	C3S_SouthAmerica
+Link	https://data-rescue.copernicus-climate.eu/lso/1085703
+Vbl	mslp
+Stat	point
+Units	Pa
+Meta	Data policy=GNU GPL v3.0
+Year	Month	Day	Hour	Minute	Period	Value	Meta

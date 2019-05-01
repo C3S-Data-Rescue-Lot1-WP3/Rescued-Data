@@ -1,0 +1,36 @@
+SEF	0.2.0
+ID	DWR_Bolivar
+Name	Bolivar
+Lat	-36.2383
+Lon	-61.2336
+Alt	NA
+Source	C3S_SouthAmerica
+Link	https://data-rescue.copernicus-climate.eu/lso/1084923
+Vbl	mslp
+Stat	point
+Units	Pa
+Meta	Data policy=GNU GPL v3.0
+Year	Month	Day	Hour	Minute	Period	Value	Meta
+1902	12	8	11	17	0	101245	Orig=759.4mm|orig.time=7am
+1902	12	9	11	17	0	102018	Orig=765.2mm|orig.time=7am
+1902	12	10	11	17	0	101272	Orig=759.6mm|orig.time=7am
+1902	12	11	11	17	0	101112	Orig=758.4mm|orig.time=7am
+1902	12	12	11	17	0	100592	Orig=754.5mm|orig.time=7am
+1902	12	13	11	17	0	101538	Orig=761.6mm|orig.time=7am
+1902	12	14	11	17	0	102485	Orig=768.7mm|orig.time=7am
+1902	12	15	11	17	0	101805	Orig=763.6mm|orig.time=7am
+1902	12	16	11	17	0	101538	Orig=761.6mm|orig.time=7am
+1902	12	17	11	17	0	101338	Orig=760.1mm|orig.time=7am
+1902	12	18	11	17	0	101232	Orig=759.3mm|orig.time=7am
+1902	12	19	11	17	0	101338	Orig=760.1mm|orig.time=7am
+1902	12	20	11	17	0	101458	Orig=761mm|orig.time=7am
+1902	12	21	11	17	0	101072	Orig=758.1mm|orig.time=7am
+1902	12	22	11	17	0	100458	Orig=753.5mm|orig.time=7am
+1902	12	23	11	17	0	100405	Orig=753.1mm|orig.time=7am
+1902	12	25	11	17	0	101498	Orig=761.3mm|orig.time=7am
+1902	12	26	11	17	0	101005	Orig=757.6mm|orig.time=7am
+1902	12	27	11	17	0	101005	Orig=757.6mm|orig.time=7am
+1902	12	28	11	17	0	101312	Orig=759.9mm|orig.time=7am
+1902	12	29	11	17	0	101778	Orig=763.4mm|orig.time=7am
+1902	12	30	11	17	0	102765	Orig=770.8mm|orig.time=7am
+1902	12	31	11	17	0	102365	Orig=767.8mm|orig.time=7am

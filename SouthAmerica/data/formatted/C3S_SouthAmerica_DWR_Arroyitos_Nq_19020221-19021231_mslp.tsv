@@ -1,0 +1,22 @@
+SEF	0.2.0
+ID	DWR_Arroyitos_Nq
+Name	NEQUEN - Arroyitos
+Lat	-39.0733
+Lon	-68.565
+Alt	NA
+Source	C3S_SouthAmerica
+Link	https://data-rescue.copernicus-climate.eu/lso/1085583
+Vbl	mslp
+Stat	point
+Units	Pa
+Meta	Data policy=GNU GPL v3.0
+Year	Month	Day	Hour	Minute	Period	Value	Meta
+1902	11	28	11	17	0	101192	Orig=759mm|orig.time=7am
+1902	11	29	11	17	0	101458	Orig=761mm|orig.time=7am
+1902	11	30	11	17	0	101352	Orig=760.2mm|orig.time=7am
+1902	12	1	11	17	0	101192	Orig=759mm|orig.time=7am
+1902	12	2	11	17	0	101392	Orig=760.5mm|orig.time=7am
+1902	12	4	11	17	0	101458	Orig=761mm|orig.time=7am
+1902	12	5	11	17	0	101392	Orig=760.5mm|orig.time=7am
+1902	12	6	11	17	0	101032	Orig=757.8mm|orig.time=7am
+1902	12	7	11	17	0	101325	Orig=760mm|orig.time=7am

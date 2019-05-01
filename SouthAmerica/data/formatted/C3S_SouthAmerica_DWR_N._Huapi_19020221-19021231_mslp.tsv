@@ -1,0 +1,27 @@
+SEF	0.2.0
+ID	DWR_N._Huapi
+Name	N. Huapí
+Lat	-40.9256
+Lon	-71.5151
+Alt	NA
+Source	C3S_SouthAmerica
+Link	https://data-rescue.copernicus-climate.eu/lso/1085619
+Vbl	mslp
+Stat	point
+Units	Pa
+Meta	Data policy=GNU GPL v3.0
+Year	Month	Day	Hour	Minute	Period	Value	Meta
+1902	12	10	11	17	0	101178	Orig=758.9mm|orig.time=7am
+1902	12	12	11	17	0	100698	Orig=755.3mm|orig.time=7am
+1902	12	13	11	17	0	101845	Orig=763.9mm|orig.time=7am
+1902	12	14	11	17	0	101858	Orig=764mm|orig.time=7am
+1902	12	15	11	17	0	101005	Orig=757.6mm|orig.time=7am
+1902	12	19	11	17	0	100965	Orig=757.3mm|orig.time=7am
+1902	12	20	11	17	0	101325	Orig=760mm|orig.time=7am
+1902	12	21	11	17	0	100885	Orig=756.7mm|orig.time=7am
+1902	12	22	11	17	0	100432	Orig=753.3mm|orig.time=7am
+1902	12	23	11	17	0	100285	Orig=752.2mm|orig.time=7am
+1902	12	26	11	17	0	101165	Orig=758.8mm|orig.time=7am
+1902	12	29	11	17	0	101618	Orig=762.2mm|orig.time=7am
+1902	12	30	11	17	0	101552	Orig=761.7mm|orig.time=7am
+1902	12	31	11	17	0	101218	Orig=759.2mm|orig.time=7am
