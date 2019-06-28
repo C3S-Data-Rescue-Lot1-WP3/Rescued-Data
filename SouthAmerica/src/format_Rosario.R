@@ -116,7 +116,7 @@ template2$rr_orig <- paste0("Orig=", template2$rr, "in")
 template2$rr <- 25.4 * as.numeric(template2$rr)
 
 ## Read data (3rd part - 3 observations per day - precipitation in mm)
-template3 <- read_template(1038, 1583, c("0700", "1400", "2100"), c(17, 29, 42),
+template3 <- read_template(1038, 1402, c("0700", "1400", "2100"), c(17, 29, 42),
                            list(c("atb", "p", "ta", "tb", "n", NA, NA, "dd", 
                                   "w", "rr", "Tx", "Tn", NA, NA),
                                 c("atb", "p", "ta", "tb", "n", NA, NA, "dd", 
@@ -125,19 +125,41 @@ template3 <- read_template(1038, 1583, c("0700", "1400", "2100"), c(17, 29, 42),
                                   "w", "rr", NA, NA, "ss")))
 template3$rr_orig <- paste0("Orig=", template3$rr, "mm")
 
-## Read data (4th part - 2 observations per day - precipitation in mm)
-template4 <- read_template(1591, 3985, c("0800", "1800"), c(24, 45),
+## Read data (4th part - 3 observations per day - precipitation in mm, zeros omitted)
+template4 <- read_template(1403, 1583, c("0700", "1400", "2100"), c(17, 29, 42),
+                           list(c("atb", "p", "ta", "tb", "n", NA, NA, "dd", 
+                                  "w", "rr", "Tx", "Tn", NA, NA),
+                                c("atb", "p", "ta", "tb", "n", NA, NA, "dd", 
+                                  "w", "rr", NA, NA),
+                                c("atb", "p", "ta", "tb", "n", NA, NA, "dd", 
+                                  "w", "rr", NA, NA, "ss")))
+template4$rr[is.na(template4$rr)] <- 0
+template4$rr_orig <- paste0("Orig=", template4$rr, "mm")
+
+## Read data (5th part - 2 observations per day - precipitation in mm, zeros omitted)
+template5 <- read_template(1591, 2921, c("0800", "1800"), c(24, 45),
                            list(c("atb", "p", "ta", "tb", NA, "n", NA, NA, "dd", 
                                   "w", "rr", "Tx", "Tn", "Ts", NA, NA,
                                   NA, NA, NA, NA, NA),
                                 c("atb", "p", "ta", "tb", NA, "n", NA, NA, "dd", 
                                   "w", "rr", "Tx", "Tn", NA, NA, NA, NA,
                                   "ss", NA, NA, NA)))
-template4$rr_orig <- paste0("Orig=", template4$rr, "mm")
+template5$rr[is.na(template5$rr)] <- 0
+template5$rr_orig <- paste0("Orig=", template5$rr, "mm")
+
+## Read data (6th part - 2 observations per day - precipitation in mm)
+template6 <- read_template(2922, 3985, c("0800", "1800"), c(24, 45),
+                           list(c("atb", "p", "ta", "tb", NA, "n", NA, NA, "dd", 
+                                  "w", "rr", "Tx", "Tn", "Ts", NA, NA,
+                                  NA, NA, NA, NA, NA),
+                                c("atb", "p", "ta", "tb", NA, "n", NA, NA, "dd", 
+                                  "w", "rr", "Tx", "Tn", NA, NA, NA, NA,
+                                  "ss", NA, NA, NA)))
+template6$rr_orig <- paste0("Orig=", template6$rr, "mm")
 
 
 ## Merge templates
-template_all <- rbind.fill(template1, template2, template3, template4)
+template_all <- rbind.fill(template1, template2, template3, template4, template5, template6)
 template_all <- template_all[which(!is.na(template_all$y)), ]
 template_all$p_orig <- paste0("Orig=", template_all$p, "mm|atb=", 
                               template_all$atb, "C")
