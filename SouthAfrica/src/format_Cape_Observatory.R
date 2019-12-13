@@ -1,7 +1,7 @@
 # Converts the Cape Town Royal Observatory data digitized by
 # the University of Witwatersrand into the Station Exchange Format.
 #
-# Requires file write_sef.R and libraries XLConnect, plyr, suncalc
+# Requires libraries XLConnect, plyr, suncalc, dataresqc
 #
 # Created by Yuri Brugnara, University of Bern - 21 Dec 2018
 
@@ -11,7 +11,8 @@
 require(XLConnect)
 require(plyr)
 require(suncalc)
-source("write_sef.R")
+library(SEF)
+#library(dataresqc)
 options(scipen = 999) # avoid exponential notation
 
 
@@ -24,15 +25,18 @@ outpath <- "../data/formatted/"
 
 # Define variables, units, times
 variables <- c("ta", "p", "dd", "Tx", "Tn", "tb", "wind_force", "w")
-units <- c("C", "Pa", "degree", "C", "C", "C", "Beaufort", "m/s")
+registry_id <- c(1086289, 1086288, 1086287, 1086292, 1086291, 1086293, 1086290, 1086290)
+units <- c("C", "hPa", "degree", "C", "C", "C", "Beaufort", "m/s")
+stats <- c(rep("point",3), "maximum", "minimum", rep("point",2), "mean")
+periods <- c(rep(0,3), rep("p1day",2), rep(0,2), "p1day")
 types <- c("Sunrise", "Noon", "Sunset", "Midnight")
 keeps <- c("sunrise", "solarNoon", "sunset", "nadir")
 
 # Define conversions to apply to the raw data
 conversions <- list(ta = function(x) round((x - 32) * 5 / 9, 1),
                     p = function(x, y) 
-                      round(100 * convert_pressure(x, f = 25.4, lat = lat, 
-                                                   alt = alt, atb = y), 0),
+                      round(dataresqc::convert_pressure(x, f = 25.4, lat = lat, 
+                                                   alt = alt, atb = y), 2),
                     dd = function(x) round(x, 0),
                     Tx = function(x) round((x - 32) * 5 / 9, 1),
                     Tn = function(x) round((x - 32) * 5 / 9, 1),
@@ -104,7 +108,7 @@ for (year in 1834:1899) {
     template$m <- as.integer(fill(get_month(template$m)))
     template$d <- fill(template$d)
     template <- template[which(!is.na(template$m)), ]
-    template$p_orig <- paste0("Orig=", template$p, "in,atb=", 
+    template$p_orig <- paste0("Orig=", template$p, "in|atb=", 
                               template$atb, "F")
     template$ta_orig <- paste0("Orig=", template$ta, "F")
     template$tb_orig <- paste0("Orig=", template$tb, "F")
@@ -112,17 +116,19 @@ for (year in 1834:1899) {
     template$Tn_orig <- paste0("Orig=", template$Tn, "F")
     template$dd_orig <- paste0("Orig=", template$dd)
     template$wind_force_orig <- paste0("Orig=", template$wind_force)
-    j <- which(template$h %in% types)
-    if (length(j) > 0) {
-      template[j, paste0(c("p", "ta", "tb", "Tx", "Tn", "dd", "wind_force"), "_orig")] <-
-        sapply(template[j, paste0(c("p", "ta", "tb", "Tx", "Tn", "dd", "wind_force"), 
+#    j <- which(template$h %in% types)
+#    if (length(j) > 0) {
+      template[, paste0(c("p", "ta", "tb", "Tx", "Tn", "dd", "wind_force"), "_orig")] <-
+        sapply(template[, paste0(c("p", "ta", "tb", "Tx", "Tn", "dd", "wind_force"), 
                                   "_orig")],
-               paste, paste0("t=", template$h[j]), sep = ",")
+               paste, paste0("orig.time=", template$h), sep = "|")
       for (i in 1:4) {
-        template$h[which(template$h == types[i])] <- 
-          to_utc(template[which(template$h == types[i]), ], keeps[i], lat, lon, year)
+        j <- which(template$h == types[i])
+        if (length(j) > 0) {
+          template$h[j] <- to_utc(template[j, ], keeps[i], lat, lon, year)
+        }
       }
-    }
+#    }
     template$h <- sub("h", "", template$h)
     template$h <- sub(":", "", template$h)
     
@@ -148,7 +154,7 @@ for (year in 1834:1899) {
     template <- template[which(!is.na(template$m)), ]
     template$h <- sub("h", "", template$h)
     template$h <- sub(":", "", template$h)
-    template$p_orig <- paste0("Orig=", template$p, "in,atb=", 
+    template$p_orig <- paste0("Orig=", template$p, "in|atb=", 
                               template$atb, "F")
     template$ta_orig <- paste0("Orig=", template$ta, "F")
     template$tb_orig <- paste0("Orig=", template$tb, "F")
@@ -180,7 +186,7 @@ for (year in 1834:1899) {
     template <- template[which(!is.na(template$m)), ]
     template$h <- sub("h", "", template$h)
     template$h <- sub(":", "", template$h)
-    template$p_orig <- paste0("Orig=", template$p, "in,atb=", 
+    template$p_orig <- paste0("Orig=", template$p, "in|atb=", 
                               template$atb, "F")
     template$ta_orig <- paste0("Orig=", template$ta, "F")
     template$tb_orig <- paste0("Orig=", template$tb, "F")
@@ -350,7 +356,7 @@ for (year in 1834:1899) {
     template2$m <- as.integer(fill(get_month(template2$m)))
     template2$d <- fill(template2$d)
     template2 <- template2[which(!is.na(template2$m)), ]
-    template2$p_orig <- paste0("Orig=", template2$p, "in,PTC=?")
+    template2$p_orig <- paste0("Orig=", template2$p, "in|PTC=?")
     template2$ta_orig <- paste0("Orig=", template2$ta, "F")
     template2$tb_orig <- paste0("Orig=", template2$tb, "F")
     template2$Tx_orig <- paste0("Orig=", template2$Tx, "F")
@@ -372,7 +378,7 @@ for (year in 1834:1899) {
     template$d <- fill(template$d)
     template$h <- ""
     template <- template[which(!is.na(template$m)), ]
-    template$p_orig <- paste0("Orig=", template$p, "in,PTC=?")
+    template$p_orig <- paste0("Orig=", template$p, "in|PTC=?")
     template$ta_orig <- paste0("Orig=", template$ta, "F")
     template$tb_orig <- paste0("Orig=", template$tb, "F")
     template$Tx_orig <- paste0("Orig=", template$Tx, "F")
@@ -418,7 +424,7 @@ for (year in 1834:1899) {
         }
       }
     }
-    template$p_orig <- paste0("Orig=", template$p, "in,atb=", template$atb, "F")
+    template$p_orig <- paste0("Orig=", template$p, "in|atb=", template$atb, "F")
     template$Tx_orig <- paste0("Orig=", template$Tx, "F")
     template$Tn_orig <- paste0("Orig=", template$Tn, "F")
     template$ta_orig <- paste0("Orig=", template$ta, "F")
@@ -460,11 +466,16 @@ for (year in 1834:1899) {
     template$h[which(nchar(template$h) == 3)] <- 
       paste0(0, template$h[which(nchar(template$h) == 3)])
     dates <- paste(template$y, template$m, template$d, sep = "-")
-    ko <- grep("t=", template$ta_orig)
-    if (length(ko) > 0) {
-      j <- (1:length(dates))[-ko]
-    } else {
-      j <- 1:length(dates)
+    cnames <- names(template)[grep("orig", names(template))]
+    for (i in 1:length(cnames)) {
+      ko <- grep("orig.time=", template[, cnames[i]])
+      if (length(ko) > 0) {
+        j <- (1:length(dates))[-ko]
+      } else {
+        j <- 1:length(dates)
+      }
+      template[j, cnames[i]] <- 
+        paste0(template[j, cnames[i]], "|orig.time=", template$h[j])
     }
     times <- strptime(paste(dates[j], template$h[j]), 
                       format = "%Y-%m-%d %H%M") - 3600 * 24 * lon / 360
@@ -505,31 +516,31 @@ for (year in 1834:1899) {
 
 ## Write output
 for (i in 1:length(variables)) {
-  ## First remove missing values, order by time and add column with variable code
-  Data[[variables[i]]] <- Data[[variables[i]]][which(!is.na(Data[[variables[i]]][, 5])), ]
+  ## Order by time and split hour and minute
   Data[[variables[i]]] <- Data[[variables[i]]][order(Data[[variables[i]]]$y,
                                                      Data[[variables[i]]]$m,
                                                      Data[[variables[i]]]$d,
                                                      Data[[variables[i]]]$h), ]
-  if (dim(Data[[variables[i]]])[1] > 0) {
-    Data[[variables[i]]] <- cbind(variables[i], Data[[variables[i]]])
-    if (variables[i] %in% c("Tx", "Tn")) time_flag <- 13
-    else if (variables[i] == "w") time_flag <- c(rep(0, sum(Data[[variables[i]]]$y < 1877)),
-                                                 rep(1, sum(Data[[variables[i]]]$y >= 1877)))
-    else if (variables[i] != "dd" & year %in% 1879:1880) time_flag <- ""
-    else time_flag <- 0
-    write_sef(Data = Data[[variables[i]]][, 1:6],
-              outpath = outpath,
-              cod = "Cape_Town_Obs",
-              nam = "Cape Town (Observatory)",
-              lat = lat,
-              lon = lon,
-              alt = alt,
-              sou = "C3S_SouthAfrica",
-              repo = "",
-              units = units[i],
-              metaHead = ifelse(i==2, "PTC=T,PGC=T", ""),
-              meta = Data[[variables[i]]][, 7],
-              timef = time_flag)
+  Data[[variables[i]]]$hh <- as.integer(substr(Data[[variables[i]]]$h, 1, 2))
+  Data[[variables[i]]]$mm <- as.integer(substr(Data[[variables[i]]]$h, 3, 4))
+  Data[[variables[i]]] <- Data[[variables[i]]][, c(1:3, 7:8, 5:6)]
+  ## Remove data for 1879-1880 because we don't know what they are
+  if (!variables[i] %in% c("Tx","Tn")) {
+    Data[[variables[i]]] <- Data[[variables[i]]][which(!Data[[variables[i]]]$y %in% 1879:1880), ]
   }
+  write_sef(Data = Data[[variables[i]]][, 1:6],
+            outpath = outpath,
+            variable = variables[i],
+            cod = "Cape_Town_Obs",
+            nam = "Cape Town (Observatory)",
+            lat = lat,
+            lon = lon,
+            alt = alt,
+            sou = "C3S_SouthAfrica",
+            link = paste0("https://data-rescue.copernicus-climate.eu/lso/", registry_id[i]),
+            units = units[i],
+            stat = stats[i],
+            metaHead = paste0("Data policy=GNU GPL v3.0", ifelse(i==2, "|PTC=Y|PGC=Y", "")),
+            meta = Data[[variables[i]]][, 7],
+            period = periods[i])
 }
