@@ -4,6 +4,7 @@
 # Requires libraries XLConnect, plyr, suncalc, dataresqc
 #
 # Created by Yuri Brugnara, University of Bern - 21 Dec 2018
+# Updated 7 Jan 2020
 
 ###############################################################################
 
@@ -11,8 +12,7 @@
 require(XLConnect)
 require(plyr)
 require(suncalc)
-library(SEF)
-#library(dataresqc)
+library(dataresqc)
 options(scipen = 999) # avoid exponential notation
 
 

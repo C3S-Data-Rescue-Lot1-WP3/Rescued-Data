@@ -22,7 +22,7 @@ Year	Month	Day	Hour	Minute	Period	Value	Meta
 1835	2	28	10	59	0	18.9	Orig=66F|orig.time=Noon
 1835	3	1	10	59	0	16.4	Orig=61.5F|orig.time=Noon
 1835	3	2	10	59	0	17.8	Orig=64F|orig.time=Noon
-1835	3	3	10	58	0	18.6	Orig=65.4F|orig.time=Noon
+1835	3	3	10	59	0	18.6	Orig=65.4F|orig.time=Noon
 1835	3	5	17	16	0	20.7	Orig=69.3F|orig.time=Sunset
 1835	3	6	10	58	0	21.4	Orig=70.6F|orig.time=Noon
 1835	3	7	10	57	0	15.8	Orig=60.5F|orig.time=Noon
@@ -31,7 +31,7 @@ Year	Month	Day	Hour	Minute	Period	Value	Meta
 1835	3	10	10	57	0	17.8	Orig=64F|orig.time=Noon
 1835	3	11	10	56	0	19.7	Orig=67.4F|orig.time=Noon
 1835	3	13	10	56	0	19.4	Orig=67F|orig.time=Noon
-1835	3	14	10	55	0	18.6	Orig=65.5F|orig.time=Noon
+1835	3	14	10	56	0	18.6	Orig=65.5F|orig.time=Noon
 1835	3	15	10	55	0	20.3	Orig=68.5F|orig.time=Noon
 1835	3	16	10	55	0	20.6	Orig=69F|orig.time=Noon
 1835	3	17	10	55	0	19.4	Orig=67F|orig.time=Noon
@@ -99,7 +99,7 @@ Year	Month	Day	Hour	Minute	Period	Value	Meta
 1835	6	5	10	46	0	13.8	Orig=56.8F|orig.time=Noon
 1835	6	6	10	46	0	14.2	Orig=57.6F|orig.time=Noon
 1835	6	7	10	46	0	13.8	Orig=56.8F|orig.time=Noon
-1835	6	8	10	46	0	16.2	Orig=61.1F|orig.time=Noon
+1835	6	8	10	47	0	16.2	Orig=61.1F|orig.time=Noon
 1835	6	9	10	47	0	15.4	Orig=59.8F|orig.time=Noon
 1835	6	10	10	47	0	14.7	Orig=58.5F|orig.time=Noon
 1835	6	11	10	47	0	16	Orig=60.8F|orig.time=Noon
@@ -108,7 +108,7 @@ Year	Month	Day	Hour	Minute	Period	Value	Meta
 1835	6	14	10	48	0	12	Orig=53.6F|orig.time=Noon
 1835	6	15	10	48	0	10.7	Orig=51.2F|orig.time=Noon
 1835	6	16	10	48	0	13.6	Orig=56.5F|orig.time=Noon
-1835	6	18	10	48	0	13.4	Orig=56.1F|orig.time=Noon
+1835	6	18	10	49	0	13.4	Orig=56.1F|orig.time=Noon
 1835	6	19	10	49	0	13.6	Orig=56.4F|orig.time=Noon
 1835	6	20	10	49	0	13.6	Orig=56.5F|orig.time=Noon
 1835	6	21	10	49	0	11.1	Orig=52F|orig.time=Noon
@@ -118,7 +118,7 @@ Year	Month	Day	Hour	Minute	Period	Value	Meta
 1835	6	28	10	50	0	14.4	Orig=58F|orig.time=Noon
 1835	6	29	10	51	0	17.2	Orig=63F|orig.time=Noon
 1835	6	30	10	51	0	14.2	Orig=57.5F|orig.time=Noon
-1835	7	4	10	51	0	13.1	Orig=55.5F|orig.time=Noon
+1835	7	4	10	52	0	13.1	Orig=55.5F|orig.time=Noon
 1835	7	5	10	52	0	13.6	Orig=56.5F|orig.time=Noon
 1835	7	6	10	52	0	14	Orig=57.2F|orig.time=Noon
 1835	7	7	10	52	0	15.3	Orig=59.6F|orig.time=Noon
@@ -217,7 +217,7 @@ Year	Month	Day	Hour	Minute	Period	Value	Meta
 1835	10	31	10	30	0	18.2	Orig=64.8F|orig.time=Noon
 1835	11	1	10	30	0	19.4	Orig=67F|orig.time=Noon
 1835	11	2	10	30	0	20.8	Orig=69.5F|orig.time=Noon
-1835	11	3	10	30	0	20	Orig=68F|orig.time=Noon
+1835	11	3	10	31	0	20	Orig=68F|orig.time=Noon
 1835	11	4	10	31	0	21.1	Orig=70F|orig.time=Noon
 1835	11	5	10	31	0	20	Orig=68F|orig.time=Noon
 1835	11	6	10	31	0	18.1	Orig=64.5F|orig.time=Noon
@@ -238,7 +238,7 @@ Year	Month	Day	Hour	Minute	Period	Value	Meta
 1835	11	21	10	34	0	20	Orig=68F|orig.time=Noon
 1835	11	22	10	34	0	17.9	Orig=64.3F|orig.time=Noon
 1835	11	23	10	34	0	18.1	Orig=64.5F|orig.time=Noon
-1835	11	24	10	34	0	18.6	Orig=65.5F|orig.time=Noon
+1835	11	24	10	35	0	18.6	Orig=65.5F|orig.time=Noon
 1835	11	25	10	35	0	17.8	Orig=64F|orig.time=Noon
 1835	11	26	10	35	0	13.9	Orig=57F|orig.time=Noon
 1835	11	27	10	36	0	14.4	Orig=58F|orig.time=Noon
@@ -422,7 +422,7 @@ Year	Month	Day	Hour	Minute	Period	Value	Meta
 1836	5	13	10	43	0	18.3	Orig=65F|orig.time=Noon
 1836	5	14	10	43	0	16.8	Orig=62.2F|orig.time=Noon
 1836	5	15	10	43	0	16.7	Orig=62F|orig.time=Noon
-1836	5	16	10	43	0	16.7	Orig=62F|orig.time=Noon
+1836	5	16	10	44	0	16.7	Orig=62F|orig.time=Noon
 1836	5	17	10	44	0	17.8	Orig=64F|orig.time=Noon
 1836	5	18	10	44	0	19.2	Orig=66.6F|orig.time=Noon
 1836	5	19	10	44	0	16.1	Orig=61F|orig.time=Noon
@@ -526,7 +526,7 @@ Year	Month	Day	Hour	Minute	Period	Value	Meta
 1836	8	9	10	52	0	13.6	Orig=56.5F|orig.time=Noon
 1836	8	10	10	52	0	13.6	Orig=56.5F|orig.time=Noon
 1836	8	11	10	52	0	12.3	Orig=54.2F|orig.time=Noon
-1836	8	12	10	51	0	12.8	Orig=55F|orig.time=Noon
+1836	8	12	10	52	0	12.8	Orig=55F|orig.time=Noon
 1836	8	15	10	51	0	12.5	Orig=54.5F|orig.time=Noon
 1836	8	16	10	51	0	14.6	Orig=58.2F|orig.time=Noon
 1836	8	17	10	50	0	13.7	Orig=56.7F|orig.time=Noon
@@ -555,7 +555,7 @@ Year	Month	Day	Hour	Minute	Period	Value	Meta
 1836	9	9	10	43	0	11.7	Orig=53F|orig.time=Noon
 1836	9	11	10	43	0	12.6	Orig=54.6F|orig.time=Noon
 1836	9	12	10	42	0	15	Orig=59F|orig.time=Noon
-1836	9	14	10	41	0	13	Orig=55.4F|orig.time=Noon
+1836	9	14	10	42	0	13	Orig=55.4F|orig.time=Noon
 1836	9	15	10	41	0	10.1	Orig=50.2F|orig.time=Noon
 1836	9	16	10	41	0	11.1	Orig=51.9F|orig.time=Noon
 1836	9	17	10	40	0	11.9	Orig=53.5F|orig.time=Noon
@@ -581,7 +581,7 @@ Year	Month	Day	Hour	Minute	Period	Value	Meta
 1836	10	9	10	33	0	16.1	Orig=61F|orig.time=Noon
 1836	10	10	10	33	0	15	Orig=59F|orig.time=Noon
 1836	10	11	10	33	0	14.2	Orig=57.5F|orig.time=Noon
-1836	10	12	10	32	0	17.9	Orig=64.2F|orig.time=Noon
+1836	10	12	10	33	0	17.9	Orig=64.2F|orig.time=Noon
 1836	10	13	10	32	0	20	Orig=68F|orig.time=Noon
 1836	10	14	22	32	0	18.1	Orig=64.5F|orig.time=Midnight
 1836	10	15	10	32	0	18.3	Orig=65F|orig.time=Noon
@@ -619,7 +619,7 @@ Year	Month	Day	Hour	Minute	Period	Value	Meta
 1836	11	17	10	33	0	18.3	Orig=65F|orig.time=Noon
 1836	11	18	10	33	0	16.7	Orig=62F|orig.time=Noon
 1836	11	19	10	33	0	15.6	Orig=60F|orig.time=Noon
-1836	11	20	10	33	0	15.2	Orig=59.4F|orig.time=Noon
+1836	11	20	10	34	0	15.2	Orig=59.4F|orig.time=Noon
 1836	11	21	10	34	0	16.7	Orig=62F|orig.time=Noon
 1836	11	22	10	34	0	17.8	Orig=64F|orig.time=Noon
 1836	11	23	17	39	0	20.6	Orig=69F|orig.time=Sunset
@@ -643,7 +643,7 @@ Year	Month	Day	Hour	Minute	Period	Value	Meta
 1836	12	14	10	43	0	17	Orig=62.6F|orig.time=Noon
 1836	12	15	10	44	0	17.2	Orig=63F|orig.time=Noon
 1836	12	16	10	44	0	17.8	Orig=64F|orig.time=Noon
-1836	12	17	10	44	0	17.8	Orig=64F|orig.time=Noon
+1836	12	17	10	45	0	17.8	Orig=64F|orig.time=Noon
 1836	12	18	10	45	0	20.3	Orig=68.5F|orig.time=Noon
 1836	12	19	10	45	0	17.8	Orig=64F|orig.time=Noon
 1836	12	20	10	46	0	16.6	Orig=61.8F|orig.time=Noon

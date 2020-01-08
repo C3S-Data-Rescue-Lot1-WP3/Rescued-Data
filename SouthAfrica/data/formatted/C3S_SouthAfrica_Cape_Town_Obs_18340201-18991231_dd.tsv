@@ -30,7 +30,7 @@ Year	Month	Day	Hour	Minute	Period	Value	Meta
 1834	2	8	4	18	0	225	Orig=SW|orig.time=Sunrise
 1834	2	8	11	1	0	225	Orig=SW|orig.time=Noon
 1834	2	9	11	1	0	158	Orig=SSE|orig.time=Noon
-1834	2	9	17	43	0	135	Orig=SE|orig.time=Sunset
+1834	2	9	17	44	0	135	Orig=SE|orig.time=Sunset
 1834	2	9	23	1	0	158	Orig=SSE|orig.time=Midnight
 1834	2	10	4	20	0	158	Orig=SSE|orig.time=Sunrise
 1834	2	10	11	1	0	158	Orig=SSE|orig.time=Noon
@@ -41,7 +41,7 @@ Year	Month	Day	Hour	Minute	Period	Value	Meta
 1834	2	18	11	1	0	292	Orig=WNW|orig.time=Noon
 1834	2	18	17	34	0	292	Orig=WNW|orig.time=Sunset
 1834	2	19	23	1	0	202	Orig=SSW|orig.time=Midnight
-1834	2	20	11	0	0	158	Orig=SSE|orig.time=Noon
+1834	2	20	11	1	0	158	Orig=SSE|orig.time=Noon
 1834	2	22	23	0	0	135	Orig=SE|orig.time=Midnight
 1834	2	24	17	27	0	225	Orig=SW|orig.time=Sunset
 1834	2	25	17	26	0	225	Orig=SW|orig.time=Sunset
@@ -132,7 +132,7 @@ Year	Month	Day	Hour	Minute	Period	Value	Meta
 1834	4	5	10	49	0	135	Orig=SE|orig.time=Noon
 1834	4	5	16	34	0	135	Orig=SE|orig.time=Sunset
 1834	4	5	22	49	0	225	Orig=SW|orig.time=Midnight
-1834	4	6	5	4	0	135	Orig=SE|orig.time=Sunrise
+1834	4	6	5	5	0	135	Orig=SE|orig.time=Sunrise
 1834	4	6	10	48	0	135	Orig=SE|orig.time=Noon
 1834	4	6	16	32	0	135	Orig=SE|orig.time=Sunset
 1834	4	6	22	48	0	135	Orig=SE|orig.time=Midnight
@@ -159,9 +159,9 @@ Year	Month	Day	Hour	Minute	Period	Value	Meta
 1834	4	17	16	19	0	180	Orig=S|orig.time=Sunset
 1834	4	17	22	46	0	158	Orig=SSE|orig.time=Midnight
 1834	4	18	5	14	0	158	Orig=SSE|orig.time=Sunrise
-1834	4	18	10	45	0	158	Orig=SSE|orig.time=Noon
+1834	4	18	10	46	0	158	Orig=SSE|orig.time=Noon
 1834	4	18	16	17	0	158	Orig=SSE|orig.time=Sunset
-1834	4	18	22	45	0	158	Orig=SSE|orig.time=Midnight
+1834	4	18	22	46	0	158	Orig=SSE|orig.time=Midnight
 1834	4	19	22	45	0	180	Orig=S|orig.time=Midnight
 1834	4	20	5	15	0	158	Orig=SSE|orig.time=Sunrise
 1834	4	20	10	45	0	180	Orig=S|orig.time=Noon
@@ -278,7 +278,7 @@ Year	Month	Day	Hour	Minute	Period	Value	Meta
 1834	6	9	15	44	0	315	Orig=NW|orig.time=Sunset
 1834	6	10	10	47	0	338	Orig=NNW|orig.time=Noon
 1834	6	11	5	50	0	0	Orig=N|orig.time=Sunrise
-1834	6	11	15	44	0	338	Orig=NNW|orig.time=Sunset
+1834	6	11	15	45	0	338	Orig=NNW|orig.time=Sunset
 1834	6	12	5	50	0	338	Orig=NNW|orig.time=Sunrise
 1834	6	12	10	47	0	338	Orig=NNW|orig.time=Noon
 1834	6	12	15	45	0	338	Orig=NNW|orig.time=Sunset
@@ -389,7 +389,7 @@ Year	Month	Day	Hour	Minute	Period	Value	Meta
 1834	8	4	16	11	0	180	Orig=S|orig.time=Sunset
 1834	8	5	5	34	0	338	Orig=NNW|orig.time=Sunrise
 1834	8	5	16	12	0	315	Orig=NW|orig.time=Sunset
-1834	8	6	10	52	0	315	Orig=NW|orig.time=Noon
+1834	8	6	10	53	0	315	Orig=NW|orig.time=Noon
 1834	8	7	10	52	0	180	Orig=S|orig.time=Noon
 1834	8	8	5	31	0	315	Orig=NW|orig.time=Sunrise
 1834	8	8	10	52	0	315	Orig=NW|orig.time=Noon
@@ -403,7 +403,7 @@ Year	Month	Day	Hour	Minute	Period	Value	Meta
 1834	8	11	5	28	0	315	Orig=NW|orig.time=Sunrise
 1834	8	11	10	52	0	338	Orig=NNW|orig.time=Noon
 1834	8	11	16	16	0	338	Orig=NNW|orig.time=Sunset
-1834	8	12	5	26	0	0	Orig=N|orig.time=Sunrise
+1834	8	12	5	27	0	0	Orig=N|orig.time=Sunrise
 1834	8	12	16	17	0	315	Orig=NW|orig.time=Sunset
 1834	8	14	5	24	0	0	Orig=N|orig.time=Sunrise
 1834	8	14	10	51	0	338	Orig=NNW|orig.time=Noon
@@ -427,7 +427,7 @@ Year	Month	Day	Hour	Minute	Period	Value	Meta
 1834	8	21	5	16	0	0	Orig=N|orig.time=Sunrise
 1834	8	21	10	50	0	338	Orig=NNW|orig.time=Noon
 1834	8	22	22	49	0	180	Orig=S|orig.time=Midnight
-1834	8	25	10	48	0	338	Orig=NNW|orig.time=Noon
+1834	8	25	10	49	0	338	Orig=NNW|orig.time=Noon
 1834	8	25	16	26	0	315	Orig=NW|orig.time=Sunset
 1834	8	26	5	10	0	315	Orig=NW|orig.time=Sunrise
 1834	8	26	10	48	0	315	Orig=NW|orig.time=Noon
@@ -570,7 +570,7 @@ Year	Month	Day	Hour	Minute	Period	Value	Meta
 1834	10	26	10	31	0	315	Orig=NW|orig.time=Noon
 1834	10	26	22	31	0	315	Orig=NW|orig.time=Midnight
 1834	10	27	3	49	0	315	Orig=NW|orig.time=Sunrise
-1834	10	27	10	30	0	270	Orig=W|orig.time=Noon
+1834	10	27	10	31	0	270	Orig=W|orig.time=Noon
 1834	10	27	17	12	0	270	Orig=W|orig.time=Sunset
 1834	10	28	3	48	0	315	Orig=NW|orig.time=Sunrise
 1834	10	28	10	30	0	315	Orig=NW|orig.time=Noon
@@ -901,7 +901,7 @@ Year	Month	Day	Hour	Minute	Period	Value	Meta
 1835	2	13	11	1	0	180	Orig=S|orig.time=Noon
 1835	2	13	17	40	0	180	Orig=S|orig.time=Sunset
 1835	2	13	23	1	0	180	Orig=S|orig.time=Midnight
-1835	2	14	4	23	0	180	Orig=S|orig.time=Sunrise
+1835	2	14	4	24	0	180	Orig=S|orig.time=Sunrise
 1835	2	14	11	1	0	180	Orig=S|orig.time=Noon
 1835	2	14	17	39	0	180	Orig=S|orig.time=Sunset
 1835	2	14	23	1	0	180	Orig=S|orig.time=Midnight
@@ -955,8 +955,8 @@ Year	Month	Day	Hour	Minute	Period	Value	Meta
 1835	3	2	17	20	0	202	Orig=SSW|orig.time=Sunset
 1835	3	2	22	59	0	180	Orig=S|orig.time=Midnight
 1835	3	3	4	38	0	180	Orig=S|orig.time=Sunrise
-1835	3	3	10	58	0	180	Orig=S|orig.time=Noon
-1835	3	3	17	18	0	225	Orig=SW|orig.time=Sunset
+1835	3	3	10	59	0	180	Orig=S|orig.time=Noon
+1835	3	3	17	19	0	225	Orig=SW|orig.time=Sunset
 1835	3	4	4	39	0	180	Orig=S|orig.time=Sunrise
 1835	3	4	10	58	0	180	Orig=S|orig.time=Noon
 1835	3	4	12	30	0	180	Orig=S|orig.time=12h30
@@ -979,9 +979,9 @@ Year	Month	Day	Hour	Minute	Period	Value	Meta
 1835	3	12	17	7	0	180	Orig=S|orig.time=Sunset
 1835	3	12	22	56	0	158	Orig=SSE|orig.time=Midnight
 1835	3	13	4	46	0	180	Orig=S|orig.time=Sunrise
-1835	3	14	10	55	0	315	Orig=NW|orig.time=Noon
+1835	3	14	10	56	0	315	Orig=NW|orig.time=Noon
 1835	3	14	17	4	0	180	Orig=S|orig.time=Sunset
-1835	3	14	22	55	0	180	Orig=S|orig.time=Midnight
+1835	3	14	22	56	0	180	Orig=S|orig.time=Midnight
 1835	3	15	4	48	0	180	Orig=S|orig.time=Sunrise
 1835	3	15	10	55	0	180	Orig=S|orig.time=Noon
 1835	3	15	17	2	0	158	Orig=SSE|orig.time=Sunset
@@ -1073,7 +1073,7 @@ Year	Month	Day	Hour	Minute	Period	Value	Meta
 1835	4	19	22	45	0	158	Orig=SSE|orig.time=Midnight
 1835	4	20	5	15	0	135	Orig=SE|orig.time=Sunrise
 1835	4	20	10	45	0	135	Orig=SE|orig.time=Noon
-1835	4	20	16	15	0	135	Orig=SE|orig.time=Sunset
+1835	4	20	16	16	0	135	Orig=SE|orig.time=Sunset
 1835	4	20	22	45	0	135	Orig=SE|orig.time=Midnight
 1835	4	21	16	14	0	202	Orig=SSW|orig.time=Sunset
 1835	4	22	16	13	0	180	Orig=S|orig.time=Sunset
@@ -1082,7 +1082,7 @@ Year	Month	Day	Hour	Minute	Period	Value	Meta
 1835	4	23	16	12	0	202	Orig=SSW|orig.time=Sunset
 1835	4	23	22	45	0	180	Orig=S|orig.time=Midnight
 1835	4	24	16	11	0	180	Orig=S|orig.time=Sunset
-1835	4	24	22	44	0	225	Orig=SW|orig.time=Midnight
+1835	4	24	22	45	0	225	Orig=SW|orig.time=Midnight
 1835	4	25	22	44	0	180	Orig=S|orig.time=Midnight
 1835	4	27	10	44	0	315	Orig=NW|orig.time=Noon
 1835	4	28	16	7	0	135	Orig=SE|orig.time=Sunset
@@ -1182,12 +1182,12 @@ Year	Month	Day	Hour	Minute	Period	Value	Meta
 1835	6	7	15	45	0	315	Orig=NW|orig.time=Sunset
 1835	6	7	22	46	0	135	Orig=SE|orig.time=Midnight
 1835	6	8	5	48	0	315	Orig=NW|orig.time=Sunrise
-1835	6	8	10	46	0	315	Orig=NW|orig.time=Noon
+1835	6	8	10	47	0	315	Orig=NW|orig.time=Noon
 1835	6	8	15	45	0	315	Orig=NW|orig.time=Sunset
-1835	6	8	22	46	0	315	Orig=NW|orig.time=Midnight
+1835	6	8	22	47	0	315	Orig=NW|orig.time=Midnight
 1835	6	9	5	49	0	315	Orig=NW|orig.time=Sunrise
 1835	6	9	10	47	0	315	Orig=NW|orig.time=Noon
-1835	6	9	15	44	0	315	Orig=NW|orig.time=Sunset
+1835	6	9	15	45	0	315	Orig=NW|orig.time=Sunset
 1835	6	10	5	49	0	315	Orig=NW|orig.time=Sunrise
 1835	6	10	10	47	0	315	Orig=NW|orig.time=Noon
 1835	6	10	15	44	0	315	Orig=NW|orig.time=Sunset
@@ -1204,7 +1204,7 @@ Year	Month	Day	Hour	Minute	Period	Value	Meta
 1835	6	14	22	48	0	180	Orig=S|orig.time=Midnight
 1835	6	16	10	48	0	135	Orig=SE|orig.time=Noon
 1835	6	16	15	45	0	135	Orig=SE|orig.time=Sunset
-1835	6	18	22	48	0	180	Orig=S|orig.time=Midnight
+1835	6	18	22	49	0	180	Orig=S|orig.time=Midnight
 1835	6	19	5	52	0	180	Orig=S|orig.time=Sunrise
 1835	6	19	10	49	0	180	Orig=S|orig.time=Noon
 1835	6	19	15	45	0	225	Orig=SW|orig.time=Sunset
@@ -1235,7 +1235,7 @@ Year	Month	Day	Hour	Minute	Period	Value	Meta
 1835	7	1	10	51	0	315	Orig=NW|orig.time=Noon
 1835	7	1	15	49	0	315	Orig=NW|orig.time=Sunset
 1835	7	1	22	51	0	315	Orig=NW|orig.time=Midnight
-1835	7	2	5	52	0	0	Orig=N|orig.time=Sunrise
+1835	7	2	5	53	0	0	Orig=N|orig.time=Sunrise
 1835	7	2	15	50	0	315	Orig=NW|orig.time=Sunset
 1835	7	3	5	52	0	315	Orig=NW|orig.time=Sunrise
 1835	7	3	10	51	0	315	Orig=NW|orig.time=Noon
@@ -1283,7 +1283,7 @@ Year	Month	Day	Hour	Minute	Period	Value	Meta
 1835	7	20	10	53	0	0	Orig=N|orig.time=Noon
 1835	7	20	16	0	0	0	Orig=N|orig.time=Sunset
 1835	7	20	22	53	0	180	Orig=S|orig.time=Midnight
-1835	7	21	5	45	0	180	Orig=S|orig.time=Sunrise
+1835	7	21	5	46	0	180	Orig=S|orig.time=Sunrise
 1835	7	21	10	53	0	180	Orig=S|orig.time=Noon
 1835	7	21	16	1	0	180	Orig=S|orig.time=Sunset
 1835	7	22	5	45	0	135	Orig=SE|orig.time=Sunrise
@@ -1341,7 +1341,7 @@ Year	Month	Day	Hour	Minute	Period	Value	Meta
 1835	8	11	22	52	0	135	Orig=SE|orig.time=Midnight
 1835	8	12	5	27	0	270	Orig=W|orig.time=Sunrise
 1835	8	12	10	52	0	315	Orig=NW by W|orig.time=Noon
-1835	8	12	16	16	0	270	Orig=W|orig.time=Sunset
+1835	8	12	16	17	0	270	Orig=W|orig.time=Sunset
 1835	8	13	5	26	0	45	Orig=NE|orig.time=Sunrise
 1835	8	13	10	51	0	180	Orig=S|orig.time=Noon
 1835	8	14	5	25	0	202	Orig=SSW|orig.time=Sunrise
@@ -1504,7 +1504,7 @@ Year	Month	Day	Hour	Minute	Period	Value	Meta
 1835	10	15	4	2	0	315	Orig=NW|orig.time=Sunrise
 1835	10	15	10	32	0	225	Orig=SW by W|orig.time=Noon
 1835	10	16	10	32	0	225	Orig=SW|orig.time=Noon
-1835	10	16	17	2	0	202	Orig=SSW|orig.time=Sunset
+1835	10	16	17	3	0	202	Orig=SSW|orig.time=Sunset
 1835	10	16	22	32	0	180	Orig=S|orig.time=Midnight
 1835	10	17	10	32	0	180	Orig=S|orig.time=Noon
 1835	10	17	22	32	0	180	Orig=S|orig.time=Midnight
@@ -1544,7 +1544,7 @@ Year	Month	Day	Hour	Minute	Period	Value	Meta
 1835	11	2	3	43	0	225	Orig=SW|orig.time=Sunrise
 1835	11	2	10	30	0	225	Orig=SW by W|orig.time=Noon
 1835	11	2	17	18	0	180	Orig=S|orig.time=Sunset
-1835	11	3	10	30	0	315	Orig=NW|orig.time=Noon
+1835	11	3	10	31	0	315	Orig=NW|orig.time=Noon
 1835	11	4	17	20	0	202	Orig=SSW|orig.time=Sunset
 1835	11	5	17	21	0	180	Orig=S|orig.time=Sunset
 1835	11	6	10	31	0	338	Orig=NNW|orig.time=Noon
@@ -1614,7 +1614,7 @@ Year	Month	Day	Hour	Minute	Period	Value	Meta
 1835	11	27	22	36	0	180	Orig=S|orig.time=Midnight
 1835	11	28	3	29	0	202	Orig=SSW|orig.time=Sunrise
 1835	11	28	10	36	0	158	Orig=SSE|orig.time=Noon
-1835	11	28	17	42	0	158	Orig=SSE|orig.time=Sunset
+1835	11	28	17	43	0	158	Orig=SSE|orig.time=Sunset
 1835	11	28	22	36	0	180	Orig=S|orig.time=Midnight
 1835	11	29	3	29	0	202	Orig=SSW|orig.time=Sunrise
 1835	11	29	10	36	0	180	Orig=S by W|orig.time=Noon
@@ -1734,7 +1734,7 @@ Year	Month	Day	Hour	Minute	Period	Value	Meta
 1836	1	13	18	1	0	180	Orig=S|orig.time=Sunset
 1836	1	13	22	56	0	180	Orig=S|orig.time=Midnight
 1836	1	14	10	56	0	180	Orig=S|orig.time=Noon
-1836	1	14	18	0	0	180	Orig=S|orig.time=Sunset
+1836	1	14	18	1	0	180	Orig=S|orig.time=Sunset
 1836	1	14	22	56	0	180	Orig=S|orig.time=Midnight
 1836	1	15	3	53	0	180	Orig=S|orig.time=Sunrise
 1836	1	15	18	0	0	225	Orig=SW|orig.time=Sunset
@@ -1782,7 +1782,7 @@ Year	Month	Day	Hour	Minute	Period	Value	Meta
 1836	1	31	11	1	0	180	Orig=S|orig.time=Noon
 1836	1	31	17	52	0	180	Orig=S|orig.time=Sunset
 1836	1	31	23	1	0	180	Orig=S|orig.time=Midnight
-1836	2	1	4	10	0	180	Orig=S|orig.time=Sunrise
+1836	2	1	4	11	0	180	Orig=S|orig.time=Sunrise
 1836	2	1	11	1	0	180	Orig=S|orig.time=Noon
 1836	2	1	17	51	0	180	Orig=S|orig.time=Sunset
 1836	2	1	23	1	0	180	Orig=S|orig.time=Midnight
@@ -1800,7 +1800,7 @@ Year	Month	Day	Hour	Minute	Period	Value	Meta
 1836	2	6	11	1	0	180	Orig=S|orig.time=Noon
 1836	2	6	17	47	0	180	Orig=S|orig.time=Sunset
 1836	2	6	23	1	0	180	Orig=S|orig.time=Midnight
-1836	2	7	4	16	0	180	Orig=S|orig.time=Sunrise
+1836	2	7	4	17	0	180	Orig=S|orig.time=Sunrise
 1836	2	7	11	1	0	180	Orig=S|orig.time=Noon
 1836	2	7	17	46	0	180	Orig=S|orig.time=Sunset
 1836	2	7	23	1	0	180	Orig=S|orig.time=Midnight
@@ -1847,7 +1847,7 @@ Year	Month	Day	Hour	Minute	Period	Value	Meta
 1836	2	18	23	1	0	180	Orig=S|orig.time=Midnight
 1836	2	19	4	28	0	180	Orig=S|orig.time=Sunrise
 1836	2	19	11	1	0	270	Orig=W|orig.time=Noon
-1836	2	19	17	33	0	270	Orig=W|orig.time=Sunset
+1836	2	19	17	34	0	270	Orig=W|orig.time=Sunset
 1836	2	20	4	29	0	270	Orig=W|orig.time=Sunrise
 1836	2	20	11	1	0	270	Orig=W|orig.time=Noon
 1836	2	20	17	32	0	270	Orig=W|orig.time=Sunset
@@ -2052,7 +2052,7 @@ Year	Month	Day	Hour	Minute	Period	Value	Meta
 1836	5	9	15	57	0	315	Orig=NW|orig.time=Sunset
 1836	5	10	10	43	0	315	Orig=NW|orig.time=Noon
 1836	5	10	22	43	0	270	Orig=W|orig.time=Midnight
-1836	5	11	5	31	0	180	Orig=S|orig.time=Sunrise
+1836	5	11	5	32	0	180	Orig=S|orig.time=Sunrise
 1836	5	11	10	43	0	180	Orig=S|orig.time=Noon
 1836	5	11	15	55	0	180	Orig=S|orig.time=Sunset
 1836	5	11	22	43	0	180	Orig=S|orig.time=Midnight
@@ -2069,7 +2069,7 @@ Year	Month	Day	Hour	Minute	Period	Value	Meta
 1836	5	15	15	52	0	180	Orig=S|orig.time=Sunset
 1836	5	15	22	43	0	180	Orig=S|orig.time=Midnight
 1836	5	16	5	35	0	180	Orig=S|orig.time=Sunrise
-1836	5	16	10	43	0	180	Orig=S|orig.time=Noon
+1836	5	16	10	44	0	180	Orig=S|orig.time=Noon
 1836	5	16	15	52	0	180	Orig=S|orig.time=Sunset
 1836	5	17	5	36	0	180	Orig=S|orig.time=Sunrise
 1836	5	17	22	44	0	225	Orig=SW|orig.time=Midnight
@@ -2127,7 +2127,7 @@ Year	Month	Day	Hour	Minute	Period	Value	Meta
 1836	6	7	15	45	0	270	Orig=W|orig.time=Sunset
 1836	6	7	22	46	0	270	Orig=W|orig.time=Midnight
 1836	6	8	10	47	0	270	Orig=W|orig.time=Noon
-1836	6	8	15	44	0	180	Orig=S|orig.time=Sunset
+1836	6	8	15	45	0	180	Orig=S|orig.time=Sunset
 1836	6	8	22	47	0	180	Orig=S|orig.time=Midnight
 1836	6	9	10	47	0	158	Orig=SSE|orig.time=Noon
 1836	6	9	15	44	0	158	Orig=SSE|orig.time=Sunset
@@ -2311,7 +2311,7 @@ Year	Month	Day	Hour	Minute	Period	Value	Meta
 1836	8	11	10	52	0	315	Orig=NW|orig.time=Noon
 1836	8	11	22	52	0	180	Orig=S|orig.time=Midnight
 1836	8	12	16	17	0	315	Orig=NW|orig.time=Sunset
-1836	8	12	22	51	0	315	Orig=NW|orig.time=Midnight
+1836	8	12	22	52	0	315	Orig=NW|orig.time=Midnight
 1836	8	13	5	25	0	315	Orig=NW|orig.time=Sunrise
 1836	8	13	10	51	0	338	Orig=NNW|orig.time=Noon
 1836	8	13	16	18	0	315	Orig=NW|orig.time=Sunset
@@ -2408,7 +2408,7 @@ Year	Month	Day	Hour	Minute	Period	Value	Meta
 1836	9	13	16	39	0	270	Orig=W by N|orig.time=Sunset
 1836	9	13	22	42	0	315	Orig=NW|orig.time=Midnight
 1836	9	14	4	43	0	270	Orig=W|orig.time=Sunrise
-1836	9	14	10	41	0	270	Orig=W|orig.time=Noon
+1836	9	14	10	42	0	270	Orig=W|orig.time=Noon
 1836	9	14	16	40	0	270	Orig=W|orig.time=Sunset
 1836	9	15	10	41	0	135	Orig=SE by S|orig.time=Noon
 1836	9	15	16	40	0	180	Orig=S by E|orig.time=Sunset
@@ -2449,7 +2449,7 @@ Year	Month	Day	Hour	Minute	Period	Value	Meta
 1836	9	26	16	48	0	158	Orig=SSE|orig.time=Sunset
 1836	9	27	4	25	0	180	Orig=S|orig.time=Sunrise
 1836	9	27	10	37	0	180	Orig=S|orig.time=Noon
-1836	9	27	16	48	0	202	Orig=SSW|orig.time=Sunset
+1836	9	27	16	49	0	202	Orig=SSW|orig.time=Sunset
 1836	9	27	22	37	0	180	Orig=S|orig.time=Midnight
 1836	9	28	4	24	0	202	Orig=SSW|orig.time=Sunrise
 1836	9	28	16	49	0	180	Orig=S|orig.time=Sunset
@@ -2491,9 +2491,9 @@ Year	Month	Day	Hour	Minute	Period	Value	Meta
 1836	10	11	16	59	0	180	Orig=S|orig.time=Sunset
 1836	10	11	22	33	0	180	Orig=S|orig.time=Midnight
 1836	10	12	4	5	0	180	Orig=S|orig.time=Sunrise
-1836	10	12	10	32	0	180	Orig=S|orig.time=Noon
+1836	10	12	10	33	0	180	Orig=S|orig.time=Noon
 1836	10	12	17	0	0	180	Orig=S|orig.time=Sunset
-1836	10	12	22	32	0	180	Orig=S|orig.time=Midnight
+1836	10	12	22	33	0	180	Orig=S|orig.time=Midnight
 1836	10	13	10	32	0	158	Orig=SSE|orig.time=Noon
 1836	10	13	17	1	0	180	Orig=S by E|orig.time=Sunset
 1836	10	13	22	32	0	315	Orig=NW|orig.time=Midnight
@@ -2546,7 +2546,7 @@ Year	Month	Day	Hour	Minute	Period	Value	Meta
 1836	10	30	17	16	0	180	Orig=S|orig.time=Sunset
 1836	10	30	22	30	0	180	Orig=S|orig.time=Midnight
 1836	10	31	10	30	0	292	Orig=WNW|orig.time=Noon
-1836	10	31	17	16	0	270	Orig=W by N|orig.time=Sunset
+1836	10	31	17	17	0	270	Orig=W by N|orig.time=Sunset
 1836	10	31	22	30	0	315	Orig=NW|orig.time=Midnight
 1836	11	1	10	30	0	202	Orig=SSW|orig.time=Noon
 1836	11	1	17	17	0	158	Orig=SSE|orig.time=Sunset
@@ -2602,9 +2602,9 @@ Year	Month	Day	Hour	Minute	Period	Value	Meta
 1836	11	19	10	33	0	180	Orig=S|orig.time=Noon
 1836	11	19	17	35	0	180	Orig=S by W|orig.time=Sunset
 1836	11	20	3	31	0	0	Orig=N|orig.time=Sunrise
-1836	11	20	10	33	0	270	Orig=W|orig.time=Noon
+1836	11	20	10	34	0	270	Orig=W|orig.time=Noon
 1836	11	20	17	36	0	292	Orig=WNW|orig.time=Sunset
-1836	11	20	22	33	0	315	Orig=NW|orig.time=Midnight
+1836	11	20	22	34	0	315	Orig=NW|orig.time=Midnight
 1836	11	21	10	34	0	270	Orig=W|orig.time=Noon
 1836	11	21	17	37	0	112	Orig=ESE|orig.time=Sunset
 1836	11	22	10	34	0	180	Orig=S by E|orig.time=Noon
@@ -2678,9 +2678,9 @@ Year	Month	Day	Hour	Minute	Period	Value	Meta
 1836	12	16	10	44	0	180	Orig=S|orig.time=Noon
 1836	12	16	17	56	0	180	Orig=S|orig.time=Sunset
 1836	12	16	22	44	0	180	Orig=S|orig.time=Midnight
-1836	12	17	10	44	0	180	Orig=S|orig.time=Noon
+1836	12	17	10	45	0	180	Orig=S|orig.time=Noon
 1836	12	17	17	57	0	180	Orig=S|orig.time=Sunset
-1836	12	17	22	44	0	180	Orig=S|orig.time=Midnight
+1836	12	17	22	45	0	180	Orig=S|orig.time=Midnight
 1836	12	19	10	45	0	270	Orig=W by S|orig.time=Noon
 1836	12	19	17	58	0	202	Orig=SSW|orig.time=Sunset
 1836	12	20	3	34	0	180	Orig=S|orig.time=Sunrise
@@ -2702,7 +2702,7 @@ Year	Month	Day	Hour	Minute	Period	Value	Meta
 1836	12	27	3	38	0	180	Orig=S by W|orig.time=Sunrise
 1836	12	27	10	49	0	180	Orig=S|orig.time=Noon
 1836	12	27	18	1	0	180	Orig=S by W|orig.time=Sunset
-1836	12	28	3	38	0	202	Orig=SSW|orig.time=Sunrise
+1836	12	28	3	39	0	202	Orig=SSW|orig.time=Sunrise
 1836	12	28	10	50	0	202	Orig=SSW|orig.time=Noon
 1836	12	28	18	1	0	225	Orig=SW|orig.time=Sunset
 1836	12	29	3	39	0	202	Orig=SSW|orig.time=Sunrise
@@ -2734,7 +2734,7 @@ Year	Month	Day	Hour	Minute	Period	Value	Meta
 1837	1	6	21	0	0	180	Orig=S|orig.time=21h00
 1837	1	7	4	0	0	225	Orig=SW|orig.time=04h00
 1837	1	7	21	0	0	180	Orig=S by E|orig.time=21h00
-1837	1	8	3	47	0	225	Orig=SW|orig.time=Sunrise
+1837	1	8	3	48	0	225	Orig=SW|orig.time=Sunrise
 1837	1	8	4	0	0	180	Orig=S|orig.time=04h00
 1837	1	8	10	0	0	180	Orig=S|orig.time=10h00
 1837	1	8	19	0	0	180	Orig=S|orig.time=19h00

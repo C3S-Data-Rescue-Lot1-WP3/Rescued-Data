@@ -1,15 +1,16 @@
 # Converts the George digitized data from the University of Witwatersrand 
 # into the Station Exchange Format.
 #
-# Requires file write_sef.R and library XLConnect
+# Requires libraries XLConnect and dataresqc
 #
 # Created by Yuri Brugnara, University of Bern - 21 Dec 2018
+# Updated 7 Jan 2020
 
 ###############################################################################
 
 
 require(XLConnect)
-source("write_sef.R")
+require(dataresqc)
 options(scipen = 999) # avoid exponential notation
 
 
@@ -22,13 +23,14 @@ outpath <- "../data/formatted/"
 
 # Define variables and units
 variables <- c("ta", "p", "dd")
-units <- c("C", "Pa", "degree")
+units <- c("C", "hPa", "degree")
+ids <- c(1086301, 1086300, 1086299)
 
 # Define conversions to apply to the raw data
 conversions <- list(ta = function(x) round((x - 32) * 5 / 9, 1),
                     p = function(x) 
-                      round(100 * convert_pressure(x, f = 25.4,
-                                                   lat = lat, alt = alt), 0),
+                      round(convert_pressure(x, f = 25.4,
+                                                   lat = lat, alt = alt), 1),
                     dd = function(x) round(x, 0))
 
 # Define function to convert the month name into a number
@@ -64,7 +66,8 @@ for (v in variables) {
   Data[[v]] <- data.frame(year = integer(),
                           month = integer(),
                           day = integer(),
-                          time = character(),
+                          HH = numeric(),
+                          MM = numeric(),
                           value = numeric(),
                           orig = character())
 }
@@ -87,6 +90,8 @@ for (ifile in 1:length(infiles)) {
   template$m <- as.integer(fill(get_month(template$m)))
   template$d <- fill(template$d)
   template$h <- ""
+  template$HH <- NA
+  template$MM <- NA
   template <- template[which(!is.na(template$m)), ]
 
   ## Organize meta column
@@ -103,7 +108,7 @@ for (ifile in 1:length(infiles)) {
   for (i in 1:length(variables)) {
     template[, variables[i]] <- conversions[[variables[i]]](template[, variables[i]])
     Data[[variables[i]]] <- rbind(Data[[variables[i]]], 
-                                  template[, c("y", "m", "d", "h", variables[i], 
+                                  template[, c("y", "m", "d", "HH", "MM", variables[i], 
                                                paste0(variables[i], "_orig"))])
   }
 }
@@ -111,20 +116,19 @@ for (ifile in 1:length(infiles)) {
 
 ## Write output
 for (i in 1:length(variables)) {
-  ## First remove missing values and add variable code
-  Data[[variables[i]]] <- Data[[variables[i]]][which(!is.na(Data[[variables[i]]][, 5])), ]
-  Data[[variables[i]]] <- cbind(variables[i], Data[[variables[i]]])
   write_sef(Data = Data[[variables[i]]][, 1:6],
             outpath = outpath,
+            variable = variables[i],
             cod = "George",
             nam = "George",
             lat = lat,
             lon = lon,
             alt = alt,
             sou = "C3S_SouthAfrica",
-            repo = "",
+            link = paste0("https://data-rescue.copernicus-climate.eu/lso/", ids[i]),
             units = units[i],
-            metaHead = ifelse(i==2, "PTC=F,PGC=T", ""),
+            stat = "point",
+            metaHead = paste0("Data policy=GNU GPL v3.0", ifelse(i==2, "|PTC=N|PGC=Y", "")),
             meta = Data[[variables[i]]][, 7],
-            timef = 0)
+            period = 0)
 }

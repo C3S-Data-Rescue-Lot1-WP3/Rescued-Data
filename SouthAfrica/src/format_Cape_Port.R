@@ -3,16 +3,17 @@
 #
 # Years: 1834 to 1873, 1904
 #
-# Requires file write_sef.R and libraries XLConnect, plyr
+# Requires libraries XLConnect, plyr, dataresqc
 #
 # Created by Yuri Brugnara, University of Bern - 21 Dec 2018
+# Updated 7 Jan 2020
 
 ###############################################################################
 
 
 require(XLConnect)
 require(plyr)
-source("write_sef.R")
+require(dataresqc)
 options(scipen = 999) # avoid exponential notation
 
 
@@ -25,13 +26,14 @@ outpath <- "../data/formatted/"
 
 # Define variables, units, times
 variables <- c("ta", "p", "dd", "wind_force")
-units <- c("C", "Pa", "degree", "")
+units <- c("C", "hPa", "degree", "")
+ids <- c(1086296, 1086295, 1086297, 1086298)
 
 # Define conversions to apply to the raw data
 conversions <- list(ta = function(x) round((x - 32) * 5 / 9, 1),
                     p = function(x, y) 
-                      round(100 * convert_pressure(x, f = 25.4, lat = lat, 
-                                                   alt = alt), 0),
+                      round(convert_pressure(x, f = 25.4, lat = lat, 
+                                                   alt = alt), 1),
                     dd = function(x) round(x, 0),
                     wind_force = function(x) round(x, 0))
 
@@ -67,7 +69,8 @@ for (v in variables) {
   Data[[v]] <- data.frame(y = integer(),
                           m = integer(),
                           d = integer(),
-                          h = character())
+                          HH = integer(),
+                          MM = integer())
 }
 
 
@@ -115,9 +118,9 @@ for (year in c(1829:1833, 1841:1850, 1855:1857, 1870:1873, 1904)) {
   template$d <- fill(template$d)
   template$dd_orig <- paste0("Orig=", template$dd)
   template$dd_orig[which(template$h == "AM")] <- 
-    paste0("Orig=", template$dd[which(template$h == "AM")], ",t=AM")
+    paste0("Orig=", template$dd[which(template$h == "AM")])
   template$dd_orig[which(template$h == "PM")] <- 
-    paste0("Orig=", template$dd[which(template$h == "PM")], ",t=PM")
+    paste0("Orig=", template$dd[which(template$h == "PM")])
   template$h[which(template$h %in% c("AM", "PM"))] <- ""
   template$h[grep("Noon", template$h, ignore.case = TRUE)] <- "1200"
   j <- grep("AM", template$h, ignore.case = TRUE)
@@ -138,12 +141,16 @@ for (year in c(1829:1833, 1841:1850, 1855:1857, 1870:1873, 1904)) {
   template$y <- year
   dates <- paste(template$y, template$m, template$d, sep = "-")
   j <- which(nchar(template$h) == 4)
+  template$time_orig <- template$h
+  template$time_orig[which(template$time_orig=="")] <- NA
   times <- strptime(paste(dates[j], template$h[j]), 
                     format = "%Y-%m-%d %H%M") - 3600 * 24 * lon / 360
   template$y[j] <- as.integer(format(times, "%Y"))
   template$m[j] <- as.integer(format(times, "%m"))
   template$d[j] <- as.integer(format(times, "%d"))
   template$h[j] <- format(times, "%H%M")
+  template$HH <- as.integer(substr(template$h, 1, 2))
+  template$MM <- as.integer(substr(template$h, 3, 4))
   
   
   ## Write to data frames
@@ -152,8 +159,8 @@ for (year in c(1829:1833, 1841:1850, 1855:1857, 1870:1873, 1904)) {
     if (variables[i] %in% names(template)) {
       template[, variables[i]] <- conversions[[variables[i]]](template[, variables[i]])
       Data[[variables[i]]] <- rbind.fill(Data[[variables[i]]], 
-                                         template[, c("y", "m", "d", "h", variables[i], 
-                                                      paste0(variables[i], "_orig"))])
+                                         template[, c("y", "m", "d", "HH", "MM", variables[i], 
+                                                      paste0(variables[i], "_orig"), "time_orig")])
     }
   }
   
@@ -162,22 +169,21 @@ for (year in c(1829:1833, 1841:1850, 1855:1857, 1870:1873, 1904)) {
 
 ## Write output
 for (i in 1:length(variables)) {
-  ## First remove missing values and add column with variable code
-  Data[[variables[i]]] <- Data[[variables[i]]][which(!is.na(Data[[variables[i]]][, 5])), ]
   if (dim(Data[[variables[i]]])[1] > 0) {
-    Data[[variables[i]]] <- cbind(variables[i], Data[[variables[i]]])
     write_sef(Data = Data[[variables[i]]][, 1:6],
               outpath = outpath,
+              variable = variables[i],
               cod = "Cape_Town_Port",
               nam = "Cape Town (Port Office)",
               lat = lat,
               lon = lon,
               alt = alt,
               sou = "C3S_SouthAfrica",
-              repo = "",
+              link = paste0("https://data-rescue.copernicus-climate.eu/lso/", ids[i]),
               units = units[i],
-              metaHead = ifelse(i==2, "PTC=F,PGC=T", ""),
-              meta = Data[[variables[i]]][, 7],
-              timef = 0)
+              stat = "point",
+              metaHead = paste0("Data policy=GNU GPL v3.0", ifelse(i==2, "|PTC=N|PGC=Y", "")),
+              meta = paste0(Data[[variables[i]]][, 7], "|orig.time=", Data[[variables[i]]][, 8]),
+              period = 0)
   }
 }

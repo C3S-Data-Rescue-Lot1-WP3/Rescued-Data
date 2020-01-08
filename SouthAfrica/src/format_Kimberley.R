@@ -1,16 +1,17 @@
 # Converts the Kimberley data digitized by
 # the University of Witwatersrand into the Station Exchange Format.
 #
-# Requires file write_sef.R and libraries XLConnect, plyr
+# Requires libraries XLConnect, plyr, dataresqc
 #
 # Created by Yuri Brugnara, University of Bern - 21 Dec 2018
+# Updated 7 Jan 2020
 
 ###############################################################################
 
 
 require(XLConnect)
 require(plyr)
-source("write_sef.R")
+require(dataresqc)
 options(scipen = 999) # avoid exponential notation
 
 
@@ -23,13 +24,15 @@ outpath <- "../data/formatted/"
 
 # Define variables, units, times
 variables <- c("ta", "p", "tb", "Tx", "Tn", "dd", "wind_force", "rr", "td", "w")
-units <- c("C", "Pa", "C", "C", "C", "degree", "", "mm", "C", "m/s")
+units <- c("C", "hPa", "C", "C", "C", "degree", "", "mm", "C", "m/s")
+ids <- c(1086303, 1086302, 1086304, 1086305, 1086306, 1086307, 1086308, 1086309, 1086310, 1086311)
+stats <- c("point", "point", "point", "maximum", "minimum", "point", "point", "sum", "point", "point")
 
 # Define conversions to apply to the raw data
 conversions <- list(ta = function(x) round((x - 32) * 5 / 9, 1),
                     p = function(x, y) 
-                      round(100 * convert_pressure(x, f = 25.4, lat = lat, 
-                                                   alt = alt), 0),
+                      round(convert_pressure(x, f = 25.4, lat = lat, 
+                                             alt = alt), 1),
                     tb = function(x) round((x - 32) * 5 / 9, 1),
                     Tx = function(x) round((x - 32) * 5 / 9, 1),
                     Tn = function(x) round((x - 32) * 5 / 9, 1),
@@ -71,15 +74,12 @@ for (v in variables) {
   Data[[v]] <- data.frame(y = integer(),
                           m = integer(),
                           d = integer(),
-                          h = character())
+                          HH = integer(),
+                          MM = integer())
 }
 
 
 ## Read data files
-
-## Template 1 (Jan-Aug 1883)
-
-
 
 for (infile in list.files(inpath, pattern = "xlsx")) {
   year <- as.integer(substr(strsplit(infile, "_")[[1]][2], 1, 4))
@@ -88,15 +88,15 @@ for (infile in list.files(inpath, pattern = "xlsx")) {
   if (year == 1883) {
     ## Jan-Aug 1883
     template1 <- readWorksheetFromFile(paste0(inpath, infile), 
-                                      startRow = 12, endRow = 1894,
-                                      header = FALSE,
-                                      sheet = 1, endCol = 8,
-                                      colTypes = c("character",
-                                                   "numeric",
-                                                   "character",
-                                                   rep("numeric", 5)),
-                                      forceConversion = TRUE,
-                                      readStrategy = "fast")
+                                       startRow = 12, endRow = 1894,
+                                       header = FALSE,
+                                       sheet = 1, endCol = 8,
+                                       colTypes = c("character",
+                                                    "numeric",
+                                                    "character",
+                                                    rep("numeric", 5)),
+                                       forceConversion = TRUE,
+                                       readStrategy = "fast")
     names(template1) <- c("m", "d", "h", "ta", "tb", "Tn", "Tx", "p")
     ## Sep-Dec 1883
     template2 <- readWorksheetFromFile(paste0(inpath, infile), 
@@ -112,7 +112,7 @@ for (infile in list.files(inpath, pattern = "xlsx")) {
                                        readStrategy = "fast")
     names(template2) <- c("m", "d", "h", "ta", "tb", "p", "dd")
     template <- rbind.fill(template1, template2)
-
+    
     ## Template 2 (1884-1885)  
   } else if (year %in% 1884:1885) {
     template <- readWorksheetFromFile(paste0(inpath, infile), 
@@ -127,39 +127,39 @@ for (infile in list.files(inpath, pattern = "xlsx")) {
                                       forceConversion = TRUE,
                                       readStrategy = "fast")
     names(template) <- c("m", "d", "h", "ta", "tb", "p", "dd")
-  
-  ## Template 3 (1886-1889)  
-} else if (year %in% 1886:1889) {
-  template <- readWorksheetFromFile(paste0(inpath, infile), 
-                                    startRow = 13, header = FALSE,
-                                    sheet = 1, endCol = 15,
-                                    colTypes = c("character",
-                                                 "numeric",
-                                                 "character",
-                                                 rep("numeric", 7),
-                                                 "character",
-                                                 rep("numeric", 4)),
-                                    drop = c(6, 7, 8, 10),
-                                    forceConversion = TRUE,
-                                    readStrategy = "fast")
-  names(template) <- c("m", "d", "h", "ta", "tb", "p", "dd",
-                        "wind_force", "rr", "Tx", "Tn")
-
-  ## Template 4 (1898-1903)  
-} else if (year %in% 1898:1903) {
-  template <- readWorksheetFromFile(paste0(inpath, infile), 
-                                    startRow = 11, header = FALSE,
-                                    sheet = 1, endCol = 10,
-                                    colTypes = c("character",
-                                                 rep("numeric", 7),
-                                                 "character",
-                                                 "numeric"),
-                                    forceConversion = TRUE,
-                                    readStrategy = "fast")
-  names(template) <- c("m", "d", "p", "Tx", "Tn", "ta", "tb", "td", "rr", "w")
-  template$h <- ""
-  template$rr <- as.numeric(sub("..", 0, template$rr, fixed = TRUE))
-}
+    
+    ## Template 3 (1886-1889)  
+  } else if (year %in% 1886:1889) {
+    template <- readWorksheetFromFile(paste0(inpath, infile), 
+                                      startRow = 13, header = FALSE,
+                                      sheet = 1, endCol = 15,
+                                      colTypes = c("character",
+                                                   "numeric",
+                                                   "character",
+                                                   rep("numeric", 7),
+                                                   "character",
+                                                   rep("numeric", 4)),
+                                      drop = c(6, 7, 8, 10),
+                                      forceConversion = TRUE,
+                                      readStrategy = "fast")
+    names(template) <- c("m", "d", "h", "ta", "tb", "p", "dd",
+                         "wind_force", "rr", "Tx", "Tn")
+    
+    ## Template 4 (1898-1903)  
+  } else if (year %in% 1898:1903) {
+    template <- readWorksheetFromFile(paste0(inpath, infile), 
+                                      startRow = 11, header = FALSE,
+                                      sheet = 1, endCol = 10,
+                                      colTypes = c("character",
+                                                   rep("numeric", 7),
+                                                   "character",
+                                                   "numeric"),
+                                      forceConversion = TRUE,
+                                      readStrategy = "fast")
+    names(template) <- c("m", "d", "p", "Tx", "Tn", "ta", "tb", "td", "rr", "w")
+    template$h <- ""
+    template$rr <- as.numeric(sub("..", 0, template$rr, fixed = TRUE))
+  }
   
   template$m <- get_month(template$m)
   template$m[which(!template$m %in% as.character(1:12))] <- NA
@@ -175,7 +175,7 @@ for (infile in list.files(inpath, pattern = "xlsx")) {
   template$h[j] <- format(as.numeric(sub(".{2}$", "", template$h[j])) + 12, nsmall = 2)
   template$p_orig <- paste0("Orig=", round(template$p, 3), "in")
   if (year < 1886) {
-    template$p_orig <- paste(template$p_orig, "PTC=?", sep = ",")
+    template$p_orig <- paste(template$p_orig, "PTC=?", sep = "|")
   }
   template$ta_orig <- paste0("Orig=", round(template$ta, 1), "F")
   template$tb_orig <- paste0("Orig=", round(template$tb, 1), "F")
@@ -184,7 +184,7 @@ for (infile in list.files(inpath, pattern = "xlsx")) {
     template$Tn_orig <- paste0("Orig=", round(template$Tn, 1), "F")
   }
   if ("wind_force" %in% names(template)) {
-    template$wind_force_orig <- ""
+    template$wind_force_orig <- paste0("Orig=", template$wind_force)
   }
   if ("rr" %in% names(template)) {
     template$rr_orig <- paste0("Orig=", round(template$rr, 5), "in")
@@ -195,7 +195,7 @@ for (infile in list.files(inpath, pattern = "xlsx")) {
   if ("w" %in% names(template)) {
     template$w_orig <- paste0("Orig=", round(template$w, 1), "mph")
   }
-
+  
   
   ## Transform wind direction to degrees
   ## Entries like 'NWbN' are converted as 'NW'
@@ -206,10 +206,12 @@ for (infile in list.files(inpath, pattern = "xlsx")) {
     template$dd <- 22.5 * (match(toupper(sapply(strsplit(template$dd, "b"), 
                                                 function(x) x[1])), directions) - 1)
   }
-
+  
   
   ## Convert time to UTC (assuming local solar time is used)
   template$y <- year
+  template$time_orig <- template$h
+  template$time_orig[which(template$time_orig=="")] <- NA
   if (year < 1898) {
     dates <- paste(template$y, template$m, template$d, sep = "-")
     times <- strptime(paste(dates, template$h), 
@@ -221,6 +223,8 @@ for (infile in list.files(inpath, pattern = "xlsx")) {
     template$d <- as.integer(format(times, "%d"))
     template$h <- format(times, "%H%M")
   }
+  template$HH <- as.integer(substr(template$h, 1, 2))
+  template$MM <- as.integer(substr(template$h, 3, 4))
   
   
   ## Write to data frames
@@ -229,8 +233,8 @@ for (infile in list.files(inpath, pattern = "xlsx")) {
     if (variables[i] %in% names(template)) {
       template[, variables[i]] <- conversions[[variables[i]]](template[, variables[i]])
       Data[[variables[i]]] <- rbind.fill(Data[[variables[i]]], 
-                                         template[, c("y", "m", "d", "h", variables[i], 
-                                                      paste0(variables[i], "_orig"))])
+                                         template[, c("y", "m", "d", "HH", "MM", variables[i], 
+                                                      paste0(variables[i], "_orig"), "time_orig", "h")])
     }
   }
   
@@ -239,46 +243,53 @@ for (infile in list.files(inpath, pattern = "xlsx")) {
 
 ## Order data by time and assign time flags
 Tflags <- list()
+for (v in variables) Data[[v]]$stat <- "point"
 for (v in c("ta", "p", "tb", "td", "dd", "wind_force", "w")) {
   Data[[v]] <- Data[[v]][order(Data[[v]]$y, Data[[v]]$m, Data[[v]]$d, Data[[v]]$h), ]
   Tflags[[v]] <- rep(0, dim(Data[[v]])[1])
 }
 for (v in c("Tx", "Tn")) {
   Data[[v]] <- Data[[v]][order(Data[[v]]$y, Data[[v]]$m, Data[[v]]$d, Data[[v]]$h), ]
-  Tflags[[v]] <- rep(13, dim(Data[[v]])[1])
-  Tflags[[v]][which(Data[[v]]$y %in% 1886:1889)] <- 6
+  Tflags[[v]] <- rep("p1day", dim(Data[[v]])[1])
+  Tflags[[v]][which(Data[[v]]$y %in% 1886:1889)] <- "p"
   Data[[v]]$h[which(Data[[v]]$y %in% 1886:1889)] <- ""
-  Tflags[[v]][which(Data[[v]]$y >= 1898)] <- 5
+  Tflags[[v]][which(Data[[v]]$y >= 1898)] <- "day"
+  Data[[v]]$stat <- ifelse(v=="Tx", "maximum", "minimum")
 }
 Tflags$rr <- rep(13, dim(Data$rr)[1])
-Tflags$rr[which(Data$rr$y %in% 1886:1889)] <- 4
+Tflags$rr[which(Data$rr$y %in% 1886:1889)] <- "day"
 Data$rr$h[which(Data$rr$y %in% 1886:1889)] <- ""
-Tflags$rr[which(Data$rr$y >= 1898)] <- 2
+Tflags$rr[which(Data$rr$y >= 1898)] <- "day"
+Data$rr$stat <- "sum"
 for (v in c("p", "ta", "tb", "td", "w")) {
-  Tflags[[v]][which(Data[[v]]$y >= 1898)] <- 1
+  Tflags[[v]][which(Data[[v]]$y >= 1898)] <- "day"
+  Data[[v]]$stat[which(Data[[v]]$y >= 1898)] <- "mean"
 }
+  
 
 
 ## Write output
 for (i in 1:length(variables)) {
-  ## First remove missing values and add column with variable code
-  j <- which(!is.na(Data[[variables[i]]][, 5]))
-  Data[[variables[i]]] <- Data[[variables[i]]][j, ]
-  Tflags[[variables[i]]] <- Tflags[[variables[i]]][j]
-  if (dim(Data[[variables[i]]])[1] > 0) {
-    Data[[variables[i]]] <- cbind(variables[i], Data[[variables[i]]])
-    write_sef(Data = Data[[variables[i]]][, 1:6],
-              outpath = outpath,
-              cod = "Kimberley",
-              nam = "Kimberley",
-              lat = lat,
-              lon = lon,
-              alt = alt,
-              sou = "C3S_SouthAfrica",
-              repo = "",
-              units = units[i],
-              metaHead = ifelse(i==2, "PTC=T,PGC=T", ""),
-              meta = Data[[variables[i]]][, 7],
-              timef = Tflags[[variables[i]]])
+  st <- unique(Data[[variables[i]]]$stat)
+  if (length(st) > 0) {
+    for (j in 1:length(st)) {
+      k <- which(Data[[variables[i]]]$stat == st[j])
+      write_sef(Data = Data[[variables[i]]][k, 1:6],
+                outpath = outpath,
+                variable = variables[i],
+                cod = "Kimberley",
+                nam = "Kimberley",
+                lat = lat,
+                lon = lon,
+                alt = alt,
+                sou = "C3S_SouthAfrica",
+                link = paste0("https://data-rescue.copernicus-climate.eu/lso/", ids[i]),
+                units = units[i],
+                stat = st[j],
+                metaHead = paste0("Data policy=GNU GPL v3.0", ifelse(i==2, "|PTC=Y|PGC=Y", "")),
+                meta = paste0(Data[[variables[i]]][k, 7], "|orig.time=", Data[[variables[i]]][k, 8]),
+                period = Tflags[[variables[i]]][k],
+                note = ifelse(st[j]=="mean", "mean", ""))
+    }
   }
 }

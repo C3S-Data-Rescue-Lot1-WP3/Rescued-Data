@@ -28,7 +28,7 @@ Year	Month	Day	Hour	Minute	Period	Value	Meta
 1834	6	13	5	50	p1day	9	Orig=48.2F|orig.time=Sunrise
 1834	6	19	5	52	p1day	3.3	Orig=38F|orig.time=Sunrise
 1834	6	20	5	52	p1day	3.8	Orig=38.8F|orig.time=Sunrise
-1834	6	22	5	52	p1day	6.9	Orig=44.5F|orig.time=Sunrise
+1834	6	22	5	53	p1day	6.9	Orig=44.5F|orig.time=Sunrise
 1834	6	24	5	53	p1day	5.9	Orig=42.6F|orig.time=Sunrise
 1834	6	25	5	53	p1day	12.2	Orig=54F|orig.time=Sunrise
 1834	7	1	5	53	p1day	2.2	Orig=36F|orig.time=Sunrise
@@ -68,7 +68,7 @@ Year	Month	Day	Hour	Minute	Period	Value	Meta
 1835	2	11	4	21	p1day	14.2	Orig=57.5F|orig.time=Sunrise
 1835	2	12	4	22	p1day	14.4	Orig=58F|orig.time=Sunrise
 1835	2	13	4	23	p1day	14.7	Orig=58.4F|orig.time=Sunrise
-1835	2	14	4	23	p1day	16.9	Orig=62.4F|orig.time=Sunrise
+1835	2	14	4	24	p1day	16.9	Orig=62.4F|orig.time=Sunrise
 1835	2	15	4	24	p1day	16.9	Orig=62.5F|orig.time=Sunrise
 1835	2	16	4	25	p1day	17.3	Orig=63.2F|orig.time=Sunrise
 1835	2	17	4	26	p1day	17.2	Orig=63F|orig.time=Sunrise
@@ -193,7 +193,7 @@ Year	Month	Day	Hour	Minute	Period	Value	Meta
 1835	6	29	5	53	p1day	12.2	Orig=54F|orig.time=Sunrise
 1835	6	30	5	53	p1day	9.4	Orig=49F|orig.time=Sunrise
 1835	7	1	5	53	p1day	9.6	Orig=49.2F|orig.time=Sunrise
-1835	7	2	5	52	p1day	9	Orig=48.2F|orig.time=Sunrise
+1835	7	2	5	53	p1day	9	Orig=48.2F|orig.time=Sunrise
 1835	7	4	5	52	p1day	6	Orig=42.8F|orig.time=Sunrise
 1835	7	5	5	52	p1day	5.3	Orig=41.5F|orig.time=Sunrise
 1835	7	6	5	52	p1day	6.7	Orig=44F|orig.time=Sunrise
@@ -211,7 +211,7 @@ Year	Month	Day	Hour	Minute	Period	Value	Meta
 1835	7	18	5	47	p1day	11.1	Orig=52F|orig.time=Sunrise
 1835	7	19	5	47	p1day	10.3	Orig=50.5F|orig.time=Sunrise
 1835	7	20	5	46	p1day	8.6	Orig=47.5F|orig.time=Sunrise
-1835	7	21	5	45	p1day	8.9	Orig=48F|orig.time=Sunrise
+1835	7	21	5	46	p1day	8.9	Orig=48F|orig.time=Sunrise
 1835	7	22	5	45	p1day	6.1	Orig=43F|orig.time=Sunrise
 1835	7	23	5	44	p1day	8.3	Orig=47F|orig.time=Sunrise
 1835	7	24	5	44	p1day	8.6	Orig=47.5F|orig.time=Sunrise
@@ -330,7 +330,7 @@ Year	Month	Day	Hour	Minute	Period	Value	Meta
 1835	11	17	3	33	p1day	15	Orig=59F|orig.time=Sunrise
 1835	11	18	3	32	p1day	15	Orig=59F|orig.time=Sunrise
 1835	11	19	3	32	p1day	15.3	Orig=59.5F|orig.time=Sunrise
-1835	11	20	3	31	p1day	15	Orig=59F|orig.time=Sunrise
+1835	11	20	3	32	p1day	15	Orig=59F|orig.time=Sunrise
 1835	11	21	3	31	p1day	15.8	Orig=60.5F|orig.time=Sunrise
 1835	11	22	3	31	p1day	15	Orig=59F|orig.time=Sunrise
 1835	11	23	3	30	p1day	16.7	Orig=62F|orig.time=Sunrise
@@ -401,13 +401,13 @@ Year	Month	Day	Hour	Minute	Period	Value	Meta
 1836	1	29	4	7	p1day	14.9	Orig=58.8F|orig.time=Sunrise
 1836	1	30	4	8	p1day	19.1	Orig=66.3F|orig.time=Sunrise
 1836	1	31	4	9	p1day	17.1	Orig=62.8F|orig.time=Sunrise
-1836	2	1	4	10	p1day	18.1	Orig=64.5F|orig.time=Sunrise
+1836	2	1	4	11	p1day	18.1	Orig=64.5F|orig.time=Sunrise
 1836	2	2	4	12	p1day	18.1	Orig=64.6F|orig.time=Sunrise
 1836	2	3	4	13	p1day	19.2	Orig=66.5F|orig.time=Sunrise
 1836	2	4	4	14	p1day	15	Orig=59F|orig.time=Sunrise
 1836	2	5	4	15	p1day	15.4	Orig=59.8F|orig.time=Sunrise
 1836	2	6	4	16	p1day	16.9	Orig=62.5F|orig.time=Sunrise
-1836	2	7	4	16	p1day	16.8	Orig=62.3F|orig.time=Sunrise
+1836	2	7	4	17	p1day	16.8	Orig=62.3F|orig.time=Sunrise
 1836	2	8	4	17	p1day	18.9	Orig=66F|orig.time=Sunrise
 1836	2	9	4	18	p1day	18.5	Orig=65.3F|orig.time=Sunrise
 1836	2	10	4	19	p1day	17.9	Orig=64.2F|orig.time=Sunrise
@@ -499,7 +499,7 @@ Year	Month	Day	Hour	Minute	Period	Value	Meta
 1836	5	8	5	29	p1day	13.3	Orig=56F|orig.time=Sunrise
 1836	5	9	5	30	p1day	13.9	Orig=57F|orig.time=Sunrise
 1836	5	10	5	31	p1day	13.3	Orig=56F|orig.time=Sunrise
-1836	5	11	5	31	p1day	14.4	Orig=58F|orig.time=Sunrise
+1836	5	11	5	32	p1day	14.4	Orig=58F|orig.time=Sunrise
 1836	5	12	5	32	p1day	15.3	Orig=59.5F|orig.time=Sunrise
 1836	5	13	5	33	p1day	11.1	Orig=52F|orig.time=Sunrise
 1836	5	14	5	34	p1day	17.2	Orig=63F|orig.time=Sunrise
@@ -726,7 +726,7 @@ Year	Month	Day	Hour	Minute	Period	Value	Meta
 1836	12	25	3	36	p1day	11.4	Orig=52.5F|orig.time=Sunrise
 1836	12	26	3	37	p1day	15	Orig=59F|orig.time=Sunrise
 1836	12	27	3	38	p1day	16.7	Orig=62F|orig.time=Sunrise
-1836	12	28	3	38	p1day	17.5	Orig=63.5F|orig.time=Sunrise
+1836	12	28	3	39	p1day	17.5	Orig=63.5F|orig.time=Sunrise
 1836	12	29	3	39	p1day	18.9	Orig=66F|orig.time=Sunrise
 1836	12	30	3	40	p1day	16.7	Orig=62F|orig.time=Sunrise
 1836	12	31	3	41	p1day	15.6	Orig=60F|orig.time=Sunrise

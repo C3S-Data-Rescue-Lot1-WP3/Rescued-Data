@@ -61,7 +61,7 @@ Year	Month	Day	Hour	Minute	Period	Value	Meta
 1835	2	28	17	22	p1day	23.9	Orig=75F|orig.time=Sunset
 1835	3	1	17	21	p1day	21.9	Orig=71.5F|orig.time=Sunset
 1835	3	2	17	20	p1day	24.4	Orig=76F|orig.time=Sunset
-1835	3	3	10	58	p1day	24.4	Orig=76F|orig.time=Noon
+1835	3	3	10	59	p1day	24.4	Orig=76F|orig.time=Noon
 1835	3	4	17	17	p1day	23.9	Orig=75F|orig.time=Sunset
 1835	3	5	17	16	p1day	32.3	Orig=90.2F|orig.time=Sunset
 1835	3	6	17	15	p1day	25.8	Orig=78.5F|orig.time=Sunset
@@ -109,7 +109,7 @@ Year	Month	Day	Hour	Minute	Period	Value	Meta
 1835	4	17	16	19	p1day	19	Orig=66.2F|orig.time=Sunset
 1835	4	18	10	46	p1day	19.4	Orig=67F|orig.time=Noon
 1835	4	19	16	17	p1day	16.7	Orig=62F|orig.time=Sunset
-1835	4	20	16	15	p1day	15.6	Orig=60F|orig.time=Sunset
+1835	4	20	16	16	p1day	15.6	Orig=60F|orig.time=Sunset
 1835	4	21	16	14	p1day	18.3	Orig=65F|orig.time=Sunset
 1835	4	22	16	13	p1day	20.8	Orig=69.5F|orig.time=Sunset
 1835	4	23	16	12	p1day	23.3	Orig=74F|orig.time=Sunset
@@ -129,7 +129,7 @@ Year	Month	Day	Hour	Minute	Period	Value	Meta
 1835	5	17	15	52	p1day	20.3	Orig=68.6F|orig.time=Sunset
 1835	5	25	15	48	p1day	18.3	Orig=65F|orig.time=Sunset
 1835	5	26	15	47	p1day	16.4	Orig=61.6F|orig.time=Sunset
-1835	6	1	15	45	p1day	23.3	Orig=74F|orig.time=Sunset
+1835	6	1	15	46	p1day	23.3	Orig=74F|orig.time=Sunset
 1835	6	2	15	45	p1day	23.1	Orig=73.6F|orig.time=Sunset
 1835	6	3	10	46	p1day	22.9	Orig=73.3F|orig.time=Noon
 1835	6	4	15	45	p1day	22.9	Orig=73.3F|orig.time=Sunset
@@ -191,7 +191,7 @@ Year	Month	Day	Hour	Minute	Period	Value	Meta
 1835	8	9	16	14	p1day	18.3	Orig=65F|orig.time=Sunset
 1835	8	10	16	15	p1day	17.2	Orig=63F|orig.time=Sunset
 1835	8	11	16	16	p1day	16.7	Orig=62F|orig.time=Sunset
-1835	8	12	16	16	p1day	15.8	Orig=60.5F|orig.time=Sunset
+1835	8	12	16	17	p1day	15.8	Orig=60.5F|orig.time=Sunset
 1835	8	13	16	17	p1day	15.8	Orig=60.5F|orig.time=Sunset
 1835	8	14	16	18	p1day	16.7	Orig=62F|orig.time=Sunset
 1835	8	15	16	19	p1day	20.6	Orig=69F|orig.time=Sunset
@@ -229,7 +229,7 @@ Year	Month	Day	Hour	Minute	Period	Value	Meta
 1835	9	18	16	42	p1day	13.9	Orig=57F|orig.time=Sunset
 1835	9	19	16	42	p1day	14.4	Orig=58F|orig.time=Sunset
 1835	9	20	16	43	p1day	18.3	Orig=65F|orig.time=Sunset
-1835	9	22	16	44	p1day	17.2	Orig=63F|orig.time=Sunset
+1835	9	22	16	45	p1day	17.2	Orig=63F|orig.time=Sunset
 1835	9	23	16	45	p1day	16.9	Orig=62.5F|orig.time=Sunset
 1835	9	24	16	46	p1day	17.5	Orig=63.5F|orig.time=Sunset
 1835	9	25	10	38	p1day	16.7	Orig=62F|orig.time=Noon
@@ -250,7 +250,7 @@ Year	Month	Day	Hour	Minute	Period	Value	Meta
 1835	10	13	17	0	p1day	18.9	Orig=66F|orig.time=Sunset
 1835	10	14	17	1	p1day	18.9	Orig=66F|orig.time=Sunset
 1835	10	15	17	2	p1day	17.2	Orig=63F|orig.time=Sunset
-1835	10	16	17	2	p1day	17.2	Orig=63F|orig.time=Sunset
+1835	10	16	17	3	p1day	17.2	Orig=63F|orig.time=Sunset
 1835	10	17	17	3	p1day	20	Orig=68F|orig.time=Sunset
 1835	10	18	17	4	p1day	20.6	Orig=69F|orig.time=Sunset
 1835	10	19	17	5	p1day	16.7	Orig=62F|orig.time=Sunset
@@ -271,7 +271,7 @@ Year	Month	Day	Hour	Minute	Period	Value	Meta
 1835	11	3	17	19	p1day	25.6	Orig=78F|orig.time=Sunset
 1835	11	4	17	20	p1day	25.6	Orig=78F|orig.time=Sunset
 1835	11	5	17	21	p1day	23.9	Orig=75F|orig.time=Sunset
-1835	11	6	17	21	p1day	24.4	Orig=76F|orig.time=Sunset
+1835	11	6	17	22	p1day	24.4	Orig=76F|orig.time=Sunset
 1835	11	7	17	22	p1day	21.7	Orig=71F|orig.time=Sunset
 1835	11	8	17	23	p1day	18.4	Orig=65.2F|orig.time=Sunset
 1835	11	9	17	24	p1day	18.9	Orig=66F|orig.time=Sunset
@@ -293,7 +293,7 @@ Year	Month	Day	Hour	Minute	Period	Value	Meta
 1835	11	25	17	40	p1day	22.8	Orig=73F|orig.time=Sunset
 1835	11	26	17	41	p1day	20	Orig=68F|orig.time=Sunset
 1835	11	27	17	42	p1day	20	Orig=68F|orig.time=Sunset
-1835	11	28	17	42	p1day	22.2	Orig=72F|orig.time=Sunset
+1835	11	28	17	43	p1day	22.2	Orig=72F|orig.time=Sunset
 1835	11	29	17	43	p1day	23.6	Orig=74.5F|orig.time=Sunset
 1835	11	30	17	44	p1day	23.3	Orig=74F|orig.time=Sunset
 1835	12	1	17	45	p1day	27.8	Orig=82F|orig.time=Sunset
@@ -338,7 +338,7 @@ Year	Month	Day	Hour	Minute	Period	Value	Meta
 1836	1	11	18	1	p1day	25	Orig=77F|orig.time=Sunset
 1836	1	12	18	1	p1day	30.8	Orig=87.5F|orig.time=Sunset
 1836	1	13	18	1	p1day	25.3	Orig=77.5F|orig.time=Sunset
-1836	1	14	18	0	p1day	25	Orig=77F|orig.time=Sunset
+1836	1	14	18	1	p1day	25	Orig=77F|orig.time=Sunset
 1836	1	15	18	0	p1day	24.4	Orig=76F|orig.time=Sunset
 1836	1	16	18	0	p1day	30.4	Orig=86.8F|orig.time=Sunset
 1836	1	17	22	57	p1day	26.8	Orig=80.3F|orig.time=Midnight
@@ -358,7 +358,7 @@ Year	Month	Day	Hour	Minute	Period	Value	Meta
 1836	2	1	17	51	p1day	28.4	Orig=83.2F|orig.time=Sunset
 1836	2	2	17	50	p1day	31.7	Orig=89F|orig.time=Sunset
 1836	2	3	17	49	p1day	24	Orig=75.2F|orig.time=Sunset
-1836	2	4	17	48	p1day	25.8	Orig=78.5F|orig.time=Sunset
+1836	2	4	17	49	p1day	25.8	Orig=78.5F|orig.time=Sunset
 1836	2	5	17	48	p1day	24.4	Orig=76F|orig.time=Sunset
 1836	2	7	17	46	p1day	23.9	Orig=75F|orig.time=Sunset
 1836	2	8	17	45	p1day	31.2	Orig=88.2F|orig.time=Sunset
@@ -371,7 +371,7 @@ Year	Month	Day	Hour	Minute	Period	Value	Meta
 1836	2	16	17	37	p1day	29.4	Orig=85F|orig.time=Sunset
 1836	2	17	17	36	p1day	27.8	Orig=82F|orig.time=Sunset
 1836	2	18	17	35	p1day	33.9	Orig=93F|orig.time=Sunset
-1836	2	19	17	33	p1day	33.3	Orig=92F|orig.time=Sunset
+1836	2	19	17	34	p1day	33.3	Orig=92F|orig.time=Sunset
 1836	2	20	17	32	p1day	28.3	Orig=83F|orig.time=Sunset
 1836	2	21	17	31	p1day	22.9	Orig=73.3F|orig.time=Sunset
 1836	2	22	17	30	p1day	23.1	Orig=73.5F|orig.time=Sunset

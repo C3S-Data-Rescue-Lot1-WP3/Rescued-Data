@@ -1,0 +1,135 @@
+SEF	1.0.0
+ID	Bathurst
+Name	Bathurst
+Lat	-33.3106
+Lon	26.5256
+Alt	252
+Source	C3S_SouthAfrica
+Link	https://data-rescue.copernicus-climate.eu/lso/1086281
+Vbl	p
+Stat	point
+Units	hPa
+Meta	Data policy=GNU GPL v3.0|PTC=N|PGC=Y
+Year	Month	Day	Hour	Minute	Period	Value	Meta
+1821	11	1	NA	NA	0	991	Orig=29.3in|orig.time=AM
+1821	11	1	NA	NA	0	991	Orig=29.3in|orig.time=PM
+1821	11	2	NA	NA	0	997.8	Orig=29.5in|orig.time=AM
+1821	11	2	NA	NA	0	997.8	Orig=29.5in|orig.time=PM
+1821	11	3	NA	NA	0	994.4	Orig=29.4in|orig.time=AM
+1821	11	3	NA	NA	0	994.4	Orig=29.4in|orig.time=PM
+1821	11	4	NA	NA	0	994.4	Orig=29.4in|orig.time=AM
+1821	11	4	NA	NA	0	994.4	Orig=29.4in|orig.time=PM
+1821	11	5	NA	NA	0	991	Orig=29.3in|orig.time=AM
+1821	11	5	NA	NA	0	991	Orig=29.3in|orig.time=PM
+1821	11	6	NA	NA	0	997.8	Orig=29.5in|orig.time=AM
+1821	11	6	NA	NA	0	997.8	Orig=29.5in|orig.time=PM
+1821	11	7	NA	NA	0	987.7	Orig=29.2in|orig.time=AM
+1821	11	7	NA	NA	0	984.3	Orig=29.1in|orig.time=PM
+1821	11	8	NA	NA	0	987.7	Orig=29.2in|orig.time=AM
+1821	11	8	NA	NA	0	987.7	Orig=29.2in|orig.time=PM
+1821	11	9	NA	NA	0	984.3	Orig=29.1in|orig.time=AM
+1821	11	9	NA	NA	0	984.3	Orig=29.1in|orig.time=PM
+1821	11	10	NA	NA	0	994.4	Orig=29.4in|orig.time=AM
+1821	11	10	NA	NA	0	994.4	Orig=29.4in|orig.time=PM
+1821	11	11	NA	NA	0	997.8	Orig=29.5in|orig.time=AM
+1821	11	11	NA	NA	0	997.8	Orig=29.5in|orig.time=PM
+1821	11	12	NA	NA	0	997.8	Orig=29.5in|orig.time=AM
+1821	11	12	NA	NA	0	997.8	Orig=29.5in|orig.time=PM
+1821	11	13	NA	NA	0	991	Orig=29.3in|orig.time=AM
+1821	11	13	NA	NA	0	987.7	Orig=29.2in|orig.time=PM
+1821	11	14	NA	NA	0	984.3	Orig=29.1in|orig.time=AM
+1821	11	14	NA	NA	0	987.7	Orig=29.2in|orig.time=PM
+1821	11	15	NA	NA	0	987.7	Orig=29.2in|orig.time=AM
+1821	11	15	NA	NA	0	987.7	Orig=29.2in|orig.time=PM
+1821	11	16	NA	NA	0	994.4	Orig=29.4in|orig.time=AM
+1821	11	16	NA	NA	0	997.8	Orig=29.5in|orig.time=PM
+1821	11	17	NA	NA	0	1001.2	Orig=29.6in|orig.time=AM
+1821	11	17	NA	NA	0	997.8	Orig=29.5in|orig.time=PM
+1821	11	18	NA	NA	0	991	Orig=29.3in|orig.time=AM
+1821	11	18	NA	NA	0	991	Orig=29.3in|orig.time=PM
+1821	11	19	NA	NA	0	984.3	Orig=29.1in|orig.time=AM
+1821	11	19	NA	NA	0	984.3	Orig=29.1in|orig.time=PM
+1821	11	20	NA	NA	0	991	Orig=29.3in|orig.time=AM
+1821	11	20	NA	NA	0	991	Orig=29.3in|orig.time=PM
+1821	11	21	NA	NA	0	984.3	Orig=29.1in|orig.time=AM
+1821	11	21	NA	NA	0	980.9	Orig=29in|orig.time=PM
+1821	11	22	NA	NA	0	987.7	Orig=29.2in|orig.time=AM
+1821	11	22	NA	NA	0	987.7	Orig=29.2in|orig.time=PM
+1821	11	23	NA	NA	0	997.1	Orig=29.48in|orig.time=AM
+1821	11	23	NA	NA	0	994.4	Orig=29.4in|orig.time=PM
+1821	11	24	NA	NA	0	991	Orig=29.3in|orig.time=AM
+1821	11	24	NA	NA	0	987.7	Orig=29.2in|orig.time=PM
+1821	11	25	NA	NA	0	991	Orig=29.3in|orig.time=AM
+1821	11	25	NA	NA	0	991	Orig=29.3in|orig.time=PM
+1821	11	26	NA	NA	0	991	Orig=29.3in|orig.time=AM
+1821	11	26	NA	NA	0	991	Orig=29.3in|orig.time=PM
+1821	11	27	NA	NA	0	994.4	Orig=29.4in|orig.time=AM
+1821	11	27	NA	NA	0	991	Orig=29.3in|orig.time=PM
+1821	11	28	NA	NA	0	994.4	Orig=29.4in|orig.time=AM
+1821	11	28	NA	NA	0	991	Orig=29.3in|orig.time=PM
+1821	11	29	NA	NA	0	994.4	Orig=29.4in|orig.time=AM
+1821	11	29	NA	NA	0	994.4	Orig=29.4in|orig.time=PM
+1821	11	30	NA	NA	0	994.4	Orig=29.4in|orig.time=AM
+1821	11	30	NA	NA	0	991	Orig=29.3in|orig.time=PM
+1821	12	1	NA	NA	0	994.4	Orig=29.4in|orig.time=AM
+1821	12	1	NA	NA	0	994.4	Orig=29.4in|orig.time=PM
+1821	12	2	NA	NA	0	994.4	Orig=29.4in|orig.time=AM
+1821	12	2	NA	NA	0	997.8	Orig=29.5in|orig.time=PM
+1821	12	3	NA	NA	0	994.4	Orig=29.4in|orig.time=AM
+1821	12	3	NA	NA	0	994.4	Orig=29.4in|orig.time=PM
+1821	12	4	NA	NA	0	991	Orig=29.3in|orig.time=AM
+1821	12	4	NA	NA	0	987.7	Orig=29.2in|orig.time=PM
+1821	12	5	NA	NA	0	991	Orig=29.3in|orig.time=AM
+1821	12	5	NA	NA	0	991	Orig=29.3in|orig.time=PM
+1821	12	6	NA	NA	0	991	Orig=29.3in|orig.time=AM
+1821	12	6	NA	NA	0	994.4	Orig=29.4in|orig.time=PM
+1821	12	7	NA	NA	0	991	Orig=29.3in|orig.time=AM
+1821	12	7	NA	NA	0	991	Orig=29.3in|orig.time=PM
+1821	12	8	NA	NA	0	987.7	Orig=29.2in|orig.time=AM
+1821	12	8	NA	NA	0	991	Orig=29.3in|orig.time=PM
+1821	12	9	NA	NA	0	991	Orig=29.3in|orig.time=AM
+1821	12	9	NA	NA	0	987.7	Orig=29.2in|orig.time=PM
+1821	12	10	NA	NA	0	991	Orig=29.3in|orig.time=AM
+1821	12	10	NA	NA	0	991	Orig=29.3in|orig.time=PM
+1821	12	11	NA	NA	0	991	Orig=29.3in|orig.time=AM
+1821	12	11	NA	NA	0	991	Orig=29.3in|orig.time=PM
+1821	12	12	NA	NA	0	991	Orig=29.3in|orig.time=AM
+1821	12	12	NA	NA	0	991	Orig=29.3in|orig.time=PM
+1821	12	13	NA	NA	0	991	Orig=29.3in|orig.time=AM
+1821	12	13	NA	NA	0	987.7	Orig=29.2in|orig.time=PM
+1821	12	14	NA	NA	0	987.7	Orig=29.2in|orig.time=AM
+1821	12	14	NA	NA	0	987.7	Orig=29.2in|orig.time=PM
+1821	12	15	NA	NA	0	991	Orig=29.3in|orig.time=AM
+1821	12	15	NA	NA	0	991	Orig=29.3in|orig.time=PM
+1821	12	16	NA	NA	0	991	Orig=29.3in|orig.time=AM
+1821	12	16	NA	NA	0	987.7	Orig=29.2in|orig.time=PM
+1821	12	17	NA	NA	0	987.7	Orig=29.2in|orig.time=AM
+1821	12	17	NA	NA	0	984.3	Orig=29.1in|orig.time=PM
+1821	12	18	NA	NA	0	987.7	Orig=29.2in|orig.time=AM
+1821	12	18	NA	NA	0	987.7	Orig=29.2in|orig.time=PM
+1821	12	19	NA	NA	0	991	Orig=29.3in|orig.time=AM
+1821	12	19	NA	NA	0	991	Orig=29.3in|orig.time=PM
+1821	12	20	NA	NA	0	987.7	Orig=29.2in|orig.time=AM
+1821	12	20	NA	NA	0	991	Orig=29.3in|orig.time=PM
+1821	12	21	NA	NA	0	991	Orig=29.3in|orig.time=AM
+1821	12	21	NA	NA	0	991	Orig=29.3in|orig.time=PM
+1821	12	22	NA	NA	0	991	Orig=29.3in|orig.time=AM
+1821	12	22	NA	NA	0	991	Orig=29.3in|orig.time=PM
+1821	12	23	NA	NA	0	987.7	Orig=29.2in|orig.time=AM
+1821	12	23	NA	NA	0	987.7	Orig=29.2in|orig.time=PM
+1821	12	24	NA	NA	0	994.4	Orig=29.4in|orig.time=AM
+1821	12	24	NA	NA	0	994.4	Orig=29.4in|orig.time=PM
+1821	12	25	NA	NA	0	994.4	Orig=29.4in|orig.time=AM
+1821	12	25	NA	NA	0	994.4	Orig=29.4in|orig.time=PM
+1821	12	26	NA	NA	0	991	Orig=29.3in|orig.time=AM
+1821	12	26	NA	NA	0	987.7	Orig=29.2in|orig.time=PM
+1821	12	27	NA	NA	0	987.7	Orig=29.2in|orig.time=AM
+1821	12	27	NA	NA	0	987.7	Orig=29.2in|orig.time=PM
+1821	12	28	NA	NA	0	991	Orig=29.3in|orig.time=AM
+1821	12	28	NA	NA	0	991	Orig=29.3in|orig.time=PM
+1821	12	29	NA	NA	0	987.7	Orig=29.2in|orig.time=AM
+1821	12	29	NA	NA	0	987.7	Orig=29.2in|orig.time=PM
+1821	12	30	NA	NA	0	987.7	Orig=29.2in|orig.time=AM
+1821	12	30	NA	NA	0	991	Orig=29.3in|orig.time=PM
+1821	12	31	NA	NA	0	994.4	Orig=29.4in|orig.time=AM
+1821	12	31	NA	NA	0	994.4	Orig=29.4in|orig.time=PM

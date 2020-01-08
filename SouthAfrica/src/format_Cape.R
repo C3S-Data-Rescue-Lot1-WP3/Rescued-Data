@@ -1,16 +1,17 @@
 # Converts the Cape Town (1819-1824) digitized data from the University of  
 # Witwatersrand into the Station Exchange Format.
 #
-# Requires file write_sef.R and libraries XLConnect, plyr
+# Requires libraries XLConnect, plyr, dataresqc
 #
 # Created by Yuri Brugnara, University of Bern - 21 Dec 2018
+# Updated 7 Jan 2020
 
 ###############################################################################
 
 
 require(XLConnect)
 require(plyr)
-source("write_sef.R")
+require(dataresqc)
 options(scipen = 999) # avoid exponential notation
 
 
@@ -23,13 +24,14 @@ outpath <- "../data/formatted/"
 
 # Define variables and units
 variables <- c("ta", "p", "Tx", "Tn", "dd")
-units <- c("C", "Pa", "C", "C", "degree")
+units <- c("C", "hPa", "C", "C", "degree")
+stats <- c("point", "point", "maximum", "minimum", "point")
 
 # Define conversions to apply to the raw data
 conversions <- list(ta = function(x) round((x - 32) * 5 / 9, 1),
                     p = function(x) 
-                      round(100 * convert_pressure(x, f = 25.4,
-                                                   lat = lat, alt = alt), 0),
+                      round(convert_pressure(x, f = 25.4,
+                                                   lat = lat, alt = alt), 1),
                     Tx = function(x) round((x - 32) * 5 / 9, 1),
                     Tn = function(x) round((x - 32) * 5 / 9, 1),
                     dd = function(x) round(x, 0))
@@ -84,7 +86,8 @@ for (v in variables) {
   Data[[v]] <- data.frame(y = integer(),
                           m = integer(),
                           d = integer(),
-                          h = character())
+                          HH = integer(),
+                          MM = integer())
 }
 
 
@@ -130,7 +133,7 @@ for (ifile in 1:length(infiles)) {
     template$ta_orig <- paste0("Orig=", round(template$ta, 0), "F")
     template[ , c("p_orig", "ta_orig")] <- 
       sapply(template[ , c("p_orig", "ta_orig")],
-             paste, paste0("t=", template$h), sep = ",")
+             paste, paste0("orig.time=", template$h), sep = "|")
   }
   template$dd_orig <- paste0("Orig=", template$dd)
   template$dd_orig <- paste0(template$dd_orig, ",t=", template$h)
@@ -139,6 +142,8 @@ for (ifile in 1:length(infiles)) {
   template$d <- fill(template$d)
   template <- template[which(!is.na(template$m)), ]
   template$h <- ""
+  template$HH <- NA
+  template$MM <- NA
   
   ## Transform wind direction to degrees
   directions <- c("N", "NNE", "NE", "ENE", "E", "ESE", "SE", "SSE", "S",
@@ -150,7 +155,7 @@ for (ifile in 1:length(infiles)) {
     if (variables[i] %in% names(template)) {
       template[, variables[i]] <- conversions[[variables[i]]](template[, variables[i]])
       Data[[variables[i]]] <- rbind.fill(Data[[variables[i]]], 
-                                         template[, c("y", "m", "d", "h", variables[i], 
+                                         template[, c("y", "m", "d", "HH", "MM", variables[i], 
                                                       paste0(variables[i], "_orig"))])
     }
   }
@@ -159,26 +164,25 @@ for (ifile in 1:length(infiles)) {
 
 ## Write output
 for (i in 1:length(variables)) {
-  ## First remove missing values, order by time and add column with variable code
-  Data[[variables[i]]] <- Data[[variables[i]]][which(!is.na(Data[[variables[i]]][, 5])), ]
+  ## First order by time
   Data[[variables[i]]] <- Data[[variables[i]]][order(Data[[variables[i]]]$y,
                                                      Data[[variables[i]]]$m,
-                                                     Data[[variables[i]]]$d,
-                                                     Data[[variables[i]]]$h), ]
+                                                     Data[[variables[i]]]$d), ]
   if (dim(Data[[variables[i]]])[1] > 0) {
-    Data[[variables[i]]] <- cbind(variables[i], Data[[variables[i]]])
     write_sef(Data = Data[[variables[i]]][, 1:6],
               outpath = outpath,
+              variable = variables[i],
               cod = "Cape_Town",
               nam = "Cape Town",
               lat = lat,
               lon = lon,
               alt = alt,
               sou = "C3S_SouthAfrica",
-              repo = "",
+              link = "",
               units = units[i],
-              metaHead = ifelse(i==2, "PTC=F,PGC=T", ""),
+              stat = stats[i],
+              metaHead = paste0("Data policy=GNU GPL v3.0", ifelse(i==2, "|PTC=N|PGC=Y", "")),
               meta = Data[[variables[i]]][, 7],
-              timef = ifelse(variables[i] %in% c("Tx", "Tn"), "", 0))
+              period = ifelse(variables[i] %in% c("Tx", "Tn"), "p1day", 0))
   }
 }
