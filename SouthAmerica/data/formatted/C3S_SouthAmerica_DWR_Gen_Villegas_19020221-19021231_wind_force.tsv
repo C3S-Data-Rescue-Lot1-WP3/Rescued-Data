@@ -1,0 +1,41 @@
+SEF	1.0.0
+ID	DWR_Gen_Villegas
+Name	General Villegas
+Lat	-35.0326
+Lon	-63.0148
+Alt	NA
+Source	C3S_SouthAmerica
+Link	https://data-rescue.copernicus-climate.eu/lso/1085387
+Vbl	wind_force
+Stat	point
+Units	NA
+Meta	Data policy=GNU GPL v3.0
+Year	Month	Day	Hour	Minute	Period	Value	Meta
+1902	12	1	11	17	0	1	orig.time=7am
+1902	12	2	11	17	0	1	orig.time=7am
+1902	12	3	11	17	0	1	orig.time=7am
+1902	12	4	11	17	0	1	orig.time=7am
+1902	12	5	11	17	0	1	orig.time=7am
+1902	12	6	11	17	0	2	orig.time=7am
+1902	12	7	11	17	0	1	orig.time=7am
+1902	12	8	11	17	0	3	orig.time=7am
+1902	12	9	11	17	0	2	orig.time=7am
+1902	12	10	11	17	0	1	orig.time=7am
+1902	12	11	11	17	0	1	orig.time=7am
+1902	12	12	11	17	0	2	orig.time=7am
+1902	12	13	11	17	0	3	orig.time=7am
+1902	12	14	11	17	0	1	orig.time=7am
+1902	12	15	11	17	0	1	orig.time=7am
+1902	12	16	11	17	0	2	orig.time=7am
+1902	12	17	11	17	0	2	orig.time=7am
+1902	12	18	11	17	0	1	orig.time=7am
+1902	12	19	11	17	0	2	orig.time=7am
+1902	12	21	11	17	0	1	orig.time=7am
+1902	12	22	11	17	0	1	orig.time=7am
+1902	12	23	11	17	0	1	orig.time=7am
+1902	12	26	11	17	0	1	orig.time=7am
+1902	12	27	11	17	0	1	orig.time=7am
+1902	12	28	11	17	0	0	orig.time=7am
+1902	12	29	11	17	0	1	orig.time=7am
+1902	12	30	11	17	0	2	orig.time=7am
+1902	12	31	11	17	0	2	orig.time=7am

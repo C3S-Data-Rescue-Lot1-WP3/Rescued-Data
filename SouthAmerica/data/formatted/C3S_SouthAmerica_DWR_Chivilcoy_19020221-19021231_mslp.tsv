@@ -1,4 +1,4 @@
-SEF	0.2.0
+SEF	1.0.0
 ID	DWR_Chivilcoy
 Name	Chivilcoy
 Lat	-34.897
@@ -8,51 +8,51 @@ Source	C3S_SouthAmerica
 Link	https://data-rescue.copernicus-climate.eu/lso/1085127
 Vbl	mslp
 Stat	point
-Units	Pa
+Units	hPa
 Meta	Data policy=GNU GPL v3.0
 Year	Month	Day	Hour	Minute	Period	Value	Meta
-1902	9	4	11	17	0	102485	Orig=768.7mm|orig.time=7am
-1902	9	8	11	17	0	101232	Orig=759.3mm|orig.time=7am
-1902	9	10	11	17	0	101992	Orig=765mm|orig.time=7am
-1902	9	11	11	17	0	102578	Orig=769.4mm|orig.time=7am
-1902	9	12	11	17	0	102992	Orig=772.5mm|orig.time=7am
-1902	11	19	11	17	0	101898	Orig=764.3mm|orig.time=7am
-1902	11	20	11	17	0	101765	Orig=763.3mm|orig.time=7am
-1902	11	21	11	17	0	101485	Orig=761.2mm|orig.time=7am
-1902	11	22	11	17	0	101072	Orig=758.1mm|orig.time=7am
-1902	11	24	11	17	0	101338	Orig=760.1mm|orig.time=7am
-1902	11	25	11	17	0	100832	Orig=756.3mm|orig.time=7am
-1902	11	26	11	17	0	101912	Orig=764.4mm|orig.time=7am
-1902	11	27	11	17	0	102792	Orig=771mm|orig.time=7am
-1902	11	28	11	17	0	102178	Orig=766.4mm|orig.time=7am
-1902	11	29	11	17	0	101698	Orig=762.8mm|orig.time=7am
-1902	11	30	11	17	0	101698	Orig=762.8mm|orig.time=7am
-1902	12	1	11	17	0	101645	Orig=762.4mm|orig.time=7am
-1902	12	2	11	17	0	101352	Orig=760.2mm|orig.time=7am
-1902	12	4	11	17	0	101538	Orig=761.6mm|orig.time=7am
-1902	12	5	11	17	0	101498	Orig=761.3mm|orig.time=7am
-1902	12	6	11	17	0	101072	Orig=758.1mm|orig.time=7am
-1902	12	7	11	17	0	101072	Orig=758.1mm|orig.time=7am
-1902	12	8	11	17	0	101298	Orig=759.8mm|orig.time=7am
-1902	12	9	11	17	0	102098	Orig=765.8mm|orig.time=7am
-1902	12	10	11	17	0	101432	Orig=760.8mm|orig.time=7am
-1902	12	11	11	17	0	101245	Orig=759.4mm|orig.time=7am
-1902	12	12	11	17	0	100298	Orig=752.3mm|orig.time=7am
-1902	12	13	11	17	0	101365	Orig=760.3mm|orig.time=7am
-1902	12	14	11	17	0	102498	Orig=768.8mm|orig.time=7am
-1902	12	15	11	17	0	102072	Orig=765.6mm|orig.time=7am
-1902	12	16	11	17	0	101485	Orig=761.2mm|orig.time=7am
-1902	12	17	11	17	0	101365	Orig=760.3mm|orig.time=7am
-1902	12	18	11	17	0	101312	Orig=759.9mm|orig.time=7am
-1902	12	19	11	17	0	101192	Orig=759mm|orig.time=7am
-1902	12	20	11	17	0	101552	Orig=761.7mm|orig.time=7am
-1902	12	21	11	17	0	101058	Orig=758mm|orig.time=7am
-1902	12	22	11	17	0	100592	Orig=754.5mm|orig.time=7am
-1902	12	23	11	17	0	100685	Orig=755.2mm|orig.time=7am
-1902	12	24	11	17	0	100005	Orig=750.1mm|orig.time=7am
-1902	12	26	11	17	0	100978	Orig=757.4mm|orig.time=7am
-1902	12	27	11	17	0	101032	Orig=757.8mm|orig.time=7am
-1902	12	28	11	17	0	101405	Orig=760.6mm|orig.time=7am
-1902	12	29	11	17	0	101778	Orig=763.4mm|orig.time=7am
-1902	12	30	11	17	0	102632	Orig=769.8mm|orig.time=7am
-1902	12	31	11	17	0	102645	Orig=769.9mm|orig.time=7am
+1902	9	4	11	17	0	1024.8	Orig=768.7mm|orig.time=7am
+1902	9	8	11	17	0	1012.3	Orig=759.3mm|orig.time=7am
+1902	9	10	11	17	0	1019.9	Orig=765mm|orig.time=7am
+1902	9	11	11	17	0	1025.8	Orig=769.4mm|orig.time=7am
+1902	9	12	11	17	0	1029.9	Orig=772.5mm|orig.time=7am
+1902	11	19	11	17	0	1019	Orig=764.3mm|orig.time=7am
+1902	11	20	11	17	0	1017.6	Orig=763.3mm|orig.time=7am
+1902	11	21	11	17	0	1014.9	Orig=761.2mm|orig.time=7am
+1902	11	22	11	17	0	1010.7	Orig=758.1mm|orig.time=7am
+1902	11	24	11	17	0	1013.4	Orig=760.1mm|orig.time=7am
+1902	11	25	11	17	0	1008.3	Orig=756.3mm|orig.time=7am
+1902	11	26	11	17	0	1019.1	Orig=764.4mm|orig.time=7am
+1902	11	27	11	17	0	1027.9	Orig=771mm|orig.time=7am
+1902	11	28	11	17	0	1021.8	Orig=766.4mm|orig.time=7am
+1902	11	29	11	17	0	1017	Orig=762.8mm|orig.time=7am
+1902	11	30	11	17	0	1017	Orig=762.8mm|orig.time=7am
+1902	12	1	11	17	0	1016.4	Orig=762.4mm|orig.time=7am
+1902	12	2	11	17	0	1013.5	Orig=760.2mm|orig.time=7am
+1902	12	4	11	17	0	1015.4	Orig=761.6mm|orig.time=7am
+1902	12	5	11	17	0	1015	Orig=761.3mm|orig.time=7am
+1902	12	6	11	17	0	1010.7	Orig=758.1mm|orig.time=7am
+1902	12	7	11	17	0	1010.7	Orig=758.1mm|orig.time=7am
+1902	12	8	11	17	0	1013	Orig=759.8mm|orig.time=7am
+1902	12	9	11	17	0	1021	Orig=765.8mm|orig.time=7am
+1902	12	10	11	17	0	1014.3	Orig=760.8mm|orig.time=7am
+1902	12	11	11	17	0	1012.5	Orig=759.4mm|orig.time=7am
+1902	12	12	11	17	0	1003	Orig=752.3mm|orig.time=7am
+1902	12	13	11	17	0	1013.7	Orig=760.3mm|orig.time=7am
+1902	12	14	11	17	0	1025	Orig=768.8mm|orig.time=7am
+1902	12	15	11	17	0	1020.7	Orig=765.6mm|orig.time=7am
+1902	12	16	11	17	0	1014.9	Orig=761.2mm|orig.time=7am
+1902	12	17	11	17	0	1013.7	Orig=760.3mm|orig.time=7am
+1902	12	18	11	17	0	1013.1	Orig=759.9mm|orig.time=7am
+1902	12	19	11	17	0	1011.9	Orig=759mm|orig.time=7am
+1902	12	20	11	17	0	1015.5	Orig=761.7mm|orig.time=7am
+1902	12	21	11	17	0	1010.6	Orig=758mm|orig.time=7am
+1902	12	22	11	17	0	1005.9	Orig=754.5mm|orig.time=7am
+1902	12	23	11	17	0	1006.9	Orig=755.2mm|orig.time=7am
+1902	12	24	11	17	0	1000.1	Orig=750.1mm|orig.time=7am
+1902	12	26	11	17	0	1009.8	Orig=757.4mm|orig.time=7am
+1902	12	27	11	17	0	1010.3	Orig=757.8mm|orig.time=7am
+1902	12	28	11	17	0	1014.1	Orig=760.6mm|orig.time=7am
+1902	12	29	11	17	0	1017.8	Orig=763.4mm|orig.time=7am
+1902	12	30	11	17	0	1026.3	Orig=769.8mm|orig.time=7am
+1902	12	31	11	17	0	1026.4	Orig=769.9mm|orig.time=7am

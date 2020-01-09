@@ -1,10 +1,10 @@
 # Converts the Daily Weather Reports digitized data for 1902 into the
-# Station Exchange Format v0.2.
+# Station Exchange Format.
 #
 # Requires libraries readxl and dataresqc
-# (https://github.com/c3s-data-rescue-service/dataresqc)
 #
 # Created by Yuri Brugnara, University of Bern - 30 Apr 2019
+# Updated 9 Jan 2020
 
 ###############################################################################
 
@@ -20,19 +20,19 @@ registryfile <- "../data/raw/DWR/c3s_argentina.csv"
 outpath <- "../data/formatted/"
 
 # Define variable codes and units
-variables <- c("ta", "mslp", "Tx", "Tn", "rh", "dd", "n", "w")
-units <- c("C", "Pa", "C", "C", "%", "degree", "%", "")
+variables <- c("ta", "mslp", "Tx", "Tn", "rh", "dd", "n", "wind_force")
+units <- c("C", "hPa", "C", "C", "%", "degree", "%", NA)
 varids <- c(2, 0, 4, 5, 6, 7, 10, 8) # needed to build the link to the C3S registry
 
 # Define conversions to apply to the raw data
 conversions <- list(ta = function(x) round(x, 1),
-                    mslp = function(x) round(100 * convert_pressure(x, f = 1), 0),
+                    mslp = function(x) round(convert_pressure(x, f = 1), 1),
                     Tx = function(x) round(x, 1),
                     Tn = function(x) round(x, 1),
                     rh = function(x) round(x, 0),
                     dd = function(x) round(x, 0),
                     n = function(x) round(33.3 * x, 0),
-                    w = function(x) round(x, 0))
+                    wind_force = function(x) round(x, 0))
 
 
 ## Read sheets names, station coordinates, registry entries
@@ -55,12 +55,12 @@ for (ist in 1:length(stations)) {
                                        rep("numeric", 3), "text",
                                        "numeric", "skip", "numeric", "skip"))
   names(template) <- c("y", "m", "d", "mslp", "ta", "Tx", "Tn", 
-                       "rh", "dd", "w", "n")
+                       "rh", "dd", "wind_force", "n")
   template <- template[which(!is.na(template$y)), ]
   template$dd_orig <- paste0("Orig=", template$dd)
   template$n_orig <- paste0("Orig=", round(template$n, 0))
   template$mslp_orig <- paste0("Orig=", round(template$mslp, 1), "mm")
-  template[, paste(c("ta", "Tx", "Tn", "rh", "w"), "orig", sep = "_")] <- ""
+  template[, paste(c("ta", "Tx", "Tn", "rh", "wind_force"), "orig", sep = "_")] <- ""
   
   ## Time is 2 PM LST until August and 7 AM LST from September
   template$HH <- NA
@@ -106,7 +106,7 @@ for (ist in 1:length(stations)) {
     drsid <- as.numeric(drsid) + varids[i] - 10
     
     ## Write file
-    if (dim(Data[[variables[i]]])[1] > 0) {
+    if (sum(!is.na(Data[[variables[i]]][, 6])) > 0) {
       write_sef(Data = Data[[variables[i]]][, 1:6],
                 outpath = outpath,
                 variable = variables[i],

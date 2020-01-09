@@ -1,10 +1,10 @@
 # Converts the digitized data for Rosario de Santa Fe 1886-1900 into the
-# Station Exchange Format v0.2.
+# Station Exchange Format.
 #
 # Requires libraries XLConnect, plyr, dataresqc
-# (https://github.com/c3s-data-rescue-service/dataresqc)
 #
 # Created by Yuri Brugnara, University of Bern - 30 Apr 2019
+# Updated 9 Jan 2020
 
 ###############################################################################
 
@@ -23,23 +23,23 @@ lat <- -32.945
 alt <- 35.7
 
 variables <- c("ta", "p", "Tx", "Tn", "tb", "dd", 
-               "n", "rr", "w", "ss", "Ts")
-units <- c("C", "Pa", "C", "C", "C", "degree", "%", "mm", "", "hours", "C")
+               "n", "rr", "wind_force", "ss", "Ts")
+units <- c("C", "hPa", "C", "C", "C", "degree", "%", "mm", NA, "hours", "C")
 stat_flags <- c("point", "point", "maximum", "minimum", "point", "point", 
                 "point", "sum", "point", "sum", "point")
 varids <- c(6, 4, 0, 1, 7, 2, 3, 5, 8, 9, 10) # needed to build the link to the C3S registry
 
 conversions <- list(ta = function(x) round(as.numeric(x), 1),
                     p = function(x, y) 
-                      round(100 * convert_pressure(as.numeric(x), f = 1, lat = lat, 
-                                                   alt = alt, atb = as.numeric(y)), 0),
+                      round(convert_pressure(as.numeric(x), f = 1, lat = lat, 
+                                                   alt = alt, atb = as.numeric(y)), 1),
                     Tx = function(x) round(as.numeric(x), 1),
                     Tn = function(x) round(as.numeric(x), 1),
                     tb = function(x) round(as.numeric(x), 1),
                     dd = function(x) round(as.numeric(x), 0),
                     n = function(x) round(10 * as.numeric(x), 0),
                     rr = function(x) round(as.numeric(x), 1),
-                    w = function(x) round(as.numeric(x), 0),
+                    wind_force = function(x) round(as.numeric(x), 0),
                     ss = function(x) round(as.numeric(x), 2),
                     Ts = function(x) round(as.numeric(x), 1))
 
@@ -98,51 +98,51 @@ for (v in variables) {
 ## Read data (1st part - 2 observations per day - precipitation in inches)
 template1 <- read_template(6, 233, c("0800", "1800"), c(17, 31),
                            list(c("atb", "p", "ta", "tb", "n", NA, NA, "dd", 
-                                  "w", "rr", "Tx", "Tn", NA, NA),
+                                  "wind_force", "rr", "Tx", "Tn", NA, NA),
                                 c("atb", "p", "ta", "tb", "n", NA, NA, "dd", 
-                                  "w", "rr", "Tx", "Tn", NA, NA)))
+                                  "wind_force", "rr", "Tx", "Tn", NA, NA)))
 template1$rr_orig <- paste0("Orig=", template1$rr, "in")
 template1$rr <- 25.4 * as.numeric(template1$rr)
 
 ## Read data (2nd part - 3 observations per day - precipitation in inches)
 template2 <- read_template(242, 667, c("0700", "1400", "2100"), c(19, 35, 51),
                            list(c("atb", "p", "ta", "tb", "n", NA, NA, "dd", 
-                                  "w", "rr", "Tx", "Tn", NA, NA, NA, NA),
+                                  "wind_force", "rr", "Tx", "Tn", NA, NA, NA, NA),
                                 c("atb", "p", "ta", "tb", "n", NA, NA, "dd", 
-                                  "w", "rr", "Tx", "Tn", NA, NA, NA, NA),
+                                  "wind_force", "rr", "Tx", "Tn", NA, NA, NA, NA),
                                 c("atb", "p", "ta", "tb", "n", NA, NA, "dd", 
-                                  "w", "rr", "Tx", "Tn", NA, NA, NA, NA)))
+                                  "wind_force", "rr", "Tx", "Tn", NA, NA, NA, NA)))
 template2$rr_orig <- paste0("Orig=", template2$rr, "in")
 template2$rr <- 25.4 * as.numeric(template2$rr)
 
 ## Read data (3rd part - 3 observations per day - precipitation in mm)
 template3 <- read_template(1038, 1402, c("0700", "1400", "2100"), c(17, 29, 42),
                            list(c("atb", "p", "ta", "tb", "n", NA, NA, "dd", 
-                                  "w", "rr", "Tx", "Tn", NA, NA),
+                                  "wind_force", "rr", "Tx", "Tn", NA, NA),
                                 c("atb", "p", "ta", "tb", "n", NA, NA, "dd", 
-                                  "w", "rr", NA, NA),
+                                  "wind_force", "rr", NA, NA),
                                 c("atb", "p", "ta", "tb", "n", NA, NA, "dd", 
-                                  "w", "rr", NA, NA, "ss")))
+                                  "wind_force", "rr", NA, NA, "ss")))
 template3$rr_orig <- paste0("Orig=", template3$rr, "mm")
 
 ## Read data (4th part - 3 observations per day - precipitation in mm, zeros omitted)
 template4 <- read_template(1403, 1583, c("0700", "1400", "2100"), c(17, 29, 42),
                            list(c("atb", "p", "ta", "tb", "n", NA, NA, "dd", 
-                                  "w", "rr", "Tx", "Tn", NA, NA),
+                                  "wind_force", "rr", "Tx", "Tn", NA, NA),
                                 c("atb", "p", "ta", "tb", "n", NA, NA, "dd", 
-                                  "w", "rr", NA, NA),
+                                  "wind_force", "rr", NA, NA),
                                 c("atb", "p", "ta", "tb", "n", NA, NA, "dd", 
-                                  "w", "rr", NA, NA, "ss")))
+                                  "wind_force", "rr", NA, NA, "ss")))
 template4$rr[is.na(template4$rr)] <- 0
 template4$rr_orig <- paste0("Orig=", template4$rr, "mm")
 
 ## Read data (5th part - 2 observations per day - precipitation in mm, zeros omitted)
 template5 <- read_template(1591, 2921, c("0800", "1800"), c(24, 45),
                            list(c("atb", "p", "ta", "tb", NA, "n", NA, NA, "dd", 
-                                  "w", "rr", "Tx", "Tn", "Ts", NA, NA,
+                                  "wind_force", "rr", "Tx", "Tn", "Ts", NA, NA,
                                   NA, NA, NA, NA, NA),
                                 c("atb", "p", "ta", "tb", NA, "n", NA, NA, "dd", 
-                                  "w", "rr", "Tx", "Tn", NA, NA, NA, NA,
+                                  "wind_force", "rr", "Tx", "Tn", NA, NA, NA, NA,
                                   "ss", NA, NA, NA)))
 template5$rr[is.na(template5$rr)] <- 0
 template5$rr_orig <- paste0("Orig=", template5$rr, "mm")
@@ -150,10 +150,10 @@ template5$rr_orig <- paste0("Orig=", template5$rr, "mm")
 ## Read data (6th part - 2 observations per day - precipitation in mm)
 template6 <- read_template(2922, 3985, c("0800", "1800"), c(24, 45),
                            list(c("atb", "p", "ta", "tb", NA, "n", NA, NA, "dd", 
-                                  "w", "rr", "Tx", "Tn", "Ts", NA, NA,
+                                  "wind_force", "rr", "Tx", "Tn", "Ts", NA, NA,
                                   NA, NA, NA, NA, NA),
                                 c("atb", "p", "ta", "tb", NA, "n", NA, NA, "dd", 
-                                  "w", "rr", "Tx", "Tn", NA, NA, NA, NA,
+                                  "wind_force", "rr", "Tx", "Tn", NA, NA, NA, NA,
                                   "ss", NA, NA, NA)))
 template6$rr_orig <- paste0("Orig=", template6$rr, "mm")
 
@@ -165,7 +165,7 @@ template_all$p_orig <- paste0("Orig=", template_all$p, "mm|atb=",
                               template_all$atb, "C")
 template_all$dd_orig <- paste0("Orig=", template_all$dd)
 template_all$n_orig <- paste0("Orig=", template_all$n)
-template_all[, paste(c("ta", "tb", "Tx", "Tn", "w", "ss", "Ts"), 
+template_all[, paste(c("ta", "tb", "Tx", "Tn", "wind_force", "ss", "Ts"), 
                      "orig", sep = "_")] <- ""
 
 
