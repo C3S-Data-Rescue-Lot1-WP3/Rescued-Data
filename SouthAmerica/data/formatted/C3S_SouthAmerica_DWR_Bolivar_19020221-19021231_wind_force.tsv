@@ -1,4 +1,4 @@
-SEF	0.2.0
+SEF	1.0.0
 ID	DWR_Bolivar
 Name	Bolivar
 Lat	-36.2383
@@ -6,9 +6,9 @@ Lon	-61.2336
 Alt	NA
 Source	C3S_SouthAmerica
 Link	https://data-rescue.copernicus-climate.eu/lso/1084931
-Vbl	w
+Vbl	wind_force
 Stat	point
-Units	
+Units	NA
 Meta	Data policy=GNU GPL v3.0
 Year	Month	Day	Hour	Minute	Period	Value	Meta
 1902	12	8	11	17	0	2	orig.time=7am

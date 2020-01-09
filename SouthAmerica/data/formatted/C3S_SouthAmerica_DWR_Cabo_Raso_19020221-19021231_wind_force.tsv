@@ -1,4 +1,4 @@
-SEF	0.2.0
+SEF	1.0.0
 ID	DWR_Cabo_Raso
 Name	Cabo Raso
 Lat	-44.3372
@@ -6,9 +6,9 @@ Lon	-65.2492
 Alt	NA
 Source	C3S_SouthAmerica
 Link	https://data-rescue.copernicus-climate.eu/lso/1085015
-Vbl	w
+Vbl	wind_force
 Stat	point
-Units	
+Units	NA
 Meta	Data policy=GNU GPL v3.0
 Year	Month	Day	Hour	Minute	Period	Value	Meta
 1902	2	21	18	17	0	3	orig.time=2pm

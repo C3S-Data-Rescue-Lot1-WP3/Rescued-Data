@@ -1,4 +1,4 @@
-SEF	0.2.0
+SEF	1.0.0
 ID	DWR_Andalgala
 Name	Andalgalá
 Lat	-27.6
@@ -6,9 +6,9 @@ Lon	-66.316667
 Alt	NA
 Source	C3S_SouthAmerica
 Link	https://data-rescue.copernicus-climate.eu/lso/1084847
-Vbl	w
+Vbl	wind_force
 Stat	point
-Units	
+Units	NA
 Meta	Data policy=GNU GPL v3.0
 Year	Month	Day	Hour	Minute	Period	Value	Meta
 1902	2	21	18	17	0	0	orig.time=2pm
