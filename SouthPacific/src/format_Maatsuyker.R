@@ -1,15 +1,16 @@
 # Converts the Maatsuyker Lighthouse digitized data from NIWA into the
 # Station Exchange Format.
 #
-# Requires file write_sef.R and library XLConnect
+# Requires libraries XLConnect and dataresqc
 #
-# Created by Yuri Brugnara, University of Bern - 13 Dec 2018
+# Created by Yuri Brugnara, University of Bern - 21 Dec 2018
+# Updated 7 Jan 2020
 
 ###############################################################################
 
 
 require(XLConnect)
-source("write_sef.R")
+require(dataresqc)
 options(scipen = 999) # avoid exponential notation
 
 
@@ -21,10 +22,11 @@ inpath <- "../data/raw/Maatsuyker/"
 outpath <- "../data/formatted/"
 
 variables <- c("ta", "p")
-units <- c("C", "Pa")
+units <- c("C", "hPa")
+ids <- c(1086325, 1086324)
 conversions <- list(ta = function(x) round((x - 32) * 5 / 9, 1),
                     p = function(x) 
-                      round(100 * convert_pressure(x, f = 25.4, lat = lat, alt = alt), 0))
+                      round(convert_pressure(x, f = 25.4, lat = lat, alt = alt), 1))
 
 
 ## Initialize data frames
@@ -33,9 +35,11 @@ for (v in variables) {
   Data[[v]] <- data.frame(year = integer(),
                           month = integer(),
                           day = integer(),
-                          time = character(),
+                          HH = integer(),
+                          MM =integer(),
                           value = numeric(),
-                          orig = character())
+                          orig = character(),
+                          time_orig = character())
 }
 
 
@@ -50,6 +54,7 @@ for (infile in infiles) {
                                     forceConversion = TRUE)
   names(template) <- c("y", "m", "d", "h", "p", "ta")
   template <- template[which(!is.na(template$y)), ]
+  template$time_orig <- template$h
   template$h[template$h == "0000"] <- "2400"
   template$p_orig <- paste0("Orig=", round(template$p, 2), "in")
   template$ta_orig <- paste0("Orig=", round(template$ta, 1), "F")
@@ -62,33 +67,34 @@ for (infile in infiles) {
   template$m <- as.integer(format(times, "%m"))
   template$d <- as.integer(format(times, "%d"))
   template$h <- format(times, "%H%M")
+  template$HH <- as.integer(substr(template$h, 1, 2))
+  template$MM <- as.integer(substr(template$h, 3, 4))
   
   ## Write to data frames
   for (i in 1:2) {
     template[, variables[i]] <- conversions[[variables[i]]](template[, variables[i]])
     Data[[variables[i]]] <- rbind(Data[[variables[i]]], 
-                                  template[, c(names(template)[1:4], variables[i], 
-                                               paste0(variables[i], "_orig"))])
+                                  template[, c(names(template)[1:3], "HH", "MM", variables[i], 
+                                               paste0(variables[i], "_orig"), "time_orig")])
   }
 }
 
 
 ## Write output
 for (i in 1:2) {
-  ## First remove missing values and add variable code
-  Data[[variables[i]]] <- Data[[variables[i]]][which(!is.na(Data[[variables[i]]][, 5])), ]
-  Data[[variables[i]]] <- cbind(variables[i], Data[[variables[i]]])
   write_sef(Data = Data[[variables[i]]][, 1:6],
             outpath = outpath,
+            variable = variables[i],
             cod = "Maatsuyker",
             nam = "Maatsuyker Lighthouse",
             lat = lat,
             lon = lon,
             alt = alt,
             sou = "C3S_SouthPacific",
-            repo = "",
+            link = paste0("https://data-rescue.copernicus-climate.eu/lso/", ids[i]),
             units = units[i],
-            metaHead = ifelse(i==2, "PTC=?,PGC=T", ""),
-            meta = Data[[variables[i]]][, 7],
-            timef = 0)
+            stat = "point",
+            metaHead = paste0("Data policy=GNU GPL v3.0", ifelse(i==2, "|PTC=?|PGC=Y", "")),
+            meta = paste0(Data[[variables[i]]][, 7], "|orig.time=", Data[[variables[i]]][, 8]),
+            period = 0)
 }
