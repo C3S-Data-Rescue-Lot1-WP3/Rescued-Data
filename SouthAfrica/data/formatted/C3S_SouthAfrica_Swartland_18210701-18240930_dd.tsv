@@ -15,14 +15,14 @@ Year	Month	Day	Hour	Minute	Period	Value	Meta
 1821	7	4	NA	NA	0	248	Orig=WSW|orig.time=PM
 1821	7	6	NA	NA	0	0	Orig=N|orig.time=AM
 1821	7	6	NA	NA	0	0	Orig=N|orig.time=PM
-1821	7	7	NA	NA	0	45	Orig=NEbN|orig.time=AM
+1821	7	7	NA	NA	0	34	Orig=NEbN|orig.time=AM
 1821	7	7	NA	NA	0	315	Orig=NW|orig.time=PM
 1821	7	10	NA	NA	0	225	Orig=SW|orig.time=AM
 1821	7	10	NA	NA	0	225	Orig=SW|orig.time=PM
-1821	7	13	NA	NA	0	45	Orig=NEbN|orig.time=AM
-1821	7	13	NA	NA	0	338	Orig=NNWbNE|orig.time=PM
+1821	7	13	NA	NA	0	34	Orig=NEbN|orig.time=AM
+1821	7	15	NA	NA	0	45	Orig=NE |orig.time=AM
 1821	7	15	NA	NA	0	45	Orig=NE|orig.time=PM
-1821	7	16	NA	NA	0	45	Orig=NEbN|orig.time=AM
+1821	7	16	NA	NA	0	34	Orig=NEbN|orig.time=AM
 1821	7	16	NA	NA	0	315	Orig=NW|orig.time=PM
 1821	7	17	NA	NA	0	270	Orig=W|orig.time=AM
 1821	7	17	NA	NA	0	225	Orig=SW|orig.time=PM
@@ -57,13 +57,11 @@ Year	Month	Day	Hour	Minute	Period	Value	Meta
 1821	8	8	NA	NA	0	248	Orig=WSW|orig.time=PM
 1821	8	9	NA	NA	0	202	Orig=SSW|orig.time=AM
 1821	8	9	NA	NA	0	135	Orig=SE|orig.time=PM
-1821	8	11	NA	NA	0	135	Orig=SEbN|orig.time=AM
-1821	8	11	NA	NA	0	270	Orig=WbSW|orig.time=PM
 1821	8	12	NA	NA	0	270	Orig=W|orig.time=AM
 1821	8	12	NA	NA	0	315	Orig=NW|orig.time=PM
 1821	8	13	NA	NA	0	45	Orig=NE|orig.time=AM
 1821	8	13	NA	NA	0	0	Orig=N|orig.time=PM
-1821	8	14	NA	NA	0	315	Orig=NWbN|orig.time=AM
+1821	8	14	NA	NA	0	326	Orig=NWbN|orig.time=AM
 1821	8	14	NA	NA	0	315	Orig=NW|orig.time=PM
 1821	8	17	NA	NA	0	45	Orig=NE|orig.time=AM
 1821	8	17	NA	NA	0	0	Orig=N|orig.time=PM
@@ -96,13 +94,10 @@ Year	Month	Day	Hour	Minute	Period	Value	Meta
 1821	9	2	NA	NA	0	315	Orig=NW|orig.time=AM
 1821	9	2	NA	NA	0	270	Orig=W|orig.time=PM
 1821	9	3	NA	NA	0	225	Orig=SW|orig.time=AM
-1821	9	3	NA	NA	0	225	Orig=SWbN|orig.time=PM
 1821	9	4	NA	NA	0	0	Orig=N|orig.time=AM
 1821	9	4	NA	NA	0	315	Orig=NW|orig.time=PM
 1821	9	5	NA	NA	0	0	Orig=N|orig.time=AM
-1821	9	5	NA	NA	0	338	Orig=NNWbN|orig.time=PM
-1821	9	6	NA	NA	0	338	Orig=NNWbN|orig.time=AM
-1821	9	6	NA	NA	0	315	Orig=NWbW|orig.time=PM
+1821	9	6	NA	NA	0	304	Orig=NWbW|orig.time=PM
 1821	9	9	NA	NA	0	225	Orig=SW|orig.time=PM
 1821	9	10	NA	NA	0	45	Orig=NE|orig.time=AM
 1821	9	10	NA	NA	0	135	Orig=SE|orig.time=PM
@@ -111,27 +106,21 @@ Year	Month	Day	Hour	Minute	Period	Value	Meta
 1821	9	12	NA	NA	0	0	Orig=N|orig.time=AM
 1821	9	12	NA	NA	0	0	Orig=N|orig.time=PM
 1821	9	13	NA	NA	0	0	Orig=N|orig.time=AM
-1821	9	15	NA	NA	0	0	Orig=NbNW|orig.time=AM
 1821	9	15	NA	NA	0	270	Orig=W|orig.time=PM
 1821	9	16	NA	NA	0	225	Orig=SW|orig.time=PM
 1821	9	17	NA	NA	0	225	Orig=SW|orig.time=AM
 1821	9	17	NA	NA	0	202	Orig=SSW|orig.time=PM
 1821	9	18	NA	NA	0	135	Orig=SE|orig.time=AM
-1821	9	18	NA	NA	0	225	Orig=SWbSE|orig.time=PM
 1821	9	20	NA	NA	0	90	Orig=E|orig.time=AM
 1821	9	20	NA	NA	0	112	Orig=ESE|orig.time=PM
 1821	9	21	NA	NA	0	225	Orig=SW|orig.time=PM
 1821	9	22	NA	NA	0	248	Orig=WSW|orig.time=PM
-1821	9	23	NA	NA	0	45	Orig=NEbNW|orig.time=AM
 1821	9	23	NA	NA	0	0	Orig=N|orig.time=PM
-1821	9	24	NA	NA	0	22	Orig=NNEbNW|orig.time=AM
 1821	9	24	NA	NA	0	315	Orig=NW|orig.time=PM
 1821	9	25	NA	NA	0	315	Orig=NW|orig.time=AM
 1821	9	25	NA	NA	0	225	Orig=SW|orig.time=PM
 1821	9	26	NA	NA	0	90	Orig=E|orig.time=AM
 1821	9	26	NA	NA	0	225	Orig=SW|orig.time=PM
-1821	9	27	NA	NA	0	315	Orig=NWbSW|orig.time=PM
-1821	9	28	NA	NA	0	202	Orig=SSWbWNW|orig.time=AM
 1821	9	28	NA	NA	0	225	Orig=SW|orig.time=PM
 1821	9	29	NA	NA	0	202	Orig=SSW|orig.time=AM
 1821	9	29	NA	NA	0	225	Orig=SW|orig.time=PM
@@ -157,7 +146,7 @@ Year	Month	Day	Hour	Minute	Period	Value	Meta
 1821	10	10	NA	NA	0	270	Orig=W|orig.time=AM
 1821	10	10	NA	NA	0	225	Orig=SW|orig.time=PM
 1821	10	11	NA	NA	0	248	Orig=WSW|orig.time=PM
-1821	10	12	NA	NA	0	45	Orig=NEbN|orig.time=AM
+1821	10	12	NA	NA	0	34	Orig=NEbN|orig.time=AM
 1821	10	12	NA	NA	0	315	Orig=NW|orig.time=PM
 1821	10	13	NA	NA	0	225	Orig=SW|orig.time=AM
 1821	10	13	NA	NA	0	225	Orig=SW|orig.time=PM
@@ -165,7 +154,7 @@ Year	Month	Day	Hour	Minute	Period	Value	Meta
 1821	10	14	NA	NA	0	225	Orig=SW|orig.time=PM
 1821	10	16	NA	NA	0	135	Orig=SE|orig.time=AM
 1821	10	16	NA	NA	0	135	Orig=SE|orig.time=PM
-1821	10	17	NA	NA	0	90	Orig=EbN|orig.time=AM
+1821	10	17	NA	NA	0	79	Orig=EbN|orig.time=AM
 1821	10	17	NA	NA	0	248	Orig=WSW|orig.time=PM
 1821	10	18	NA	NA	0	270	Orig=W|orig.time=AM
 1821	10	18	NA	NA	0	248	Orig=WSW|orig.time=PM
@@ -188,7 +177,7 @@ Year	Month	Day	Hour	Minute	Period	Value	Meta
 1821	10	27	NA	NA	0	112	Orig=ESE|orig.time=PM
 1821	10	28	NA	NA	0	0	Orig=N|orig.time=AM
 1821	10	28	NA	NA	0	315	Orig=NW|orig.time=PM
-1821	10	29	NA	NA	0	0	Orig=NbW|orig.time=AM
+1821	10	29	NA	NA	0	349	Orig=NbW|orig.time=AM
 1821	10	29	NA	NA	0	225	Orig=SW|orig.time=PM
 1821	10	30	NA	NA	0	248	Orig=WSW|orig.time=AM
 1821	10	30	NA	NA	0	225	Orig=SW|orig.time=PM
@@ -211,7 +200,6 @@ Year	Month	Day	Hour	Minute	Period	Value	Meta
 1821	11	8	NA	NA	0	292	Orig=WNW|orig.time=PM
 1821	11	9	NA	NA	0	0	Orig=N|orig.time=AM
 1821	11	9	NA	NA	0	270	Orig=W|orig.time=PM
-1821	11	10	NA	NA	0	0	Orig=NbNW|orig.time=AM
 1821	11	10	NA	NA	0	225	Orig=SW|orig.time=PM
 1821	11	11	NA	NA	0	0	Orig=N|orig.time=AM
 1821	11	11	NA	NA	0	225	Orig=SW|orig.time=PM
@@ -233,7 +221,6 @@ Year	Month	Day	Hour	Minute	Period	Value	Meta
 1821	11	19	NA	NA	0	225	Orig=SW|orig.time=PM
 1821	11	20	NA	NA	0	248	Orig=WSW|orig.time=AM
 1821	11	20	NA	NA	0	248	Orig=WSW|orig.time=PM
-1821	11	21	NA	NA	0	315	Orig=NWbWSW|orig.time=AM
 1821	11	21	NA	NA	0	315	Orig=NW|orig.time=PM
 1821	11	22	NA	NA	0	248	Orig=WSW|orig.time=AM
 1821	11	22	NA	NA	0	292	Orig=WNW|orig.time=PM
@@ -262,7 +249,6 @@ Year	Month	Day	Hour	Minute	Period	Value	Meta
 1821	12	6	NA	NA	0	225	Orig=SW|orig.time=PM
 1821	12	7	NA	NA	0	202	Orig=SSW|orig.time=AM
 1821	12	7	NA	NA	0	225	Orig=SW|orig.time=PM
-1821	12	8	NA	NA	0	225	Orig=SWbSE|orig.time=AM
 1821	12	8	NA	NA	0	225	Orig=SW|orig.time=PM
 1821	12	9	NA	NA	0	135	Orig=SE|orig.time=AM
 1821	12	9	NA	NA	0	135	Orig=SE|orig.time=PM
@@ -282,7 +268,7 @@ Year	Month	Day	Hour	Minute	Period	Value	Meta
 1821	12	16	NA	NA	0	248	Orig=WSW|orig.time=PM
 1821	12	17	NA	NA	0	225	Orig=SW|orig.time=AM
 1821	12	17	NA	NA	0	270	Orig=W|orig.time=PM
-1821	12	18	NA	NA	0	45	Orig=NEbN|orig.time=AM
+1821	12	18	NA	NA	0	34	Orig=NEbN|orig.time=AM
 1821	12	18	NA	NA	0	315	Orig=NW|orig.time=PM
 1821	12	19	NA	NA	0	248	Orig=WSW|orig.time=AM
 1821	12	19	NA	NA	0	225	Orig=SW|orig.time=PM
@@ -326,8 +312,7 @@ Year	Month	Day	Hour	Minute	Period	Value	Meta
 1822	1	8	NA	NA	0	202	Orig=SSW|orig.time=PM
 1822	1	9	NA	NA	0	225	Orig=SW|orig.time=AM
 1822	1	9	NA	NA	0	270	Orig=W|orig.time=PM
-1822	1	10	NA	NA	0	45	Orig=NEbN|orig.time=AM
-1822	1	10	NA	NA	0	270	Orig=WbSW|orig.time=PM
+1822	1	10	NA	NA	0	34	Orig=NEbN|orig.time=AM
 1822	1	11	NA	NA	0	225	Orig=SW|orig.time=AM
 1822	1	11	NA	NA	0	225	Orig=SW|orig.time=PM
 1822	1	12	NA	NA	0	90	Orig=E|orig.time=AM
@@ -364,11 +349,9 @@ Year	Month	Day	Hour	Minute	Period	Value	Meta
 1822	1	27	NA	NA	0	248	Orig=WSW|orig.time=PM
 1822	1	28	NA	NA	0	202	Orig=SSW|orig.time=AM
 1822	1	28	NA	NA	0	225	Orig=SW|orig.time=PM
-1822	1	29	NA	NA	0	270	Orig=WbNW|orig.time=AM
-1822	1	29	NA	NA	0	0	Orig=NbSW|orig.time=PM
 1822	1	30	NA	NA	0	202	Orig=SSW|orig.time=AM
 1822	1	30	NA	NA	0	270	Orig=W|orig.time=PM
-1822	1	31	NA	NA	0	315	Orig=NWbN|orig.time=AM
+1822	1	31	NA	NA	0	326	Orig=NWbN|orig.time=AM
 1822	1	31	NA	NA	0	270	Orig=W|orig.time=PM
 1822	2	1	NA	NA	0	0	Orig=N|orig.time=AM
 1822	2	1	NA	NA	0	0	Orig=N|orig.time=PM
@@ -459,6 +442,7 @@ Year	Month	Day	Hour	Minute	Period	Value	Meta
 1822	3	25	NA	NA	0	202	Orig=SSW|orig.time=PM
 1822	3	26	NA	NA	0	180	Orig=S|orig.time=AM
 1822	3	26	NA	NA	0	135	Orig=SE|orig.time=PM
+1822	3	27	NA	NA	0	45	Orig=NE |orig.time=PM
 1822	3	28	NA	NA	0	22	Orig=NNE|orig.time=AM
 1822	3	28	NA	NA	0	225	Orig=SW|orig.time=PM
 1822	3	29	NA	NA	0	22	Orig=NNE|orig.time=AM

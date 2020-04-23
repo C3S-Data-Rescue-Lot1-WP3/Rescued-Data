@@ -201,10 +201,15 @@ for (infile in list.files(inpath, pattern = "xlsx")) {
   ## Entries like 'NWbN' are converted as 'NW'
   if ("dd" %in% names(template)) {
     template$dd_orig <- paste0("Orig=", template$dd)
-    directions <- c("N", "NNE", "NE", "ENE", "E", "ESE", "SE", "SSE", "S",
-                    "SSW", "SW", "WSW", "W", "WNW", "NW", "NNW")
-    template$dd <- 22.5 * (match(toupper(sapply(strsplit(template$dd, "b"), 
-                                                function(x) x[1])), directions) - 1)
+    template$dd <- sub(" ", "", template$dd)
+    template$dd <- sub("to", "b", template$dd)
+    template$dd <- sub("t", "b", template$dd)
+    template$dd <- sub("by", "b", template$dd)
+    directions <- c("N", "NbE", "NNE", "NEbN", "NE", "NEbE", "ENE", "EbN", "E", "EbS", 
+                    "ESE", "SEbE", "SE", "SEbS", "SSE", "SbE", "S", "SbW", "SSW", 
+                    "SWbS", "SW", "SWbW", "WSW", "WbS", "W", "WbN", "WNW", "NWbW", 
+                    "NW", "NWbN", "NNW", "NbW")
+    template$dd <- 11.25 * (match(template$dd, directions) - 1)
   }
   
   

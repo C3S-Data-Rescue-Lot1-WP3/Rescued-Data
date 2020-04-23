@@ -98,13 +98,20 @@ for (year in 1821:1826) {
   template$dd2_orig <- paste0("Orig=", template$dd2, "|orig.time=PM")
   
   ## Transform wind direction to degrees
-  ## Entries like 'NWbN' are converted as 'NW'
-  directions <- c("N", "NNE", "NE", "ENE", "E", "ESE", "SE", "SSE", "S",
-                  "SSW", "SW", "WSW", "W", "WNW", "NW", "NNW")
-  template$dd1 <- round(22.5 * (match(toupper(sapply(strsplit(template$dd1, "b"), 
-                                               function(x) x[1])), directions) - 1), 0)
-  template$dd2 <- round(22.5 * (match(toupper(sapply(strsplit(template$dd2, "b"), 
-                                               function(x) x[1])), directions) - 1), 0)
+  directions <- c("N", "NbE", "NNE", "NEbN", "NE", "NEbE", "ENE", "EbN", "E", "EbS", 
+                  "ESE", "SEbE", "SE", "SEbS", "SSE", "SbE", "S", "SbW", "SSW", 
+                  "SWbS", "SW", "SWbW", "WSW", "WbS", "W", "WbN", "WNW", "NWbW", 
+                  "NW", "NWbN", "NNW", "NbW")
+  template$dd1 <- sub(" ", "", template$dd1)
+  template$dd1 <- sub("to", "b", template$dd1)
+  template$dd1 <- sub("t", "b", template$dd1)
+  template$dd1 <- sub("by", "b", template$dd1)
+  template$dd1 <- 11.25 * (match(template$dd1, directions) - 1)
+  template$dd2 <- sub(" ", "", template$dd2)
+  template$dd2 <- sub("to", "b", template$dd2)
+  template$dd2 <- sub("t", "b", template$dd2)
+  template$dd2 <- sub("by", "b", template$dd2)
+  template$dd2 <- 11.25 * (match(template$dd2, directions) - 1)
   
 
   ## Write to data frames

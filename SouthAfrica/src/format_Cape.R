@@ -146,9 +146,15 @@ for (ifile in 1:length(infiles)) {
   template$MM <- NA
   
   ## Transform wind direction to degrees
-  directions <- c("N", "NNE", "NE", "ENE", "E", "ESE", "SE", "SSE", "S",
-                  "SSW", "SW", "WSW", "W", "WNW", "NW", "NNW")
-  template$dd <- 22.5 * (match(toupper(template$dd), directions) - 1)
+  template$dd <- sub(" ", "", template$dd)
+  template$dd <- sub("to", "b", template$dd)
+  template$dd <- sub("t", "b", template$dd)
+  template$dd <- sub("by", "b", template$dd)
+  directions <- c("N", "NbE", "NNE", "NEbN", "NE", "NEbE", "ENE", "EbN", "E", "EbS", 
+                  "ESE", "SEbE", "SE", "SEbS", "SSE", "SbE", "S", "SbW", "SSW", 
+                  "SWbS", "SW", "SWbW", "WSW", "WbS", "W", "WbN", "WNW", "NWbW", 
+                  "NW", "NWbN", "NNW", "NbW")
+  template$dd <- 11.25 * (match(template$dd, directions) - 1)
 
   ## Write to data frames
   for (i in 1:length(variables)) {
