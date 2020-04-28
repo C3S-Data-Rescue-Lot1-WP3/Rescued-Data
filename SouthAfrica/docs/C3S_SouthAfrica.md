@@ -15,4 +15,4 @@ This forms part of the longest known southern African (and likely southern hemis
 The parameters covered are: temperature and barometric pressure (3x daily), daily rainfall, hours of sunshine, cloud cover, wind direction and force.
 
 #### Formatting remarks
-Time was assumed to be local solar time.
+Time was assumed to be local solar time unless differently noted.
