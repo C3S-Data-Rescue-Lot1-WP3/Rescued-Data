@@ -4,7 +4,7 @@
 # Requires libraries XLConnect, plyr, suncalc, dataresqc
 #
 # Created by Yuri Brugnara, University of Bern - 21 Dec 2018
-# Last updated 17 Apr 2020
+# Last updated 30 Apr 2020
 
 ###############################################################################
 
@@ -30,12 +30,12 @@ file.remove(list.files(outpath, pattern="Cape_Town_Obs", full.names=TRUE))
 variables <- c("ta", "p", "dd", "Tx", "Tn", "tb", "wind_force", "w", "n", 
                "rr", "ss", "vv", "w_max")
 registry_id <- c(1086289, 1086288, 1086287, 1086292, 1086291, 1086293, 1086290, 
-                 1086290, NA, NA, NA)
+                 1086290, NA, NA, NA, NA, NA)
 units <- c("C", "hPa", "degree", "C", "C", "C", "Beaufort", "m/s", "%", 
            "mm", "hours", "1-9", "m/s")
-stats <- c(rep("point",3), "maximum", "minimum", rep("point",2), "mean", "point", 
+stats <- c(rep("point",3), "maximum", "minimum", rep("point",4), 
            rep("sum",2), "point", "maximum")
-periods <- c(rep(0,3), rep("p1day",2), rep(0,2), "p1day", 0, rep("day",2), 0, "day")
+periods <- c(rep(0,3), rep("p1day",2), rep(0,4), rep("day",2), 0, "day")
 types <- c("Sunrise", "Noon", "Sunset", "Midnight")
 keeps <- c("sunrise", "solarNoon", "sunset", "nadir")
 
@@ -51,8 +51,9 @@ conversions <- list(ta = function(x) round((x - 32) * 5 / 9, 1),
                     wind_force = function(x) round(x, 0),
                     w = function(x) round(x / 2.237, 1),
                     w_max = function(x) round(x / 2.237, 1),
+                    w_mean = function(x) round(x / 2.237, 1),
                     n = function(x) round(x * 20, 0),
-                    rr = function(x) round(x * 25.4, 1),
+                    rr = function(x) round(x * 25.4, 2),
                     ss = function(x) round(x, 2),
                     vv = function(x) round(x, 0))
 
@@ -101,7 +102,7 @@ for (v in variables) {
 
 
 ## Read data files
-for (year in 1834:1926) {
+for (year in 1834:1932) {
   infile <- paste(year, "xlsx", sep = ".")
   
   ## Template 1 (1834-1842)
@@ -459,7 +460,7 @@ for (year in 1834:1926) {
     template3$h <- time3[year-1899]
     template <- rbind.fill(template1, template2, template3)
     template$n <- apply(template[,c("n","nh")], 1, max) # Take the max between high and low clouds
-    if (year == 1900) template$rr[which(is.na(template$rr) & template$m <= 6)] <- 0
+    if (year == 1900) template$rr[which(is.na(template$rr) & template$m<=6 & template$h==time3[1])] <- 0
     template$p_orig <- paste0("Orig=", template$p, "in|atb=", template$atb, "F")
     template$dd_orig <- paste0("Orig=", template$dd)
     template$wind_force_orig <- paste0("Orig=", template$wind_force)
@@ -631,6 +632,132 @@ for (year in 1834:1926) {
     template$w_max_orig <- paste0("Orig=", template$w_max, "mph|dir=", template$dd_max, 
                                   "|time=", template$t_max)
     
+    ## Template 16 (1927-1931) - only 12-inch rain gauge read
+    ## Assumed rain is measured in the evening
+    ## Time is given as S.A.S.T. (= UTC+2) until 1929, then as GMT
+  } else if (year %in% 1927:1931) {
+    template <- readWorksheetFromFile(paste0(inpath, infile), 
+                                      startRow = 12, header = FALSE,
+                                      sheet = ifelse(year<1930, 2, 1),
+                                      colTypes = c("character",
+                                                   rep("numeric", 6),
+                                                   "character",
+                                                   rep("numeric", 2),
+                                                   "character",
+                                                   rep("numeric", 5),
+                                                   "character",
+                                                   rep("numeric", 2),
+                                                   "character",
+                                                   rep("numeric", 4),
+                                                   "character",
+                                                   rep("numeric", 2),
+                                                   "character",
+                                                   rep("numeric", 4),
+                                                   rep("character", 2)),
+                                      drop = c(11,20,28,30,31),
+                                      forceConversion = TRUE,
+                                      readStrategy = "fast")
+    template[, 1] <- as.integer(fill(get_month(template[,1])))
+    if (year < 1930) {
+      time1 <- "0830"
+      time2 <- "1246"
+      time3 <- "2030"
+    } else {
+      time1 <- "0630"
+      time2 <- "1046"
+      time3 <- "1830"
+    }
+    template1 <- template[, 1:10]
+    names(template1) <- c("m", "d", "p", "atb", "ta", "tb", "Tx", "dd", "w", "n")
+    template1$h <- time1
+    template2 <- template[, c(1,2,11:18)]
+    names(template2) <- c("m", "d", "p", "atb", "ta", "tb", "Tn", "dd", "w", "n")
+    template2$h <- time2
+    template3 <- template[, c(1,2,19:26)]
+    names(template3) <- c("m", "d", "p", "atb", "ta", "tb", "dd", "w", "n", "rr")
+    template3$h <- time3
+    template4 <- template[, c(1,2,27:29)]
+    names(template4) <- c("m", "d", "w_max", "dd_max", "t_max")
+    template4$h <- NA
+    template <- rbind.fill(template1, template2, template3, template4)
+    template$rr[which(is.na(template$rr) & template$h==time3)] <- 0
+    if (year < 1930) template$rr <- template$rr / 1000
+    template$p_orig <- paste0("Orig=", template$p, "in|atb=", template$atb, "F")
+    template$ta_orig <- paste0("Orig=", template$ta, "F")
+    template$tb_orig <- paste0("Orig=", template$tb, "F")
+    template$Tn_orig <- paste0("Orig=", template$Tn, "F")
+    template$Tx_orig <- paste0("Orig=", template$Tx, "F")
+    template$dd_orig <- paste0("Orig=", template$dd)
+    template$w_orig <- paste0("Orig=", template$w, "mph")
+    template$n_orig <- paste0("Orig=", template$n)
+    template$rr_orig <- paste0("Orig=", template$rr, "in")
+    template$w_max_orig <- paste0("Orig=", template$w_max, "mph|dir=", template$dd_max, 
+                                  "|time=", template$t_max)
+    
+    ## Template 17 (1932) - only 12-inch rain gauge read
+    ## Assumed rain is measured in the evening
+    ## Time is given as C.M.T. (= UTC+1.5), perhaps a mistake?
+    ## There is a change of barometer on July 1st, atb units change to K
+    ## There is an additional sheet with hourly wind, but it is not clear
+    ## to which timezone they refer, so it was not formatted into SEF
+  } else if (year == 1932) {
+    template <- readWorksheetFromFile(paste0(inpath, infile), 
+                                      startRow = 14, header = FALSE,
+                                      sheet = 1,
+                                      colTypes = c("character",
+                                                   rep("numeric", 6),
+                                                   "character",
+                                                   rep("numeric", 2),
+                                                   "character",
+                                                   rep("numeric", 5),
+                                                   "character",
+                                                   rep("numeric", 2),
+                                                   "character",
+                                                   rep("numeric", 4),
+                                                   "character",
+                                                   rep("numeric", 2),
+                                                   "character",
+                                                   rep("numeric", 4),
+                                                   rep("character", 2)),
+                                      drop = c(11,20,28,30,31),
+                                      forceConversion = TRUE,
+                                      readStrategy = "fast")
+    template[, 1] <- as.integer(fill(get_month(template[,1])))
+    time1 <- "0000"
+    time2 <- "0744"
+    time3 <- "1944"
+    template1 <- template[, 1:10]
+    names(template1) <- c("m", "d", "p", "atb", "ta", "tb", "Tx", "dd", "w", "n")
+    template1$h <- time1
+    template2 <- template[, c(1,2,11:18)]
+    names(template2) <- c("m", "d", "p", "atb", "ta", "tb", "Tn", "dd", "w", "n")
+    template2$h <- time2
+    template3 <- template[, c(1,2,19:26)]
+    names(template3) <- c("m", "d", "p", "atb", "ta", "tb", "dd", "w", "n", "rr")
+    template3$h <- time3
+    template4 <- template[, c(1,2,27:29)]
+    names(template4) <- c("m", "d", "w_max", "dd_max", "t_max")
+    template4$h <- NA
+    template <- rbind.fill(template1, template2, template3, template4)
+    template$rr[which(is.na(template$rr) & template$h==time3)] <- 0
+    template$p_orig <- paste0("Orig=", template$p, "in|atb=", template$atb, "F")
+    template$ta_orig <- paste0("Orig=", template$ta, "F")
+    template$tb_orig <- paste0("Orig=", template$tb, "F")
+    template$Tn_orig <- paste0("Orig=", template$Tn, "F")
+    template$Tx_orig <- paste0("Orig=", template$Tx, "F")
+    template$dd_orig <- paste0("Orig=", template$dd)
+    template$w_orig <- paste0("Orig=", template$w, "mph")
+    template$n_orig <- paste0("Orig=", template$n)
+    template$rr_orig <- paste0("Orig=", template$rr, "in")
+    template$w_max_orig <- paste0("Orig=", template$w_max, "mph|dir=", template$dd_max, 
+                                  "|time=", template$t_max)
+    # July (Aug-Dec missing)
+    j <- which(template[,1] == 7)
+    template$p_orig[j] <- paste0("Orig=", template$p[j], "in|atb=", template$atb[j], 
+                                 "K|instrument=Hicks 2131")
+    template$atb[j] <- (template$atb[j] - 273.15) * 9 / 5 + 32
+
+
   }
   
   
@@ -647,6 +774,7 @@ for (year in 1834:1926) {
                     "NW", "NWbN", "NNW", "NbW")
     template$dd <- 11.25 * (match(template$dd, directions) - 1)
   }
+  
   
   ## Take the average of wind force for entries like '6 to 8'
   if ("wind_force" %in% names(template)) {
@@ -669,7 +797,7 @@ for (year in 1834:1926) {
   if (year < 1893) {
     offset <- lon * 12 / 180
     tz <- ""
-  } else if (year %in% 1893:1924) {
+  } else if (year %in% c(1893:1924,1932)) {
     offset <- 1.5
     tz <- "CMT"
   } else if (year %in% 1925:1929) {
@@ -752,10 +880,15 @@ for (i in 1:length(variables)) {
   Data[[variables[i]]]$hh <- as.integer(substr(Data[[variables[i]]]$h, 1, 2))
   Data[[variables[i]]]$mm <- as.integer(substr(Data[[variables[i]]]$h, 3, 4))
   Data[[variables[i]]] <- Data[[variables[i]]][, c(1:3, 7:8, 5:6)]
-  ## Remove data for 1879-1880 because we don't know what they are
+  period <- periods[i]
+  ## Remove data for 1879-1880 because we don't know what they are, and fix periods for some variables
   if (!variables[i] %in% c("Tx","Tn")) {
     Data[[variables[i]]] <- Data[[variables[i]]][which(!Data[[variables[i]]]$y %in% 1879:1880), ]
+  } else {
+    period <- rep(periods[i], nrow(Data[[variables[i]]]))
+    period[which(Data[[variables[i]]][,1]%in%1903:1932)] <- "day"
   }
+  
   write_sef(Data = Data[[variables[i]]][, 1:6],
             outpath = outpath,
             variable = sub("w_max", "w", variables[i]),
@@ -771,7 +904,7 @@ for (i in 1:length(variables)) {
             stat = stats[i],
             metaHead = paste0("Data policy=GNU GPL v3.0", ifelse(i==2, "|PTC=Y|PGC=Y", "")),
             meta = Data[[variables[i]]][, 7],
-            period = periods[i],
+            period = period,
             note = ifelse(variables[i]=="w_max", "max", ""))
 }
 
