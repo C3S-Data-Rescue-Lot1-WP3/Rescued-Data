@@ -36,6 +36,8 @@ The following variables are provided:
 * __wind_force__: wind force (Beaufort or other qualitative wind scales)
 * __dd__: wind direction (°)
 * __n__: cloud cover (%)
+* __ss__: sunshine duration (hours)
+* __vv__: horizontal visibility (1 to 9)
 
 ### Remarks
 Note that the data have not been quality controlled.
