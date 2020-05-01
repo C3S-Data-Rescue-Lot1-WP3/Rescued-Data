@@ -191,30 +191,40 @@ for (year in 1834:1932) {
     template$dd_orig <- paste0("Orig=", template$dd)
     template$wind_force_orig <- paste0("Orig=", template$wind_force)
     
-    ## Template 3 (1857-1858)  
+    ## Template 3 (1857-1858)
+    ## Structure change and new barometer in September 1858 
   } else if (year %in% 1857:1858) {
     template <- readWorksheetFromFile(paste0(inpath, infile), 
                                       startRow = 12, header = FALSE,
-                                      sheet = 1, endCol = 10,
+                                      sheet = 1, endCol = 11,
                                       colTypes = c("character",
                                                    "numeric",
                                                    rep("character",3),
-                                                   rep("numeric", 5)),
+                                                   rep("numeric", 6)),
                                       forceConversion = TRUE,
                                       readStrategy = "fast")
     names(template) <- c("m", "d", "h", "dd", "wind_force", "p", "atb", 
-                         "ta", "tb", "Txn")
+                         "ta", "tb", "Txn", "tb_new")
+    template$m <- as.integer(fill(get_month(template$m)))
+    template$d <- fill(template$d)
+    template <- template[which(!is.na(template$m)), ]
+    if (year == 1858) {
+      k <- which(template$m >= 9)
+      template$ta[k] <- template$Txn[k]
+      template$Txn[k] <- NA
+      template$tb[k] <- template$tb_new[k]
+    }
     fdiff <- template$Txn[2:dim(template)[1]] - template$Txn[1:(dim(template)[1]-1)]
     j <- which(fdiff > 0)
     template$Tn <- NA
     template$Tn[j] <- template$Txn[j]
     template$Tx <- NA
     template$Tx[j + 1] <- template$Txn[j + 1]
-    template$m <- as.integer(fill(get_month(template$m)))
-    template$d <- fill(template$d)
-    template <- template[which(!is.na(template$m)), ]
     template$p_orig <- paste0("Orig=", template$p, "in|atb=", 
                               template$atb, "F")
+    if (year == 1858) {
+      template$p_orig[k] <- paste0(template$p_orig[k], "|instrument=Large Harvard Barometer")
+    }
     template$ta_orig <- paste0("Orig=", template$ta, "F")
     template$tb_orig <- paste0("Orig=", template$tb, "F")
     template$Tx_orig <- paste0("Orig=", template$Tx, "F")
@@ -238,7 +248,7 @@ for (year in 1834:1932) {
     template$m <- as.integer(fill(get_month(template$m)))
     template$d <- fill(template$d)
     template <- template[which(!is.na(template$m)), ]
-    template$p_orig <- paste0("Orig=", template$p, "in")
+    template$p_orig <- paste0("Orig=", template$p, "in|instrument=Large Harvard Barometer")
     template$ta_orig <- paste0("Orig=", template$ta, "F")
     template$tb_orig <- paste0("Orig=", template$tb, "F")
     template$dd_orig <- paste0("Orig=", template$dd)
@@ -262,7 +272,7 @@ for (year in 1834:1932) {
     template <- template[which(!is.na(template$m)), ]
     template$w <- c(rep(NA, 225), as.numeric(template$wind_force[226:dim(template)[1]]))
     template$wind_force[226:dim(template)[1]] <- NA
-    template$p_orig <- paste0("Orig=", template$p, "in")
+    template$p_orig <- paste0("Orig=", template$p, "in|instrument=Large Harvard Barometer")
     template$ta_orig <- paste0("Orig=", template$ta, "F")
     template$tb_orig <- paste0("Orig=", template$tb, "F")
     template$dd_orig <- paste0("Orig=", template$dd)
@@ -288,7 +298,7 @@ for (year in 1834:1932) {
     template$m <- as.integer(fill(get_month(template$m)))
     template$d <- fill(template$d)
     template <- template[which(!is.na(template$m)), ]
-    template$p_orig <- paste0("Orig=", template$p, "in")
+    template$p_orig <- paste0("Orig=", template$p, "in|instrument=Large Harvard Barometer")
     template$ta_orig <- paste0("Orig=", template$ta, "F")
     template$tb_orig <- paste0("Orig=", template$tb, "F")
     template$dd_orig <- paste0("Orig=", template$dd)
@@ -310,7 +320,7 @@ for (year in 1834:1932) {
     template$m <- as.integer(fill(get_month(template$m)))
     template$d <- fill(template$d)
     template <- template[which(!is.na(template$m)), ]
-    template$p_orig <- paste0("Orig=", template$p, "in")
+    template$p_orig <- paste0("Orig=", template$p, "in|instrument=Large Harvard Barometer")
     template$Tx_orig <- paste0("Orig=", template$Tx, "F")
     template$Tn_orig <- paste0("Orig=", template$Tn, "F")
     template$ta_orig <- paste0("Orig=", template$ta, "F")
@@ -334,7 +344,7 @@ for (year in 1834:1932) {
     template$m <- as.integer(fill(get_month(template$m)))
     template$d <- fill(template$d)
     template <- template[which(!is.na(template$m)), ]
-    template$p_orig <- paste0("Orig=", template$p, "in")
+    template$p_orig <- paste0("Orig=", template$p, "in|instrument=Large Harvard Barometer")
     template$Tx_orig <- paste0("Orig=", template$Tx, "F")
     template$Tn_orig <- paste0("Orig=", template$Tn, "F")
     template$ta_orig <- paste0("Orig=", template$ta, "F")
@@ -775,13 +785,13 @@ for (year in 1834:1932) {
                                                    "character",
                                                    rep("numeric", 2),
                                                    "character",
-                                                   rep("numeric", 4),
+                                                   rep("numeric", 5),
                                                    "character",
                                                    rep("numeric", 2),
                                                    "character",
                                                    rep("numeric", 4),
                                                    rep("character", 2)),
-                                      drop = c(11,20,28,30,31),
+                                      drop = c(11,20,25,29,31,32),
                                       forceConversion = TRUE,
                                       readStrategy = "fast")
     template[, 1] <- as.integer(fill(get_month(template[,1])))
@@ -801,7 +811,7 @@ for (year in 1834:1932) {
     names(template4) <- c("m", "d", "w_max", "dd_max", "t_max")
     template4$h <- NA
     template <- rbind.fill(template1, template2, template3, template4)
-    template$rr[which(is.na(template$rr) & template$h==time3)] <- 0
+    template$rr[which(is.na(template$rr) & template$h==time3 & template$m<=7)] <- 0
     template$p_orig <- paste0("Orig=", template$p, "in|atb=", template$atb, "F")
     template$ta_orig <- paste0("Orig=", template$ta, "F")
     template$tb_orig <- paste0("Orig=", template$tb, "F")
@@ -829,15 +839,15 @@ for (year in 1834:1932) {
     template$dd <- sub("to", "b", template$dd)
     template$dd <- sub("t", "b", template$dd)
     template$dd <- sub("by", "b", template$dd)
-    directions <- c("N", "NhE", "NbE", "NbEhe", "NNE", "NNEhE", "NEbN", "NEhN", 
-                    "NE", "NEhE", "NEbE", "NEbEhE", "ENE", "EbNhN", "EbN", "EhN",
-                    "E", "EhS", "EbS", "EbShS", "ESE", "SEbEhE", "SEbE", "SEhE", 
-                    "SE", "SEhS", "SEbS", "SSEhE", "SSE", "SbEhE", "SbE", "ShE",
-                    "S", "ShW", "SbW", "SbWhW", "SSW", "SSWhW", "SWbS", "SWhS",
-                    "SW", "SWhW", "SWbW", "SWbWhW", "WSW", "WbShS", "WbS", "WhS",
-                    "W", "WhN", "WbN", "WbNhN", "WNW", "NWbWhW", "NWbW", "NWhW", 
-                    "NW", "NWhN", "NWbN", "NNWhW", "NNW", "NbWhW", "NbW", "NhW")
-    template$dd <- 5.625 * (match(template$dd, directions) - 1)
+    directions <- toupper(c("N", "NhE", "NbE", "NbEhe", "NNE", "NNEhE", "NEbN", "NEhN", 
+                            "NE", "NEhE", "NEbE", "NEbEhE", "ENE", "EbNhN", "EbN", "EhN",
+                            "E", "EhS", "EbS", "EbShS", "ESE", "SEbEhE", "SEbE", "SEhE", 
+                            "SE", "SEhS", "SEbS", "SSEhE", "SSE", "SbEhE", "SbE", "ShE",
+                            "S", "ShW", "SbW", "SbWhW", "SSW", "SSWhW", "SWbS", "SWhS",
+                            "SW", "SWhW", "SWbW", "SWbWhW", "WSW", "WbShS", "WbS", "WhS",
+                            "W", "WhN", "WbN", "WbNhN", "WNW", "NWbWhW", "NWbW", "NWhW", 
+                            "NW", "NWhN", "NWbN", "NNWhW", "NNW", "NbWhW", "NbW", "NhW"))
+    template$dd <- 5.625 * (match(toupper(template$dd), directions) - 1)
   }
   
   
