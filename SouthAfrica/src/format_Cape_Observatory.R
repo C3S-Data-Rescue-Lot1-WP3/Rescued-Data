@@ -410,7 +410,7 @@ for (year in 1834:1932) {
     template$Tx_orig <- paste0("Orig=", template$Tx, "F")
     template$Tn_orig <- paste0("Orig=", template$Tn, "F")
     
-    ## Template 11 (1881-1899) - only "Stevenson Crib" temperature read 
+    ## Template 11 (1881-1899)
   } else if (year %in% 1881:1899) {
     if (year <= 1884 | year == 1890) firstRow <- 11
     if (year == 1885 | year >= 1893) firstRow <- 9
@@ -824,17 +824,20 @@ for (year in 1834:1932) {
   
   
   ## Transform wind direction to degrees
-  ## Entries like 'NWhN' are converted as NA
   if ("dd" %in% names(template)) {
     template$dd <- sub(" ", "", template$dd)
     template$dd <- sub("to", "b", template$dd)
     template$dd <- sub("t", "b", template$dd)
     template$dd <- sub("by", "b", template$dd)
-    directions <- c("N", "NbE", "NNE", "NEbN", "NE", "NEbE", "ENE", "EbN", "E", "EbS", 
-                    "ESE", "SEbE", "SE", "SEbS", "SSE", "SbE", "S", "SbW", "SSW", 
-                    "SWbS", "SW", "SWbW", "WSW", "WbS", "W", "WbN", "WNW", "NWbW", 
-                    "NW", "NWbN", "NNW", "NbW")
-    template$dd <- 11.25 * (match(template$dd, directions) - 1)
+    directions <- c("N", "NhE", "NbE", "NbEhe", "NNE", "NNEhE", "NEbN", "NEhN", 
+                    "NE", "NEhE", "NEbE", "NEbEhE", "ENE", "EbNhN", "EbN", "EhN",
+                    "E", "EhS", "EbS", "EbShS", "ESE", "SEbEhE", "SEbE", "SEhE", 
+                    "SE", "SEhS", "SEbS", "SSEhE", "SSE", "SbEhE", "SbE", "ShE",
+                    "S", "ShW", "SbW", "SbWhW", "SSW", "SSWhW", "SWbS", "SWhS",
+                    "SW", "SWhW", "SWbW", "SWbWhW", "WSW", "WbShS", "WbS", "WhS",
+                    "W", "WhN", "WbN", "WbNhN", "WNW", "NWbWhW", "NWbW", "NWhW", 
+                    "NW", "NWhN", "NWbN", "NNWhW", "NNW", "NbWhW", "NbW", "NhW")
+    template$dd <- 5.625 * (match(template$dd, directions) - 1)
   }
   
   

@@ -98,20 +98,24 @@ for (year in 1821:1826) {
   template$dd2_orig <- paste0("Orig=", template$dd2, "|orig.time=PM")
   
   ## Transform wind direction to degrees
-  directions <- c("N", "NbE", "NNE", "NEbN", "NE", "NEbE", "ENE", "EbN", "E", "EbS", 
-                  "ESE", "SEbE", "SE", "SEbS", "SSE", "SbE", "S", "SbW", "SSW", 
-                  "SWbS", "SW", "SWbW", "WSW", "WbS", "W", "WbN", "WNW", "NWbW", 
-                  "NW", "NWbN", "NNW", "NbW")
+  directions <- c("N", "NhE", "NbE", "NbEhe", "NNE", "NNEhE", "NEbN", "NEhN", 
+                  "NE", "NEhE", "NEbE", "NEbEhE", "ENE", "EbNhN", "EbN", "EhN",
+                  "E", "EhS", "EbS", "EbShS", "ESE", "SEbEhE", "SEbE", "SEhE", 
+                  "SE", "SEhS", "SEbS", "SSEhE", "SSE", "SbEhE", "SbE", "ShE",
+                  "S", "ShW", "SbW", "SbWhW", "SSW", "SSWhW", "SWbS", "SWhS",
+                  "SW", "SWhW", "SWbW", "SWbWhW", "WSW", "WbShS", "WbS", "WhS",
+                  "W", "WhN", "WbN", "WbNhN", "WNW", "NWbWhW", "NWbW", "NWhW", 
+                  "NW", "NWhN", "NWbN", "NNWhW", "NNW", "NbWhW", "NbW", "NhW")
   template$dd1 <- sub(" ", "", template$dd1)
   template$dd1 <- sub("to", "b", template$dd1)
   template$dd1 <- sub("t", "b", template$dd1)
   template$dd1 <- sub("by", "b", template$dd1)
-  template$dd1 <- 11.25 * (match(template$dd1, directions) - 1)
+  template$dd1 <- 5.625 * (match(template$dd1, directions) - 1)
   template$dd2 <- sub(" ", "", template$dd2)
   template$dd2 <- sub("to", "b", template$dd2)
   template$dd2 <- sub("t", "b", template$dd2)
   template$dd2 <- sub("by", "b", template$dd2)
-  template$dd2 <- 11.25 * (match(template$dd2, directions) - 1)
+  template$dd2 <- 5.625 * (match(template$dd2, directions) - 1)
   
 
   ## Write to data frames

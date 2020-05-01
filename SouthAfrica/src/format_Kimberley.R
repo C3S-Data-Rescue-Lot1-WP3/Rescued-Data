@@ -198,18 +198,21 @@ for (infile in list.files(inpath, pattern = "xlsx")) {
   
   
   ## Transform wind direction to degrees
-  ## Entries like 'NWbN' are converted as 'NW'
   if ("dd" %in% names(template)) {
     template$dd_orig <- paste0("Orig=", template$dd)
     template$dd <- sub(" ", "", template$dd)
     template$dd <- sub("to", "b", template$dd)
     template$dd <- sub("t", "b", template$dd)
     template$dd <- sub("by", "b", template$dd)
-    directions <- c("N", "NbE", "NNE", "NEbN", "NE", "NEbE", "ENE", "EbN", "E", "EbS", 
-                    "ESE", "SEbE", "SE", "SEbS", "SSE", "SbE", "S", "SbW", "SSW", 
-                    "SWbS", "SW", "SWbW", "WSW", "WbS", "W", "WbN", "WNW", "NWbW", 
-                    "NW", "NWbN", "NNW", "NbW")
-    template$dd <- 11.25 * (match(template$dd, directions) - 1)
+    directions <- c("N", "NhE", "NbE", "NbEhe", "NNE", "NNEhE", "NEbN", "NEhN", 
+                    "NE", "NEhE", "NEbE", "NEbEhE", "ENE", "EbNhN", "EbN", "EhN",
+                    "E", "EhS", "EbS", "EbShS", "ESE", "SEbEhE", "SEbE", "SEhE", 
+                    "SE", "SEhS", "SEbS", "SSEhE", "SSE", "SbEhE", "SbE", "ShE",
+                    "S", "ShW", "SbW", "SbWhW", "SSW", "SSWhW", "SWbS", "SWhS",
+                    "SW", "SWhW", "SWbW", "SWbWhW", "WSW", "WbShS", "WbS", "WhS",
+                    "W", "WhN", "WbN", "WbNhN", "WNW", "NWbWhW", "NWbW", "NWhW", 
+                    "NW", "NWhN", "NWbN", "NNWhW", "NNW", "NbWhW", "NbW", "NhW")
+    template$dd <- 5.625 * (match(template$dd, directions) - 1)
   }
   
   
