@@ -4,7 +4,7 @@
 # Requires libraries XLConnect, plyr, suncalc, dataresqc
 #
 # Created by Yuri Brugnara, University of Bern - 21 Dec 2018
-# Last updated 30 Apr 2020
+# Last updated 1 May 2020
 
 ###############################################################################
 
@@ -28,26 +28,49 @@ file.remove(list.files(outpath, pattern="Cape_Town_Obs", full.names=TRUE))
 
 # Define variables, units, times
 variables <- c("ta", "p", "dd", "Tx", "Tn", "tb", "wind_force", "w", "n", 
-               "rr", "ss", "vv", "w_max")
+               "rr", "ss", "vv", "w_max", "ta_mean", "ta2_mean", "ta3_mean",
+               "tb_mean", "tb2_mean", "tb3_mean", "Tx2", "Tx3", "Tn2", "Tn3",
+               "p_mean", "ta2", "ta3", "tb2", "tb3")
 registry_id <- c(1086289, 1086288, 1086287, 1086292, 1086291, 1086293, 1086290, 
-                 1086290, NA, NA, NA, NA, NA)
+                 1086290, NA, NA, NA, NA, NA, 1086289, 1086289, 1086289,
+                 1086293, 1086293, 1086293, 1086292, 1086292, 1086291, 1086291,
+                 1086288, 1086289, 1086289, 1086293, 1086293)
 units <- c("C", "hPa", "degree", "C", "C", "C", "Beaufort", "m/s", "%", 
-           "mm", "hours", "1-9", "m/s")
+           "mm", "hours", "1-9", "m/s", rep("C",10), "hPa", rep("C",4))
 stats <- c(rep("point",3), "maximum", "minimum", rep("point",4), 
-           rep("sum",2), "point", "maximum")
-periods <- c(rep(0,3), rep("p1day",2), rep(0,4), rep("day",2), 0, "day")
+           rep("sum",2), "point", "maximum", rep("mean",6), rep("maximum",2),
+           rep("minimun",2), "mean", rep("point",4))
+periods <- c(rep(0,3), rep("p1day",2), rep(0,4), rep("day",2), 0, rep("day",12),
+             rep(0,4))
 types <- c("Sunrise", "Noon", "Sunset", "Midnight")
 keeps <- c("sunrise", "solarNoon", "sunset", "nadir")
 
 # Define conversions to apply to the raw data
 conversions <- list(ta = function(x) round((x - 32) * 5 / 9, 1),
+                    ta2 = function(x) round((x - 32) * 5 / 9, 1),
+                    ta3 = function(x) round((x - 32) * 5 / 9, 1),
+                    ta_mean = function(x) round((x - 32) * 5 / 9, 1),
+                    ta2_mean = function(x) round((x - 32) * 5 / 9, 1),
+                    ta3_mean = function(x) round((x - 32) * 5 / 9, 1),
                     p = function(x, y) 
                       round(convert_pressure(x, f = 25.4, lat = lat, 
                                              alt = alt, atb = y), 2),
+                    p_mean = function(x) 
+                      round(convert_pressure(x, f = 25.4, lat = lat, 
+                                             alt = alt), 2),
                     dd = function(x) round(x, 0),
                     Tx = function(x) round((x - 32) * 5 / 9, 1),
+                    Tx2 = function(x) round((x - 32) * 5 / 9, 1),
+                    Tx3 = function(x) round((x - 32) * 5 / 9, 1),
                     Tn = function(x) round((x - 32) * 5 / 9, 1),
+                    Tn2 = function(x) round((x - 32) * 5 / 9, 1),
+                    Tn3 = function(x) round((x - 32) * 5 / 9, 1),
                     tb = function(x) round((x - 32) * 5 / 9, 1),
+                    tb2 = function(x) round((x - 32) * 5 / 9, 1),
+                    tb3 = function(x) round((x - 32) * 5 / 9, 1),
+                    tb_mean = function(x) round((x - 32) * 5 / 9, 1),
+                    tb2_mean = function(x) round((x - 32) * 5 / 9, 1),
+                    tb3_mean = function(x) round((x - 32) * 5 / 9, 1),
                     wind_force = function(x) round(x, 0),
                     w = function(x) round(x / 2.237, 1),
                     w_max = function(x) round(x / 2.237, 1),
@@ -319,7 +342,8 @@ for (year in 1834:1932) {
     template$dd_orig <- paste0("Orig=", template$dd)
     template$w_orig <- paste0("Orig=", template$w, "mph")
     
-    ## Template 9 (1879) - two sheets - only "ground" thermometers read
+    ## Template 9 (1879) - two sheets (one for wind)
+    ## Assuming the 2nd sheet is daily averages and pressure is already reduced to 32F
   } else if (year == 1879) {
     template <- readWorksheetFromFile(paste0(inpath, infile), 
                                       startRow = 12, header = FALSE,
@@ -338,25 +362,35 @@ for (year in 1834:1932) {
     template$w_orig <- paste0("Orig=", round(template$w, 2), "mph")
     template2 <- readWorksheetFromFile(paste0(inpath, infile), 
                                        startRow = 9, header = FALSE,
-                                       sheet = 2, endCol = 11,
+                                       sheet = 2,
                                        colTypes = c("character",
-                                                    rep("numeric",10)),
-                                       drop = 4:7,
+                                                    rep("numeric",14)),
                                        forceConversion = TRUE,
                                        readStrategy = "fast")
-    names(template2) <- c("m", "d", "p", "ta", "tb", "Tx", "Tn")
+    names(template2) <- c("m", "d", "p_mean", 
+                          "ta_mean", "tb_mean", "Tx_mean", "Tn_mean",
+                          "ta2_mean", "tb2_mean", "Tx2", "Tn2",
+                          "ta3_mean", "tb3_mean", "Tx3", "Tn3")
     template2$m <- as.integer(fill(get_month(template2$m)))
     template2$d <- fill(template2$d)
     template2 <- template2[which(!is.na(template2$m)), ]
-    template2$p_orig <- paste0("Orig=", template2$p, "in|PTC=?")
-    template2$ta_orig <- paste0("Orig=", template2$ta, "F")
-    template2$tb_orig <- paste0("Orig=", template2$tb, "F")
-    template2$Tx_orig <- paste0("Orig=", template2$Tx, "F")
-    template2$Tn_orig <- paste0("Orig=", template2$Tn, "F")
-    template2$h <- "130"
-    template <- merge(template, template2, by.x = c("m", "d", "h"), all.x = TRUE)
+    template2$p_mean_orig <- paste0("Orig=", template2$p_mean, "in")
+    template2$ta_mean_orig <- paste0("Orig=", template2$ta_mean, "F|position=crib")
+    template2$tb_mean_orig <- paste0("Orig=", template2$tb_mean, "F|position=crib")
+    template2$Tx_orig <- paste0("Orig=", template2$Tx, "F|position=crib")
+    template2$Tn_orig <- paste0("Orig=", template2$Tn, "F|position=crib")
+    template2$ta2_mean_orig <- paste0("Orig=", template2$ta2_mean, "F|position=ground")
+    template2$tb2_mean_orig <- paste0("Orig=", template2$tb2_mean, "F|position=ground")
+    template2$Tx2_orig <- paste0("Orig=", template2$Tx2, "F|position=ground")
+    template2$Tn2_orig <- paste0("Orig=", template2$Tn2, "F|position=ground")
+    template2$ta3_mean_orig <- paste0("Orig=", template2$ta3_mean, "F|position=roof")
+    template2$tb3_mean_orig <- paste0("Orig=", template2$tb3_mean, "F|position=roof")
+    template2$Tx3_orig <- paste0("Orig=", template2$Tx3, "F|position=roof")
+    template2$Tn3_orig <- paste0("Orig=", template2$Tn3, "F|position=roof")
+    template2$h <- NA
+    template <- rbind.fill(template, template2)
  
-  ## Template 10 (1880) - only "ground" thermometers read     
+  ## Template 10 (1880) - Assuming these are daily averages  
   } else if (year == 1880) {
     template <- readWorksheetFromFile(paste0(inpath, infile), 
                                        startRow = 9, header = FALSE,
@@ -365,14 +399,14 @@ for (year in 1834:1932) {
                                                     rep("numeric",6)),
                                        forceConversion = TRUE,
                                        readStrategy = "fast")
-    names(template) <- c("m", "d", "p", "ta", "tb", "Tx", "Tn")
+    names(template) <- c("m", "d", "p_mean", "ta_mean", "tb_mean", "Tx", "Tn")
     template$m <- as.integer(fill(get_month(template$m)))
     template$d <- fill(template$d)
     template$h <- ""
     template <- template[which(!is.na(template$m)), ]
-    template$p_orig <- paste0("Orig=", template$p, "in|PTC=?")
-    template$ta_orig <- paste0("Orig=", template$ta, "F")
-    template$tb_orig <- paste0("Orig=", template$tb, "F")
+    template$p_mean_orig <- paste0("Orig=", template$p_mean, "in")
+    template$ta_mean_orig <- paste0("Orig=", template$ta_mean, "F")
+    template$tb_mean_orig <- paste0("Orig=", template$tb_mean, "F")
     template$Tx_orig <- paste0("Orig=", template$Tx, "F")
     template$Tn_orig <- paste0("Orig=", template$Tn, "F")
     
@@ -389,10 +423,11 @@ for (year in 1834:1932) {
                                                    "numeric",
                                                    rep("character",2),
                                                    rep("numeric", 13)),
-                                      drop = 8:14,
+                                      drop = 8,
                                       forceConversion = TRUE,
                                       readStrategy = "fast")
-    names(template) <- c("m", "d", "h", "dd", "w", "p", "atb", "ta", "tb", "Tx")
+    names(template) <- c("m", "d", "h", "dd", "w", "p", "atb", "ta", "tb", "Tx",
+                         "ta2", "tb2", "Tx2", "ta3", "tb3", "Tx3")
     if (year >= 1886) names(template)[5] <- "wind_force"
     template$m <- as.integer(fill(get_month(template$m)))
     template$d <- fill(template$d)
@@ -405,22 +440,49 @@ for (year in 1834:1932) {
                                        1, 2)) + 12)
       template$h <- substr(template$h, 1, 4)
     }
-    template$Tn <- NA
+    template$Tn <- template$Tn2 <- template$Tn3 <- NA
+    # Sort out Tn from Tx
     for (im in 1:12) {
       for (id in unique(template$d[which(template$m == im)])) {
-        if (year != 1881 & im != 1) {
-          ih <- which(template$m == im & template$d == id)[1] + 
-            which.min(template$Tx[which(template$m == im & template$d == id)]) - 1
-          template$Tn[ih] <- template$Tx[ih]
-          template$Tx[ih] <- NA
+        ih <- which(template$m == im & template$d == id)[1] + 
+          which.min(template$Tx[which(template$m == im & template$d == id)]) - 1
+        if (length(ih) > 0) {
+          if (template$Tx[ih] <= min(template$ta[max(ih-2,1):ih],na.rm=TRUE)) {
+            template$Tn[ih] <- template$Tx[ih]
+            template$Tx[ih] <- NA
+          }
+        }
+        ih <- which(template$m == im & template$d == id)[1] + 
+          which.min(template$Tx2[which(template$m == im & template$d == id)]) - 1
+        if (length(ih) > 0) {
+          if (template$Tx2[ih] <= min(template$ta2[max(ih-2,1):ih],na.rm=TRUE)) {
+            template$Tn2[ih] <- template$Tx2[ih]
+            template$Tx2[ih] <- NA
+          }
+        }
+        ih <- which(template$m == im & template$d == id)[1] + 
+          which.min(template$Tx3[which(template$m == im & template$d == id)]) - 1
+        if (length(ih) > 0) {
+          if (template$Tx3[ih] <= min(template$ta3[max(ih-2,1):ih],na.rm=TRUE)) {
+            template$Tn3[ih] <- template$Tx3[ih]
+            template$Tx3[ih] <- NA
+          }
         }
       }
     }
     template$p_orig <- paste0("Orig=", template$p, "in|atb=", template$atb, "F")
-    template$Tx_orig <- paste0("Orig=", template$Tx, "F|screen=Stevenson Crib")
-    template$Tn_orig <- paste0("Orig=", template$Tn, "F|screen=Stevenson Crib")
-    template$ta_orig <- paste0("Orig=", template$ta, "F|screen=Stevenson Crib")
-    template$tb_orig <- paste0("Orig=", template$tb, "F|screen=Stevenson Crib")
+    template$Tx_orig <- paste0("Orig=", template$Tx, "F|screen=Window Crib")
+    template$Tn_orig <- paste0("Orig=", template$Tn, "F|screen=Window Crib")
+    template$ta_orig <- paste0("Orig=", template$ta, "F|screen=Window Crib")
+    template$tb_orig <- paste0("Orig=", template$tb, "F|screen=Window Crib")
+    template$Tx2_orig <- paste0("Orig=", template$Tx2, "F|screen=Glaisher Stand")
+    template$Tn2_orig <- paste0("Orig=", template$Tn2, "F|screen=Glaisher Stand")
+    template$ta2_orig <- paste0("Orig=", template$ta2, "F|screen=Glaisher Stand")
+    template$tb2_orig <- paste0("Orig=", template$tb2, "F|screen=Glaisher Stand")
+    template$Tx3_orig <- paste0("Orig=", template$Tx3, "F|screen=Stevenson Crib")
+    template$Tn3_orig <- paste0("Orig=", template$Tn3, "F|screen=Stevenson Crib")
+    template$ta3_orig <- paste0("Orig=", template$ta3, "F|screen=Stevenson Crib")
+    template$tb3_orig <- paste0("Orig=", template$tb3, "F|screen=Stevenson Crib")
     template$dd_orig <- paste0("Orig=", template$dd)
     if (year >= 1886) template$wind_force_orig <- paste0("Orig=", template$wind_force)
     else template$w_orig <- paste0("Orig=", template$w, "mph")
@@ -881,17 +943,25 @@ for (i in 1:length(variables)) {
   Data[[variables[i]]]$mm <- as.integer(substr(Data[[variables[i]]]$h, 3, 4))
   Data[[variables[i]]] <- Data[[variables[i]]][, c(1:3, 7:8, 5:6)]
   period <- periods[i]
-  ## Remove data for 1879-1880 because we don't know what they are, and fix periods for some variables
-  if (!variables[i] %in% c("Tx","Tn")) {
-    Data[[variables[i]]] <- Data[[variables[i]]][which(!Data[[variables[i]]]$y %in% 1879:1880), ]
-  } else {
+  if (variables[i] %in% c("Tx","Tn")) {
     period <- rep(periods[i], nrow(Data[[variables[i]]]))
     period[which(Data[[variables[i]]][,1]%in%1903:1932)] <- "day"
   }
-  
+  vrb <- sub("_max", "", variables[i])
+  vrb <- sub("_mean", "", vrb)
+  vrb <- sub("2", "", vrb)
+  vrb <- sub("3", "", vrb)
+  note <- ""
+  if (grepl("max",variables[i])) note <- "max"
+  if (grepl("mean",variables[i])) note <- "mean"
+  if (grepl("2",variables[i])) note <- paste0(note, "_bis")
+  if (grepl("3",variables[i])) note <- paste0(note, "_ter")
+  mHead <- "Data policy=GNU GPL v3.0"
+  if (substr(variables[i],1,1) == "p") mHead <- paste0(mHead, "|PTC=Y|PGC=Y")
+  if (variables[i] == "rr") mHead <- paste0(mHead, "|instrument=12-inch gauge")
   write_sef(Data = Data[[variables[i]]][, 1:6],
             outpath = outpath,
-            variable = sub("w_max", "w", variables[i]),
+            variable = vrb,
             cod = "Cape_Town_Obs",
             nam = "Cape Town (Observatory)",
             lat = lat,
@@ -902,10 +972,16 @@ for (i in 1:length(variables)) {
                           paste0("https://data-rescue.copernicus-climate.eu/lso/", registry_id[i])),
             units = units[i],
             stat = stats[i],
-            metaHead = paste0("Data policy=GNU GPL v3.0", ifelse(i==2, "|PTC=Y|PGC=Y", "")),
+            metaHead = paste0("Data policy=GNU GPL v3.0", 
+                              ifelse(substr(variables[i],1,1)=="p", "|PTC=Y|PGC=Y", "")),
             meta = Data[[variables[i]]][, 7],
             period = period,
-            note = ifelse(variables[i]=="w_max", "max", ""))
+            note = note)
+}
+
+## Rename SEF files
+for (f in list.files(outpath, pattern="__", full.names=TRUE)) {
+  file.rename(f, sub("__","_",f))
 }
 
 ## Check SEF files
