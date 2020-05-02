@@ -156,7 +156,11 @@ for (infile in list.files(inpath, pattern = "xlsx")) {
                                                    "numeric"),
                                       forceConversion = TRUE,
                                       readStrategy = "fast")
-    names(template) <- c("m", "d", "p", "Tx", "Tn", "ta", "tb", "td", "rr", "w")
+    if (year %in% 1899:1900) {
+      names(template) <- c("m", "d", "p", "Tn", "Tx", "ta", "tb", "td", "rr", "w")
+    } else {
+      names(template) <- c("m", "d", "p", "Tx", "Tn", "ta", "tb", "td", "rr", "w")
+    }
     template$h <- ""
     template$rr <- as.numeric(sub("..", 0, template$rr, fixed = TRUE))
   }
