@@ -23,10 +23,10 @@ inpath <- "../data/raw/Kimberley/"
 outpath <- "../data/formatted/"
 
 # Define variables, units, times
-variables <- c("ta", "p", "tb", "Tx", "Tn", "dd", "wind_force", "rr", "td", "w")
-units <- c("C", "hPa", "C", "C", "C", "degree", "", "mm", "C", "m/s")
-ids <- c(1086303, 1086302, 1086304, 1086305, 1086306, 1086307, 1086308, 1086309, 1086310, 1086311)
-stats <- c("point", "point", "point", "maximum", "minimum", "point", "point", "sum", "point", "point")
+variables <- c("ta", "p", "tb", "Tx", "Tn", "dd", "wind_force", "rr", "td", "w", "wr")
+units <- c("C", "hPa", "C", "C", "C", "degree", "", "mm", "C", "m/s", "km")
+ids <- c(1086303, 1086302, 1086304, 1086305, 1086306, 1086307, 1086308, 1086309, 1086310, 1086311, 1086311)
+stats <- c("point", "point", "point", "maximum", "minimum", "point", "point", "sum", "point", "point", "sum")
 
 # Define conversions to apply to the raw data
 conversions <- list(ta = function(x) round((x - 32) * 5 / 9, 1),
@@ -38,9 +38,10 @@ conversions <- list(ta = function(x) round((x - 32) * 5 / 9, 1),
                     Tn = function(x) round((x - 32) * 5 / 9, 1),
                     dd = function(x) round(x, 0),
                     wind_force = function(x) round(x, 0),
-                    rr = function(x) round(x * 25.4, 1),
+                    rr = function(x) round(x * 25.4, 2),
                     td = function(x) round((x - 32) * 5 / 9, 1),
-                    w = function(x) round(x / 2.237, 1))
+                    w = function(x) round(x / 2.237, 1),
+                    wr = function(x) round(x * 1.609, 1))
 
 # Define function to convert the month name into a number
 get_month <- function(x) {
@@ -144,8 +145,12 @@ for (infile in list.files(inpath, pattern = "xlsx")) {
                                       readStrategy = "fast")
     names(template) <- c("m", "d", "h", "ta", "tb", "p", "dd",
                          "wind_force", "rr", "Tx", "Tn")
+    template2 <- template[which(!is.na(template$rr)), c("m","d","h","rr")]
+    template$rr <- NA
+    template2$h <- "9am"
+    template <- rbind.fill(template, template2)
     
-    ## Template 4 (1898-1903)  
+    ## Template 4 (1898-1903)
   } else if (year %in% 1898:1903) {
     template <- readWorksheetFromFile(paste0(inpath, infile), 
                                       startRow = 11, header = FALSE,
@@ -163,6 +168,10 @@ for (infile in list.files(inpath, pattern = "xlsx")) {
     }
     template$h <- ""
     template$rr <- as.numeric(sub("..", 0, template$rr, fixed = TRUE))
+    if (year > 1898) { # wind speed is replaced by wind run
+      template$wr <- template$w
+      template$w <- NA
+    }
   }
   
   template$m <- get_month(template$m)
@@ -198,6 +207,9 @@ for (infile in list.files(inpath, pattern = "xlsx")) {
   }
   if ("w" %in% names(template)) {
     template$w_orig <- paste0("Orig=", round(template$w, 1), "mph")
+  }
+  if ("wr" %in% names(template)) {
+    template$wr_orig <- paste0("Orig=", round(template$wr, 1), "mi")
   }
   
   
@@ -256,7 +268,7 @@ for (infile in list.files(inpath, pattern = "xlsx")) {
 ## Order data by time and assign time flags
 Tflags <- list()
 for (v in variables) Data[[v]]$stat <- "point"
-for (v in c("ta", "p", "tb", "td", "dd", "wind_force", "w")) {
+for (v in c("ta", "p", "tb", "td", "dd", "wind_force", "w", "wr")) {
   Data[[v]] <- Data[[v]][order(Data[[v]]$y, Data[[v]]$m, Data[[v]]$d, Data[[v]]$h), ]
   Tflags[[v]] <- rep(0, dim(Data[[v]])[1])
 }
@@ -273,12 +285,12 @@ Tflags$rr[which(Data$rr$y %in% 1886:1889)] <- "day"
 Data$rr$h[which(Data$rr$y %in% 1886:1889)] <- ""
 Tflags$rr[which(Data$rr$y >= 1898)] <- "day"
 Data$rr$stat <- "sum"
-for (v in c("p", "ta", "tb", "td", "w")) {
+for (v in c("p", "ta", "tb", "td", "w", "wr")) {
   Tflags[[v]][which(Data[[v]]$y >= 1898)] <- "day"
   Data[[v]]$stat[which(Data[[v]]$y >= 1898)] <- "mean"
 }
+Data$wr$stat <- "sum"
   
-
 
 ## Write output
 for (i in 1:length(variables)) {
@@ -301,7 +313,7 @@ for (i in 1:length(variables)) {
                 metaHead = paste0("Data policy=GNU GPL v3.0", ifelse(i==2, "|PTC=Y|PGC=Y", "")),
                 meta = paste0(Data[[variables[i]]][k, 7], "|orig.time=", Data[[variables[i]]][k, 8]),
                 period = Tflags[[variables[i]]][k],
-                note = ifelse(st[j]=="mean", "mean", ""))
+                note = ifelse(st[j]=="mean", st[j], ""))
     }
   }
 }
