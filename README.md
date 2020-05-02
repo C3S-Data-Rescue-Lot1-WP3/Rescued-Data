@@ -33,6 +33,7 @@ The following variables are provided:
 * __rh__: relative humidity (%)
 * __rr__: precipitation (mm)
 * __w__: wind speed (m/s)
+* __wr__: wind run (km)
 * __wind_force__: wind force (Beaufort or other qualitative wind scales)
 * __dd__: wind direction (°)
 * __n__: cloud cover (%)
