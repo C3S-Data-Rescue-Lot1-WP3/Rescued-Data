@@ -730,15 +730,9 @@ for (year in 1834:1932) {
                                       forceConversion = TRUE,
                                       readStrategy = "fast")
     template[, 1] <- as.integer(fill(get_month(template[,1])))
-    if (year < 1930) {
-      time1 <- "0830"
-      time2 <- "1246"
-      time3 <- "2030"
-    } else {
-      time1 <- "0630"
-      time2 <- "1046"
-      time3 <- "1830"
-    }
+    time1 <- "0830"
+    time2 <- "1246"
+    time3 <- "2030"
     template1 <- template[, 1:10]
     names(template1) <- c("m", "d", "p", "atb", "ta", "tb", "Tx", "dd", "w", "n")
     template1$h <- time1
@@ -768,7 +762,7 @@ for (year in 1834:1932) {
     
     ## Template 17 (1932) - only 12-inch rain gauge read
     ## Assumed rain is measured in the evening
-    ## Time is given as C.M.T. (= UTC+1.5), perhaps a mistake?
+    ## Time is given as C.M.T. (= UTC+1.5), probably a mistake
     ## There is a change of barometer on July 1st, atb units change to K
     ## There is an additional sheet with hourly wind, but it is not clear
     ## to which timezone they refer, so it was not formatted into SEF
@@ -795,9 +789,9 @@ for (year in 1834:1932) {
                                       forceConversion = TRUE,
                                       readStrategy = "fast")
     template[, 1] <- as.integer(fill(get_month(template[,1])))
-    time1 <- "0000"
-    time2 <- "0744"
-    time3 <- "1944"
+    time1 <- "0830"
+    time2 <- "1246"
+    time3 <- "2030"
     template1 <- template[, 1:10]
     names(template1) <- c("m", "d", "p", "atb", "ta", "tb", "Tx", "dd", "w", "n")
     template1$h <- time1
@@ -866,22 +860,46 @@ for (year in 1834:1932) {
   }
   
   
-  ## Convert time to UTC (assuming Cape Mean Time = UTC+1h30 between 1893-1924)
+  ## Convert time to UTC (see file CapeTownObservatory_times.txt)
   template$y <- year
   template$h <- sub("h", "", template$h)
-  if (year < 1893) {
+  if (year < 1858) {
     offset <- lon * 12 / 180
     tz <- ""
-  } else if (year %in% c(1893:1924,1932)) {
+  } else if (year == 1858) {
+    offset <- c(rep(lon*12/180,length(which(template$m<9))), 
+                rep(0.662,length(which(template$m>=9))))
+    tz <- c(rep("",length(which(template$m<9))), 
+            rep("GoettingenMT",length(which(template$m>=9))))
+  } else if (year == 1859) {
+    offset <- 0.67
+    tz <- "GoettingenMT"
+  } else if (year %in% 1860:1880) {
     offset <- 1.5
     tz <- "CMT"
-  } else if (year %in% 1925:1929) {
+  } else if (year %in% 1881:1883) {
+    offset <- 1.37 - 12 # all time labels are shifted by 12 hours
+    tz <- ""
+  } else if (year %in% 1884:1890) {
+    template$h <- sub("1h", "13h", template$h) # 1PM was written as 1 instead of 13
+    offset <- 1.37
+    tz <- ""    
+  } else if (year %in% 1891:1892) {
+    offset <- 1.37
+    tz <- ""
+  } else if (year %in% 1893:1899) {
+    offset <- 1.77
+    tz <- ""
+  } else if (year %in% 1900:1902) {
+    offset <- 1.77 - 12 # all time labels are shifted by 12 hours
+    tz <- ""
+  } else if (year %in% 1903:1924) {
+    offset <- 1.24 - 12 # all time labels are shifted by 12 hours
+    tz <- ""
+  } else if (year %in% 1925:1932) {
     offset <- 2
     tz <- "SAST"
-  } else {
-    offset <- 0
-    tz <- "GMT"
-  }
+  } 
   if (year != 1880) {
     template$h[which(nchar(template$h) == 3)] <- 
       paste0(0, template$h[which(nchar(template$h) == 3)])
@@ -895,6 +913,7 @@ for (year in 1834:1932) {
       } else {
         j <- 1:length(dates)
       }
+      if (length(tz) > 1) tz <- tz[j]
       template[j, cnames[i]] <- 
         paste0(template[j, cnames[i]], "|orig.time=", template$h[j], tz)
     }
@@ -954,6 +973,12 @@ for (i in 1:length(variables)) {
                                                      Data[[variables[i]]]$h), ]
   Data[[variables[i]]]$hh <- as.integer(substr(Data[[variables[i]]]$h, 1, 2))
   Data[[variables[i]]]$mm <- as.integer(substr(Data[[variables[i]]]$h, 3, 4))
+  if (variables[i]=="rr") { # From 1925 rain is measured at 9am
+    Data[[variables[i]]]$hh[which(Data[[variables[i]]]$y>=1925)] <- 7
+    Data[[variables[i]]]$mm[which(Data[[variables[i]]]$y>=1925)] <- 0
+    Data[[variables[i]]][which(Data[[variables[i]]]$y>=1925), 5] <- 
+      sub("0830", "0900", Data[[variables[i]]][which(Data[[variables[i]]]$y>=1925),5])
+  }
   Data[[variables[i]]] <- Data[[variables[i]]][, c(1:3, 7:8, 5:6)]
   period <- periods[i]
   if (variables[i] %in% c("Tx","Tn")) {
@@ -985,8 +1010,7 @@ for (i in 1:length(variables)) {
                           paste0("https://data-rescue.copernicus-climate.eu/lso/", registry_id[i])),
             units = units[i],
             stat = stats[i],
-            metaHead = paste0("Data policy=GNU GPL v3.0", 
-                              ifelse(substr(variables[i],1,1)=="p", "|PTC=Y|PGC=Y", "")),
+            metaHead = ifelse(substr(variables[i],1,1)=="p", "PTC=Y|PGC=Y", ""),
             meta = Data[[variables[i]]][, 7],
             period = period,
             note = note)

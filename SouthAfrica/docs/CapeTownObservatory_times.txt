@@ -1,0 +1,8 @@
+02/1834-08/1858	Local mean solar time assumed (UTC+01:14)
+09/1858-12/1859	Göttingen Mean Time (UTC+00:40)
+01/1860-12/1880	Cape Mean Time (UTC+01:30)
+01/1881-12/1890	UTC+01:22
+01/1891-12/1892 Unclear, assumed UTC+01:22
+01/1893-12/1902 Unclear, assumed UTC+01:46
+01/1903-12/1924 CMT (UTC+01:14)
+01/1925-12/1933 SAST (UTC+2)

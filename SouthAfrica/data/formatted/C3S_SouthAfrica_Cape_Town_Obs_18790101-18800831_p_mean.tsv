@@ -9,7 +9,7 @@ Link	https://data-rescue.copernicus-climate.eu/lso/1086288
 Vbl	p
 Stat	mean
 Units	hPa
-Meta	Data policy=GNU GPL v3.0|PTC=Y|PGC=Y
+Meta	PTC=Y|PGC=Y
 Year	Month	Day	Hour	Minute	Period	Value	Meta
 1879	1	1	NA	NA	day	1012.35	Orig=29.926in
 1879	1	2	NA	NA	day	1009.78	Orig=29.85in

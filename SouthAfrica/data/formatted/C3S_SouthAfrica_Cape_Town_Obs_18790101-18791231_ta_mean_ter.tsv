@@ -9,7 +9,7 @@ Link	https://data-rescue.copernicus-climate.eu/lso/1086289
 Vbl	ta
 Stat	mean
 Units	C
-Meta	Data policy=GNU GPL v3.0
+Meta	
 Year	Month	Day	Hour	Minute	Period	Value	Meta
 1879	1	1	NA	NA	day	15.9	Orig=60.6F|position=roof
 1879	1	2	NA	NA	day	16.8	Orig=62.3F|position=roof
