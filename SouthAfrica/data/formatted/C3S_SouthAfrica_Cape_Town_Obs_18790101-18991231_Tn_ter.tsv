@@ -7,7 +7,7 @@ Alt	12
 Source	C3S_SouthAfrica
 Link	https://data-rescue.copernicus-climate.eu/lso/1086291
 Vbl	Tn
-Stat	minimun
+Stat	minimum
 Units	C
 Meta	
 Year	Month	Day	Hour	Minute	Period	Value	Meta

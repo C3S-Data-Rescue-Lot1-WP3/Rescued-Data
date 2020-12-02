@@ -39,7 +39,7 @@ units <- c("C", "hPa", "degree", "C", "C", "C", "Beaufort", "m/s", "%",
            "mm", "hours", "1-9", "m/s", rep("C",10), "hPa", rep("C",4))
 stats <- c(rep("point",3), "maximum", "minimum", rep("point",4), 
            rep("sum",2), "point", "maximum", rep("mean",6), rep("maximum",2),
-           rep("minimun",2), "mean", rep("point",4))
+           rep("minimum",2), "mean", rep("point",4))
 periods <- c(rep(0,3), rep("p1day",2), rep(0,4), rep("day",2), 0, rep("day",12),
              rep(0,4))
 types <- c("Sunrise", "Noon", "Sunset", "Midnight")
@@ -141,6 +141,8 @@ for (year in 1834:1932) {
                                       readStrategy = "fast")
     names(template) <- c("m", "d", "h", "dd", "wind_force", "p", "atb", 
                          "ta", "tb", "Tx", "Tn")
+    template$h <- sub("1/4 to 1", "12:45", template$h)
+    template$h <- sub("6pm", "18:00", template$h)
     template$m <- as.integer(fill(get_month(template$m)))
     template$d <- fill(template$d)
     template <- template[which(!is.na(template$m)), ]

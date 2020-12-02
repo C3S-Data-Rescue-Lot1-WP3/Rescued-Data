@@ -2851,8 +2851,8 @@ Year	Month	Day	Hour	Minute	Period	Value	Meta
 1836	6	4	10	46	0	0	Orig=0|orig.time=Noon
 1836	6	4	15	45	0	0	Orig=0|orig.time=Sunset
 1836	6	4	22	46	0	0	Orig=0|orig.time=Midnight
-1836	6	5	6	NA	0	0	Orig=0|orig.time=6pm
 1836	6	5	10	46	0	0	Orig=0|orig.time=Noon
+1836	6	5	16	46	0	0	Orig=0|orig.time=18:00
 1836	6	5	22	46	0	0	Orig=0|orig.time=Midnight
 1836	6	6	5	48	0	1	Orig=1|orig.time=Sunrise
 1836	6	6	10	46	0	0	Orig=0|orig.time=Noon
@@ -3224,7 +3224,7 @@ Year	Month	Day	Hour	Minute	Period	Value	Meta
 1836	9	3	16	32	0	2	Orig=2|orig.time=Sunset
 1836	9	3	22	45	0	0	Orig=0|orig.time=Midnight
 1836	9	4	4	57	0	5	Orig=5|orig.time=Sunrise
-1836	9	4	NA	4	0	2	Orig=2|orig.time=1/4 to 1
+1836	9	4	11	31	0	2	Orig=2|orig.time=12:45
 1836	9	4	16	33	0	1	Orig=1|orig.time=Sunset
 1836	9	4	22	45	0	0	Orig=0|orig.time=Midnight
 1836	9	5	4	56	0	2	Orig=2|orig.time=Sunrise
