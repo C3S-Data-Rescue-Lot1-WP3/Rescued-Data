@@ -1,5 +1,5 @@
 # Rescued-Data
-Data digitised from the capacity building regions of C3S 311a_Lot1 (aka [C3S Data Rescue Service](https://climate.copernicus.eu/data-rescue-service)).
+Data digitised from the capacity building regions of the [C3S Data Rescue Service](https://datarescue.climate.copernicus.eu)).
 
 ### Structure
 Each directory 'RegionName' has the following structure:
