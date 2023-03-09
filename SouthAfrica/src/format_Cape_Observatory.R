@@ -4,7 +4,7 @@
 # Requires libraries XLConnect, plyr, suncalc, dataresqc
 #
 # Created by Yuri Brugnara, University of Bern - 21 Dec 2018
-# Last updated 1 May 2020
+# Last updated 9 March 2023
 
 ###############################################################################
 
@@ -141,8 +141,8 @@ for (year in 1834:1932) {
                                       readStrategy = "fast")
     names(template) <- c("m", "d", "h", "dd", "wind_force", "p", "atb", 
                          "ta", "tb", "Tx", "Tn")
-    template$h <- sub("1/4 to 1", "12:45", template$h)
-    template$h <- sub("6pm", "18:00", template$h)
+    template$h <- sub("1/4 to 1", "00:45", template$h)
+    template$h <- sub("6pm", "06:00", template$h)
     template$m <- as.integer(fill(get_month(template$m)))
     template$d <- fill(template$d)
     template <- template[which(!is.na(template$m)), ]
@@ -866,26 +866,22 @@ for (year in 1834:1932) {
   template$y <- year
   template$h <- sub("h", "", template$h)
   if (year < 1858) {
-    offset <- lon * 12 / 180
+    offset <- lon * 12 / 180 - 12  # astronomical time
     tz <- ""
   } else if (year == 1858) {
     offset <- c(rep(lon*12/180,length(which(template$m<9))), 
-                rep(0.662,length(which(template$m>=9))))
+                rep(0.662,length(which(template$m>=9)))) - 12  # astronomical time
     tz <- c(rep("",length(which(template$m<9))), 
             rep("GoettingenMT",length(which(template$m>=9))))
   } else if (year == 1859) {
-    offset <- 0.67
+    offset <- 0.67 - 12  # astronomical time
     tz <- "GoettingenMT"
   } else if (year %in% 1860:1880) {
-    offset <- 1.5
+    offset <- 1.5 - 12  # astronomical time
     tz <- "CMT"
-  } else if (year %in% 1881:1883) {
-    offset <- 1.37 - 12 # all time labels are shifted by 12 hours
+  } else if (year %in% 1881:1890) {
+    offset <- 1.37 - 12 # astronomical time
     tz <- ""
-  } else if (year %in% 1884:1890) {
-    template$h <- sub("1h", "13h", template$h) # 1PM was written as 1 instead of 13
-    offset <- 1.37
-    tz <- ""    
   } else if (year %in% 1891:1892) {
     offset <- 1.37
     tz <- ""
@@ -893,10 +889,10 @@ for (year in 1834:1932) {
     offset <- 1.77
     tz <- ""
   } else if (year %in% 1900:1902) {
-    offset <- 1.77 - 12 # all time labels are shifted by 12 hours
+    offset <- 1.77 - 12 # astronomical time
     tz <- ""
   } else if (year %in% 1903:1924) {
-    offset <- 1.24 - 12 # all time labels are shifted by 12 hours
+    offset <- 1.24 - 12 # astronomical time
     tz <- ""
   } else if (year %in% 1925:1932) {
     offset <- 2
@@ -918,6 +914,7 @@ for (year in 1834:1932) {
       if (length(tz) > 1) tz <- tz[j]
       template[j, cnames[i]] <- 
         paste0(template[j, cnames[i]], "|orig.time=", template$h[j], tz)
+      if (length(j) == 0) j <- grep("time=0|time=1|time=2", template[, cnames[i]])
     }
     times <- strptime(paste(dates[j], template$h[j]), 
                       format = "%Y-%m-%d %H%M") - 3600 * offset
@@ -932,6 +929,7 @@ for (year in 1834:1932) {
     template$m[j] <- as.integer(format(times, "%m"))
     template$d[j] <- as.integer(format(times, "%d"))
     template$h[j] <- format(times, "%H%M")
+    
   }
   
   
